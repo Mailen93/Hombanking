@@ -4,6 +4,14 @@
   background-repeat: no-repeat;
   overflow-x: hidden;
 } */
+
+#transact_body{
+  background-image: url(../Assets/img/wwang_040522_102.jpg);
+  background-repeat:no-repeat;
+  background-size: cover;
+  
+
+}
 .background{
   position:fixed;
   top: 0;
@@ -29,12 +37,22 @@
   position: relative;
 } 
 
+.generalContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 footer {
   display: flex;
   min-height: 10vh;
   width: 100%;
   background-color: #00094e;
   align-items: center;
+  margin-top: 5rem;
+}
+
+footer p {
+  margin-bottom: 0;
 }
 
 #cards{
@@ -108,61 +126,52 @@ text-shadow: 4px 1px 4px black;
   border: none !important;
 }
 .welcome_accounts{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  color: whitesmoke;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
   border-radius: 1rem;
+  box-shadow: 0px 0px 20px 2px black;
 }
+
 .welcome_accounts h2{
-  font-size: 3rem;
-  padding: 1rem;
-  text-shadow: 6px 3px 8px black;
-}
-.welcome_loans{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
   color: whitesmoke;
-  backdrop-filter: blur(50px);
-  border-radius: 1rem;
-}
-.welcome_loans h2{
   font-size: 3rem;
-  padding: 1rem;
-  text-shadow: 6px 3px 8px black;
+  text-shadow: 1px 0 5px black;
 }
+
+.welcome_loans{
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 20px 2px black;
+}
+
+.welcome_loans h2 {
+  color: whitesmoke;
+  font-size: 3rem;
+  text-shadow: 1px 0 5px black;
+}
+
 
 .cards_title{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: whitesmoke;
-  margin-top: auto;
-  font-size: 3rem;
-  text-shadow: 6px 3px 8px black;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
   border-radius: 1rem;
-  /* margin-top: 5rem;
-  font-size: larger;
-  color: whitesmoke; */
-
+  box-shadow: 0px 0px 20px 2px black;
 }
-.cardsContainer {
-  display: flex;
-  height: 30vh;
-  justify-content:center;
-  align-items: center;
-  background: none;
-  width: 100%;
+
+.cards_title h2{
+  color: whitesmoke;
+  font-size: 3rem;
+  text-shadow: 1px 0 5px black;
 }
 
 .generalContainer{
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .card {
@@ -376,13 +385,15 @@ text-shadow: 4px 1px 4px black;
   left: 15px;
 
 }
+.imagen_pareja {
+  width: 100%;
+}
+
 .imagen_pareja img{
   border-radius: 1rem;
-  margin-top: 3rem;
-  margin-left: 2rem;
-  width: 1250px;
+  width: 100%;
   object-position: center;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 
@@ -401,7 +412,12 @@ text-shadow: 4px 1px 4px black;
   color: white;
   text-align: center;
   width: 100%;
-  margin-top: -8rem
+  
+  padding: 2rem;
+}
+
+#modal{
+  display: none;
 }
 
 .modalOpen {
@@ -427,7 +443,7 @@ text-shadow: 4px 1px 4px black;
   position: sticky;
   top: 10vh;
   height: 650px;
-  z-index: 1;
+  bottom: 100vh;
 }
 .barra_lateral {
   display: flex;
@@ -478,6 +494,13 @@ text-shadow: 4px 1px 4px black;
   gap: 2rem;
   padding-left: 1rem;
   padding-right: 2rem;
+  
+}
+
+.spans_container a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .opciones {
@@ -509,6 +532,10 @@ text-shadow: 4px 1px 4px black;
   flex-direction: column;
 }
 
+.tarjetas{
+  padding: 2rem;
+}
+
 .tarjetas p {
   font-size: x-large;
   padding: 0.5rem;
@@ -527,6 +554,8 @@ text-shadow: 4px 1px 4px black;
   color: #00094e;
 }
 .boton {
+  position: absolute;
+  bottom: 1rem;
   padding: 6px;
   font-weight: bolder;
   text-decoration: none;
@@ -549,9 +578,14 @@ text-shadow: 4px 1px 4px black;
 }
 
 #accounts{
-  display: flex !important;
-  flex-wrap: wrap !important;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  width: 100%;
+  height: 100vh;
+  gap: 2rem;
 }
 
 .accounts_section{
@@ -560,19 +594,31 @@ text-shadow: 4px 1px 4px black;
   align-items: center;
   justify-content: center;
 }
+
 .account_container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 3rem 0;
-  gap: 5rem;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
 }
 
 .VIN_container {
   display: flex;
-  padding: 2rem;
-  gap: 1rem;
+  align-items: center;
+  justify-content: start;
+  padding: 1rem;
+}
+
+.VIN_container span {
+  font-size: 1.5rem;
+}
+
+.VIN_container h3 {
+  font-size: 1.3rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
 
 .LOAN_container {
@@ -580,11 +626,11 @@ text-shadow: 4px 1px 4px black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 2rem;
   gap: 2rem;
-  margin-top: 1rem;
 }
 
 .LOAN_container h2 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin-top: 0;
 }
 
 .redes {
@@ -611,10 +657,17 @@ text-shadow: 4px 1px 4px black;
   width: 800px;
 }
 
-.loans {
+#loans {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 3rem;
+  gap: 2rem;
+}
 
+.loans{
+  width: 100%;
 }
 
 .totalLoans {
@@ -705,9 +758,6 @@ text-shadow: 4px 1px 4px black;
     display: none;
   }
 
-  #accounts{
-    height: 100vh;
-  }
 
   .accounts_section{
     align-items: center;
@@ -717,11 +767,11 @@ text-shadow: 4px 1px 4px black;
 
   .account_container{
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
     place-content: center;
-    gap: 16px;
   }
 
   .client h2 {
@@ -754,7 +804,7 @@ text-shadow: 4px 1px 4px black;
   }
   .tarjetas {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 12rem;
     max-width: 24%;
@@ -782,6 +832,15 @@ text-shadow: 4px 1px 4px black;
 
   .VIN_container {
     padding: 0;
+  }
+
+  .VIN_container h2{
+    font-size: 1rem;
+  }
+
+  .VIN_title{
+    display: flex;
+    flex-direction: column;
   }
 
   .LOAN_container {

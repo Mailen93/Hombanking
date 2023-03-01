@@ -29,17 +29,13 @@
           </div>
 
           <div class="spans_container">
-            <span style="font-size: 1.5em; color: whitesmoke">
-              <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
-            </span>
-            <span style="font-size: 1.5em; color: whitesmoke">
-              <a href="#"><i class="fa-solid fa-bell"></i></a>
-            </span>
-            <span style="font-size: 1.5em; color: whitesmoke">
-              <a href="#"
-                ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
-              ></a>
-            </span>
+            <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
+
+            <a href="#"><i class="fa-solid fa-bell"></i></a>
+
+            <a href="#"
+              ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
+            ></a>
           </div>
 
           <!-- */HAMBURGUESA*/ -->
@@ -72,16 +68,16 @@
               <h4 class="pt-4">Operations</h4>
               <div class="opciones">
                 <i class="fa-solid fa-money-bill-transfer"></i>
-                <button type="button" class="botonNormal"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                 Transactions
+                <button
+                  type="button"
+                  class="botonNormal"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Transactions
                 </button>
-  
-                <!-- <a href="alltransactions.html">Transactions</a> -->
               </div>
-<!-- 
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-              </button> -->
+            
 
               <div class="opciones" v-if="accounts.length < 3">
                 <i class="fa-solid fa-plus"></i>
@@ -235,25 +231,25 @@
             <div class="account_container">
               <div class="tarjetas" v-for="account of accounts">
                 <div class="VIN_container">
-                  <h2>Account N°: {{account.number}}</h2>
+                  <h2>Accounts N°: <span>{{account.number}}</span></h2>
                   <h3>Date: {{parseDate(account.creationDate)}}</h3>
                 </div>
                 <p class="dinero">Dinero disponible: ${{account.balance}}</p>
                 <div class="boton">
-                  <a :href='"account.html?id=" + account.id'>Details</a>
+                  <a :href='"account.html?id=" + account.id'
+                    >View transactions</a
+                  >
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- */LOANS*/ -->
-
-          <!-- POR QUE LOS WELCOME LOAN TIENEN TODO BLUR Y EL WELCOME ACOUNT NO -->
           <section id="loans">
             <div class="imagen_pareja">
               <img
                 src="../Assets/img/interna-homebanking.jpg"
-                alt="imagen pareja"/>
+                alt="imagen pareja"
+              />
             </div>
             <div class="welcome_loans">
               <h2>Welcome to your loans</h2>
@@ -273,74 +269,99 @@
           </section>
         </div>
       </main>
+      <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog modal-lg">
+        <div class="modal-content" style="background-color:#00094edb;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: whitesmoke;">All transactions</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr class="table_container">
+                  <th class="cell cellMob">Number</th>
+                  <th class="cell">Type</th>
+                  <th class="cell">Amount</th>
+                  <th class="cell">Description</th>
+                  <th class="cell">Date</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr
+                  class="table_container"
+                  v-for="trans of allDateTransactions"
+                  v-if="allDateTransactions"
+                >
+                  <td class="cell cellMob">{{trans.id}}</td>
+                  <td class="cell">{{trans.type}}</td>
+                  <td
+                    class="cell text-danger fw-bolder"
+                    v-if="trans.type =='DEBIT'"
+                  >
+                    ${{trans.amount}}
+                  </td>
+                  <td class="cell text-success fw-bolder" v-else>
+                    ${{trans.amount}}
+                  </td>
+                  <td class="cell">{{trans.description}}</td>
+                  <td class="cell">{{trans.date}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-info"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
-
-    <!-- //MODAL// -->
-
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <table class="table">
-          <thead>
-            <tr class="table_container">
-              <th class="cell cellMob">Number</th>
-              <th class="cell">Type</th>
-              <th class="cell">Amount</th>
-              <th class="cell">Description</th>
-              <th class="cell">Date</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr class="table_container" v-for="trans of allDateTransactions" v-if="allDateTransactions">
-              <td class="cell cellMob">{{trans.id}}</td>
-              <td class="cell">{{trans.type}}</td>
-              <td
-                class="cell text-danger fw-bolder"
-                v-if="trans.type =='DEBIT'"
-              >
-                ${{trans.amount}}
-              </td>
-              <td class="cell text-success fw-bolder" v-else>
-                ${{trans.amount}}
-              </td>
-              <td class="cell">{{trans.description}}</td>
-              <td class="cell">{{trans.date}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+    <!-- Modal -->
+   
 
     <footer>
       <div class="redes">
-        <span style="font-size: 2em; color: whitesmoke">
+        <a
+          href="https://twitter.com/?lang=es"
+          style="font-size: 2em; color: whitesmoke"
+          target="_blank"
+        >
           <i class="fa-brands fa-twitter"></i>
-        </span>
-        <span style="font-size: 2em; color: whitesmoke">
+        </a>
+        <a
+          href="https://www.instagram.com"
+          style="font-size: 2em; color: whitesmoke"
+          target="_blank"
+        >
           <i class="fa-brands fa-instagram"></i>
-        </span>
-        <span style="font-size: 2em; color: whitesmoke">
+        </a>
+        <a
+          href="https://www.youtube.com/"
+          style="font-size: 2em; color: whitesmoke"
+          target="_blank"
+        >
           <i class="fa-brands fa-youtube"></i>
-        </span>
+        </a>
       </div>
       <div class="derechos">
         <p>© 2023 MindBank Bank - All Rights Reserved.</p>
@@ -352,6 +373,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../Assets/javascript/accounts.js"></script>

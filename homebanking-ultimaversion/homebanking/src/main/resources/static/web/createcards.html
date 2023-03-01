@@ -21,35 +21,26 @@
 
 
   <div id="app">
-    <div class="container info">
+    <div class="container_info">
       <h1 class="info__title">
-        Lorem ipsum
+        Create your new card!
       </h1>
       <form @submit.prevent>
+        <h2>Select your card type</h2>
         <select v-model="cardType" id="slim-select" class="info__select">
           <option value="DEBIT">DEBIT</option>
           <option value="CREDIT">CREDIT</option>
         </select>
+        <h2>Select your card color</h2>
         <select v-model="cardColor" id="slim-select" class="info__select">
           <option value="GOLD">GOLD</option>
           <option value="SILVER">SILVER</option>
           <option value="TITANIUM">TITANIUM</option>
         </select>
         <a href="#" @click="createCard"class="info__button">Create card</a>
+        <p class="back"><a href="/web/accounts.html">Back home</a></p>
       </form>
       
-      <article class="info__details details">
-        <article class="details__img"></article>
-        <span class="details__person">
-          <strong>Joanna Louise</strong> 
-          <span class= "details__job"> 
-            – designer
-          </span>
-        </span>
-        <p class="details__description">
-          “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”
-        </p> 
-      </article>
     </div>
   </div>
 <script

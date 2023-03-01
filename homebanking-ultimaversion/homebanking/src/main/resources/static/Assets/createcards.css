@@ -1,110 +1,151 @@
 html {
-    box-sizing: border-box;
-  }
-  
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  
-  body {
-    background: lightblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    font-family: "Roboto", sans-serif;
-    color: white;
-    padding-top: 100px;
-  }
-  
-  .info {
-    width: 100%;
-    max-width: 583px;
-    margin: 0 auto;
-    text-align: center;
-    color: #170538;
-  }
-  .info__title {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    font-weight: bold;
-    font-size: 58px;
-    color: #502699;
-    padding-bottom: 30px;
-    padding-top: 30px;
-  }
-  .info__subtitle {
-    font-weight: normal;
-    font-size: 21px;
-    margin: 30px 0;
-    color: #170538;
-  }
-  .info__button {
-    width: 100%;
-    max-width: 580px;
-    outline: none;
-    border: none;
-    background: #502699;
-    color: white;
-    padding: 15px 0;
-    font-size: 18px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    margin-top: 15px;
-  }
-  
-  .details {
-    padding-top: 40px;
-    font-size: 14px;
-  }
-  .details__img {
-    width: 80px;
-    height: 80px;
-    border-radius: 100%;
-    background: url("https://orig00.deviantart.net/d5fa/f/2012/088/3/0/30e49c0ab37799728a5dfc28d92bbcb7-d4ubbj8.jpg") no-repeat center;
-    background-size: cover;
-    margin: 0 auto;
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-  .details__person {
-    padding: 20px;
-    font-size: 20px;
-  }
-  .details__job {
-    font-size: 13px;
-  }
-  .details__description {
-    width: 100%;
-    max-width: 447px;
-    line-height: 1.3;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  select {
-    background: white;
-    outline: none;
-    color: grey;
-    border: none;
-    width: 100%;
-    max-width: 580px;
-    display: block;
-    margin: 0 auto;
-    height: 50px;
-    padding: 0 20px;
-    font-size: 18px;
-    border: none;
-    outline: 0;
-  }
-  
-  .ss-main .ss-single-selected {
-    height: 50px;
-  }
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  background-image: url("../Assets/img/wwang_040522_102.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center ;
+}
+
+.container_info {
+  background-color: #00000099;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+}
+
+.info {
+  width: 100%;
+  max-width: 583px;
+  margin: 0 auto;
+  text-align: center;
+  color: #170538;
+}
+.info__title {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: 2rem;
+  color: whitesmoke;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.info__subtitle {
+  font-weight: normal;
+  font-size: 21px;
+  margin: 30px 0;
+  color: #170538;
+}
+.info__button {
+  width: 100%;
+  max-width: 580px;
+  outline: none;
+  border: none;
+  background: #00074d;
+  color: whitesmoke;
+  padding: 15px 0;
+  font-size: 2rem;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 1rem;
+  transition: all .4s;
+}
+
+.info__button:hover{
+  background-color: #00d9f5cc;
+  color: whitesmoke;
+}
+
+.details {
+  padding-top: 40px;
+  font-size: 14px;
+}
+.details__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background: url("https://orig00.deviantart.net/d5fa/f/2012/088/3/0/30e49c0ab37799728a5dfc28d92bbcb7-d4ubbj8.jpg")
+    no-repeat center;
+  background-size: cover;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.details__person {
+  padding: 20px;
+  font-size: 20px;
+}
+.details__job {
+  font-size: 13px;
+}
+.details__description {
+  width: 100%;
+  max-width: 447px;
+  line-height: 1.3;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.back{
+  text-align: center;
+}
+
+.back a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 1.2rem;
+}
+
+select {
+  background: white;
+  outline: none;
+  color: grey;
+  border: none;
+  width: 100%;
+  max-width: 580px;
+  display: block;
+  margin: 0 auto;
+  height: 50px;
+  padding: 0 20px;
+  font-size: 18px;
+  border: none;
+  outline: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding-left: .8rem;
+  gap: .5rem;
+}
+
+form h2 {
+  margin: 0;
+  color: whitesmoke;
+  font-size: 1rem;
+}
+
+
