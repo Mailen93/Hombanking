@@ -42,7 +42,7 @@ body {
   max-width: 600px;
   margin: 0 auto;
   font-weight: bold;
-  font-size: 58px;
+  font-size: 2rem;
   color: whitesmoke;
   padding-bottom: 30px;
   padding-top: 30px;
@@ -139,12 +139,13 @@ form {
   display: flex;
   flex-direction: column;
   padding-left: .8rem;
-  gap: 2rem;
+  gap: .5rem;
 }
 
 form h2 {
   margin: 0;
   color: whitesmoke;
+  font-size: 1rem;
 }
 
 

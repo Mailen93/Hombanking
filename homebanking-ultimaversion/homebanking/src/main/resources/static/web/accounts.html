@@ -76,13 +76,8 @@
                 >
                   Transactions
                 </button>
-
-                <!-- <a href="alltransactions.html">Transactions</a> -->
               </div>
-              <!-- 
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-              </button> -->
+            
 
               <div class="opciones" v-if="accounts.length < 3">
                 <i class="fa-solid fa-plus"></i>
@@ -274,20 +269,17 @@
           </section>
         </div>
       </main>
-    </div>
-
-    <!-- Modal -->
-    <div
+      <div
       class="modal fade"
       id="exampleModal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
+      <div class="modal-dialog modal-dialog modal-lg">
+        <div class="modal-content" style="background-color:#00094edb;">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel" style="color: whitesmoke;">All transactions</h5>
             <button
               type="button"
               class="btn-close"
@@ -333,16 +325,19 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-outline-info"
               data-bs-dismiss="modal"
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
     </div>
+    </div>
+
+    <!-- Modal -->
+   
 
     <footer>
       <div class="redes">
@@ -378,6 +373,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../Assets/javascript/accounts.js"></script>

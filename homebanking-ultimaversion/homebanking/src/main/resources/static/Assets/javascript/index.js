@@ -52,7 +52,6 @@ createApp({
         })
         .catch(error => {
             this.error = error.response.data;
-            console.log(this.error)
             Swal.fire({
                 icon: 'error',
                 title: `${this.error}`,

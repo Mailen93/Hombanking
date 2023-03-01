@@ -5,6 +5,13 @@
   overflow-x: hidden;
 } */
 
+#transact_body{
+  background-image: url(../Assets/img/wwang_040522_102.jpg);
+  background-repeat:no-repeat;
+  background-size: cover;
+  
+
+}
 .background{
   position:fixed;
   top: 0;

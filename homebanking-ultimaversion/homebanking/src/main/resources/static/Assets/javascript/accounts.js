@@ -49,12 +49,27 @@ createApp({
               this.error = error.response.data.message;
           });
   },
-    logOut(){             
-      axios.post("http://localhost:8080/api/logout")
-      .then((response) =>{        
-      window.location.href = '/web/index.html';
-    })
-    .catch((err) => console.log(hola));
+    logOut(){      
+      Swal.fire({
+        title: 'Do you want to log out?',
+        text: "Please select an option",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          axios.post("http://localhost:8080/api/logout")
+          .then((response) =>{        
+          window.location.href = '/web/index.html';
+        })
+        .catch(error => {
+           this.error = error.response.data;
+        
+        })
+        }})
     },
     h: function(){
       document.querySelector('.htop').classList.toggle('openTop')
@@ -63,5 +78,5 @@ createApp({
       document.querySelector('#modal').classList.toggle('modalOpen')
       
     }
-  },
+  }
 }).mount("#app");

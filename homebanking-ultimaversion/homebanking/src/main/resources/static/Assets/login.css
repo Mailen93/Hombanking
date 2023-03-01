@@ -344,15 +344,15 @@ button:focus {
 
 .overlay-container .overlay .overlay-panel label:hover {
   background-color: #00d9f5cc;
-  border-color: #00074d;
-  color:#00074d;
+  border-color: whitesmoke;
+  color:whitesmoke;
 }
 
 
 .primary {
-  color: #00074d;
+  color: whitesmoke;
   background-color: #00d9f5cc;
-  border-color:  #00074d;
+  border-color: #00074d;
 }
 
 .primary:hover {
