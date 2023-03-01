@@ -35,10 +35,16 @@ public class HomebankingApplication {
 			Account account2 = new Account("VIN 002", LocalDateTime.now().plusDays(1), 7500);
 			Account account3 = new Account("3" , LocalDateTime.now(), 100000);
 			Account account4 = new Account("4", LocalDateTime.now().plusDays(1), 50);
-			Transaction transaction1 = new Transaction(TransactionType.CREDIT, 200.05, "Trabajo Feriado" ,LocalDateTime.now());
+			Transaction transaction1 = new Transaction(TransactionType.CREDIT, 2000.05, "Trabajo Feriado" ,LocalDateTime.now());
 			Transaction transaction2 = new Transaction(TransactionType.DEBIT, 750.01, "Pintura para muebles" ,LocalDateTime.now());
-			Transaction transaction3 = new Transaction(TransactionType.CREDIT, 20.01, "Pago mensual" ,LocalDateTime.now());
+			Transaction transaction3 = new Transaction(TransactionType.CREDIT, 200000.01, "Pago mensual" ,LocalDateTime.now());
 			Transaction transaction4 = new Transaction(TransactionType.DEBIT, 1000.00, "Paseador de perros" ,LocalDateTime.now());
+			Transaction transaction5 = new Transaction(TransactionType.DEBIT, 7600.01, "Traje de baño" ,LocalDateTime.now());
+			Transaction transaction6 = new Transaction(TransactionType.CREDIT, 3000.01, "Transferencia MP" ,LocalDateTime.of(2022,10,1,22,01));
+			Transaction transaction7 = new Transaction(TransactionType.DEBIT, 6500.20, "Mesita de Luz" ,LocalDateTime.now());
+			Transaction transaction8 = new Transaction(TransactionType.CREDIT, 4250.30, "Devolución dinero" ,LocalDateTime.now());
+
+
 			Loan hipotecario = new Loan("Hipotecario", 500000, List.of(12,24,36,48,60));
 			Loan automotriz = new Loan("Automotriz", 300000, List.of(6,12,24,36));
 			Loan personal = new Loan("Personal", 100000, List.of(6,12,24));
@@ -57,7 +63,11 @@ public class HomebankingApplication {
 			client2.addAccount(account4);
 
 			account1.addTransaction(transaction1);
+			account1.addTransaction(transaction7);
+			account1.addTransaction(transaction8);
 			account2.addTransaction(transaction2);
+			account2.addTransaction(transaction5);
+			account2.addTransaction(transaction6);
 			account3.addTransaction(transaction3);
 			account4.addTransaction(transaction4);
 
@@ -87,6 +97,10 @@ public class HomebankingApplication {
 			TransacR.save(transaction2);
 			TransacR.save(transaction3);
 			TransacR.save(transaction4);
+			TransacR.save(transaction5);
+			TransacR.save(transaction6);
+			TransacR.save(transaction7);
+			TransacR.save(transaction8);
 			LoanR.save(hipotecario);
 			LoanR.save(automotriz);
 			LoanR.save(personal);
