@@ -1,0 +1,500 @@
+JAVA: lenguaje de programación fuertemente tipado (hay que decirle qué tipo de dato voy a ingresar dentro de la variable que declaro). Está orientado a objetos. Es un lenguaje estático: una vez que a la variable le asignaste un tipo de dato no puede contener otro.
+
+Es un lenguaje COMPILADO, esto quiere decir que necesito pasarlo a otro lenguaje para que la maquina entienda lo yo quiero programar, ya que con java no haré solamente aplicaciones web, puedo programar distintas funcionalidades de muchísimas cosas (licuadora inteligente, reloj, satélites, etc).  
+Es compilado por el JAVAC que compila y pasa el código a BITECODE (código máquina). 
+Es un lenguaje INTERPRETADO por la JVM (java virtual machine) que me interpreta el codigo que viene del JAVAC (Bytecode), Java tal como lo voy a estar escribiendo en el Intellij. Lo interpreta para pasarlo a los lenguajes que requiere cada dispositivo.
+
+TIPOS DE DATOS: 
+PRIMITIVOS: 
+BOOLEANOS
+NUMERICOS: 
+-CHARACTER 
+-INTEGRAL: Integer (byte / short / int / long); Floating-point /float / double)
+
+TIPOS DE DATOS NO PRIMITIVOS: 
+String
+Scanner
+ArrayList
+Array
+Wrappers (Byte, Short, Integer) Los wrappers son una clase que se encarga de envolver los datos primitivos para que puedan ser utilizados como OBJETOS y así poder acceder a sus métodos, etc. Se escriben con mayúsculas.
+
+int es el dato primitivo e Integer es su wrapper para tratarlo como objeto
+
+
+OBJETO:
+Entidad de código compuesta de atributos y métodos relacionados entre si que representa a un objeto de la vida real.
+
+CLASE:
+Es un modelo o prototipo que define los atributos y métodos comunes a todos los objetos de cierto tipo. Es una plantilla genérica para un conjunto de objetos con características similares.
+La clase instancia (crea) el objeto, define lo que el objeto puede o no hacer.
+UNA INSTANCIA ES UN OBJETO DE UNA CLASE EN PARTICULAR.
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+JDK:
+ kit de desarrollo de java. Coleccion de herramientas de software para desarrollar aplicaciones de JAVA.
+JDK (JAVA Development Kit): es un paquete con programas para compilar, interpretar y ejecutar el código java así como también un compendio de código prediseñado para facilitar la creación de aplicaciones java. 
+Contiene:
+
+JRE:
+ entorno para "correr" los programas en JAVA. conjunto de programas (javaC Y JVM) y librerias necesarias para ejecutar las aplicaciones java. 
+
+ Javac (Java compiler): es el programa encargado de compilar el código java y pasarlo a bytecode, que es el lenguaje que interpreta la máquina virtual de java JVM que es parte de JRE.
+
+ Java Archive Tool: es el programa encargado de ensamblar en un paquete las clases java compiladas en un programa ejecutable llamado JAR.
+
+ IntelliJ IDEA: es un programa conocido como IDE (Integrated Development Environment) el cual contiene herramientas útiles para programar tales como un editor de código, explorador de archivos, depurador de código, plugins para trabajar con sistemas de versionado como git, compilador y ejecutor de código, visor de base de datos, entre otras, la idea de estos programas es que como desarrollador no tengas que usar ningún otro programa para trabajar.
+
+Para crear el proyecto: Spring Initializr: herramienta que permite la generación de proyectos con sus dependencias permitiendo simplificar esta etapa inicial de arranque de nuevos proyectos. Es donde haremos las configuraciones iniciales a nuestro proyecto que, en este caso trabajará con Spring, (que es un framework que proporciona un modelo integral de programación y configuración para aplicaciones empresariales modernas basadas en Java, en cualquier tipo de plataforma de implementación).
+
+ Deberás indicar en Spring Initializr:
+
+En tipo de proyecto (Project) Gradle
+Lenguaje Java
+La versión de spring boot
+En grupo indicarás com.mindhub
+Luego en artifact homebanking
+Seguidamente en packaging indicar jar y en java indicar la versión 11.
+En el panel de la derecha agregaramos las dependencias:
+ Spring Data JPA
+  H2 database
+   Spring Web
+    Rest Repositories.
+
+ Pulsamos “generate” y se descarga un archivo comprimido.
+Importamos la carpeta en el IntelliJ, y esperamos a que el proyecto se cargue por completo. 
+
+
+Nuestra clase Main es homebankingapplication y la anotacion @SpringBootApplication indica que Java va a trabajar con Spring Boot. 
+
+Para organizar los archivos en el proyecto debes crear un paquete llamado models en homebanking.
+
+Como Java es un lenguaje de programación orientado a objetos (POO), lo primero que debes definir son las entidades que contendrá la aplicación.
+Para representar estas entidades en Java se deben crear Clases, las cuales a futuro nos va a permitir crear objetos.
+Creamos la clase client en el paquete models.
+
+Con la anotación @Entity arriba de nuestra clase, le estaremos indicando a Spring que nos genere una tabla en la base de datos donde guardaremos allí nuestros objetos como filas de esa tabla, en la cual, cada columna de la misma representara cada una de las propiedades de dicho objeto.
+
+Ya que Client es una entidad que será almacenada en la base de datos, una de sus propiedades debe tener la anotación @Id la cual indicara cuál será la clave primaria de nuestra clase en la base de datos.
+
+
+Repositorios:
+Para crear un repositorio debemos crear un paquete llamado “repositories”. Luego el archivo ClientRepository, en este caso debemos indicar que sea una “Interface”.
+El repo trabaja con la base de datos y el back, como intermediario.
+La anotacion @RepositoryRestResource indica que el repo va a trabajar bajo los lineamientos de Rest, eso quiere decir que las peticiones que yo puedo hacer desde y hacia la base de datos sean a traves de json y a traves de los metodos http (get, put, patch, post, delete). El repo genera por debajo una apiREST, que me permite ver los datos en el navegador.
+
+
+La interaccion que hago con el front va a ser a traves del controlador, quien escucha la url que le mando por front y decide que hacer, si usar un repo o no.
+
+El controlador escucha una peticion http (fetch o axios) del front (get, put, patch, post, delete), si el endpoint de la ruta coincide con algun servlet, va a ejecutar el metodo. con el autowired que tengo inyectado en el controlador accedo al repositorio que hereda todos los metodos del jpa. y Mediante  el repo se comunica con la base de datos y pide la info de por ejemplo, las cuentas. las cuentas se transforman en cuentas dto para evitar la recursividad del json. esa info de las cuentas dto mandare al front (js) para usarla como querramos en el hmtl
+
+Para resumir, hasta ahora has creado:
+
+ 
+
+Código para crear una entidad en la base de datos llamada Client
+Luego creaste un repositorio para que administre las instancias de esa clase en la base de datos
+y por último indicaste al repositorio que sería un Repository Rest Resource para que se creara código que genere un servicio REST que administre los datos de los clientes. 
+ 
+
+Para que puedas ver la tabla que se genera en la base de datos a partir de la entidad Client debes modificar el archivo application.properties ubicado en la carpeta resources del paquete main, allí debes colocar:
+
+ 
+
+spring.h2.console.enabled=true
+
+spring.h2.console.path=/h2-console
+
+spring.datasource.url=jdbc:h2:mem:homebanking
+
+ 
+
+Este archivo sirve para modificar las dependencias de la aplicación, Spring lee este archivo al ejecutar la aplicación para tomar en cuenta las configuraciones indicadas. Estas líneas indican que se debe activar la consola de administración del motor de base de datos H2, la ruta del administrador será /h2-console (puede ser lo que desees) y por último la ruta de conexión a la base de datos en memoria homebanking. Reinicia la aplicación, coloca en el navegador la url http://localhost:8080/h2-console/ y entrarás al panel de administración, allí en el campo DJBC URL coloca jdbc:h2:mem:homebanking tal como está en el archivo de propiedades y pulsa connect. 
+
+Al entrar en el panel de administración verás a la izquierda la tabla client, puedes explorar los elementos que contiene para que veas las columnas. Si haces click sobre la entidad, en el panel de la derecha verás que se genera una consulta SQL: select * from clients, luego de que se genere la consulta pulsa sobre el botón run y verás que en la parte de abajo aparece una tabla con los registros de la entidad client, que en estos momentos está vacía. 
+
+Crea un front-end:
+Los archivos HTML, JS, CSS e imágenes son llamados resources y como no son generados dinámicamente por Java se les conoce como static resources, es decir, no cambian, son estáticos. Por defecto Spring no carga este tipo de archivos en el servidor web que se ejecuta al iniciar la aplicación pero tiene solución, simplemente hay que indicarlo en el archivo build.graddle ubicado en el directorio principal de la aplicación, debes agregar el siguiente código debajo de la instrucción repositories { .. }:
+
+bootRun {
+
+  sourceResources sourceSets.main
+
+}
+
+ 
+
+A partir de ahora los archivos serán cargados y además, si los modificas estando en ejecución la aplicación no tienes que reiniciar, automáticamente se actualizarán y solo debes recargar el navegador web.
+
+ 
+
+En la carpeta static ubicada a su vez en la carpeta resources se deben colocar estos recursos estáticos, por lo tanto, debes crear el archivo manager.html y el archivo manager.js.
+
+ 
+
+En el archivo HTML se encuentra el código de un formulario (Client Manager), además una sección con una tabla donde se mostrarán los clientes (Client list) y por último otra sección que muestra el JSON tal cual como viene del back-end (Client REST response), además se pueden apreciar las librerías que se importan como BootStrap, Axios y Vue. En el archivo manager.js se encuentra el código que genera una aplicación Vue, las funciones claves en el código son:
+
+loadData: obtiene el listado de clientes usando AJAX al back-end o servicio REST.
+
+Realiza una petición HTTP de tipo GET a la URL /clients con la librería axios.
+
+Cuando la petición es respondida se ejecuta el método then
+
+El método then guarda en la data de Vue el listado de clientes que llega en el JSON así como el JSON completo. 
+
+Vue se encarga de mostrar esos datos de manera automática, puedes volver a verificar el HTML para que veas las instrucciones de Vue que lo hacen.
+
+addClient: se ejecuta al pulsar el botón “add client” en la página web. 
+
+Obtiene la data del formulario ya que los campos del mismo se encuentran asociados a la data de Vue.
+
+Si se han introducido los datos se ejecuta la función postClient
+
+postClient: obtiene los datos del nuevo cliente usando AJAX (peticiones asíncronas) al back-end o servicio REST.
+
+Realiza una petición HTTP de tipo POST a la URL /cients con la librería axios.
+
+Cuando la petición es respondida se ejecuta el método then
+
+El método then ejecuta la función loadData para que se recargue la información en la página.
+
+
+Ejecuta la aplicación y si todo se encuentra correcto coloca en el navegador la url http://localhost:8080/manager.html, debes poder ver el formulario, debajo del formulario la tabla con los clientes y a la derecha el JSON que retorna el servicio REST de clients. Prueba crear un cliente, al pulsar el botón “add client” debe actualizarse la página con los nuevos datos.
+
+La mayoría de las aplicaciones necesitan bases de datos para almacenar información de manera permanente. Una base de datos es un conjunto de tablas, cada tabla es como una hoja de cálculo donde se tienen muchos registros comunes y cada tabla puede estar relacionada con muchas otras tablas. Para acceder a la información en la base de datos se usa un lenguaje llamado SQL (Structured Query Language), este lenguaje no es como javascript o java ya que no tiene variables, ciclos o clases, es un lenguaje hecho para seleccionar registros de una o más tablas en la base de datos así como también para insertar, actualizar o eliminar registros de las tablas.
+
+ 
+
+En la aplicación se consigue insertar el registro del cliente Melba ya que el repositorio de cliente (ClientRepository) tiene un método llamado “save” en donde se implementa el código necesario para que, en última instancia, se ejecute la instrucción SQL que inserta el registro en la tabla Client de la base de datos.
+
+Java Persistence API es una librería moderna para conectar aplicaciones Java a bases de datos sin tener que escribir código SQL directamente. La A en JPA hace referencia a API application programming interface, quiere decir que JPA define una serie de instrucciones para que una aplicación Java pueda conectarse a una base de datos pero no contiene el código para hacerlo, Spring usa una librería llamada Hibernate que implementa la especificación JPA.
+
+ 
+
+Hibernate es un object relational mapping (ORM). Un ORM es una herramienta que realiza la tarea de asociar objetos java (como instancias de Java) a un tipo de dato para que luego pueda ser guardado en una base de datos.
+
+ 
+
+Facilita el mapeo de atributos en una base de datos tradicional, y el modelo de objetos de un aplicación mediante archivos declarativos o anotaciones en los beans de las entidades que permiten establecer estas relaciones
+
+ La creación de una aplicación web requiere decenas de miles de líneas de código. Tomaría muchos meses o más si tuvieras que escribir este código una y otra vez para cada aplicación web que necesitarás desarrollar. Afortunadamente, se han creado grandes bibliotecas de código preescrito para cada lenguaje de programación moderno para realizar las tareas comúnmente necesarias, como crear y usar una base de datos y enviar datos a un navegador web.
+
+ 
+
+Spring es una colección de una gran cantidad de bibliotecas, incluida JPA. Spring tiene la reputación de ser poderoso pero muy complicado de usar.
+
+ 
+
+Spring Boot es un conjunto de herramientas, es decir, programas, diseñados para ocultar la complejidad de Spring. Spring Boot le permite crear una aplicación web en ejecución en unos minutos. Sin embargo, hay una precaución. Debido a que Spring Boot tiene tantas partes, si hace algo mal, puede ser muy difícil encontrar la causa. Si la aplicación no se ejecuta, probablemente necesitará la ayuda de sus compañeros y mentores para encontrar los mensajes de error adecuados y averiguar qué significan.
+
+La transferencia de estado representacional (REST) es una arquitectura de software que impone condiciones sobre cómo debe funcionar una API. En un principio, REST se creó como una guía para administrar la comunicación en una red compleja como Internet.
+
+ 
+
+REST no es un lenguaje de programación o biblioteca, aunque hay muchas bibliotecas para ayudar a hacer REST. REST es un conjunto de normas que indican una manera organizada y escalable de crear APIs, sus principios definen cómo se expondrán los recursos a través de la red, en qué formato se debe hacer y cómo se llevará a cabo la comunicación entre las aplicaciones.
+
+ 
+
+ REST es una interfaz para conectar varios sistemas basados en el protocolo HTTP (uno de los protocolos más antiguos) y nos sirve para obtener y generar datos y operaciones, devolviendo esos datos en formatos muy específicos, como XML y JSON.
+
+ En Spring los controladores son clases que se encargan de leer las URL de las peticiones enviadas al servidor y decidir qué código se debe ejecutar para retornar una respuesta.
+
+ 
+
+Una aplicación web puede tener muchos controladores así, cuando llega una petición HTTP, Spring prueba cada uno de los controladores hasta que encuentra uno que procese esa petición, si no lo encuentra responde con el código de estado 404 NOT FOUND.
+
+ 
+
+Spring verifica primero las rutas de los controladores creados por los:
+
+@RepositoryRestResource, luego las ruta de los controladores creados por @Controller o @RestController y por último las rutas definidas dentro del directorio resources/static
+
+Un RestController es una subclase de los controladores. Los métodos en un RestController devuelven objetos JSON (o XML) en lugar de páginas web.
+
+
+
+
+
+
+
+
+
+
+
+GRADLE:
+Es un gestor de dependencias. Una dependencia me permite construir mi codigo, cada una de las dependencias que necesito depende de muchas librerias que son instaladas por Gradle. Gradle automatiza el proceso y lo simplifica. Permite que no tengamos que instalar cada libreria a mano.
+Gradle te da una lista de plugins que cada uno hace varias cosas por nosotros de manera más simple (construye codigo, lo limpia, lo empaqueta, etc).
+ BootRun es un plugin que compila, empaqueta, levanta un servidor, monta la aplicación en el servidor y brinda un punto de acceso al mismo.
+
+
+POO:
+ Paradigma de la programacion que utiliza objetos en sus interacciones para diseñar apps y programas informaticos. Un paradigma es un conjunto de soluciones para lograr una solucion.
+Clasificar objetos de la vida real y muchas otras cosas que consideramos que no son de la vida real (dragones) trabajarlas como si fueran objetos, ej: transacciones que trabajaremos como objetos (para que tengan sus propiedades, sus metodos).
+ Los objetos se pueden instanciar, yo le puedo dar vida a un objeto, o sea estoy queriendo que exista, porque le quiero pedir cosas, modificar cosas o borrar cosas.
+
+ Modularización:
+  separar en varias "carpetitas" (modulos). Nosotros modularizamos creando un package, donde voy a poner models y adentro de ese modulo o "carpetitas" lo voy a llenar con todas las clases: formas en las cuales yo voy a crear un objeto, compuestas por las propiedades que tienen los objetos, los metodos y las formas de acceder a las distintas propiedades de esos objetos). Modularizar nos permite la creacion de prototipos que podrán ser utilizados por otras apis, agilizar el trabajo de software (al tener todo trabajado en modulos podemos identificar exactamente dónde está cada problema (cada cosa (mis clases definidas, mis objetos tmbm, mis controladores por un lado, repo por el otro, la parte de seguridad por otro) en su respectivo modulo, y en su respectivo package))
+  Nosotros no creamos un front end desde Java (se puede), porque lo hacemos de forma estática (por eso lo guardamos en la carpeta static) y eso no será pasado a byte code porque será interpretado por el navegador
+
+
+  Si crearamos el front desde java lo harias con xml
+en el caso de usar las vistas del MVC, enviarias la info de la vista (que es onda un html) a la web desde el back
+osea, si el usuario hace algo el controlador recibe eso y manda a que se den los procesos que deban darse
+y luego hace que la vista se envie
+para ser renderizada
+en nuestro caso tenemos una vista que es estatica
+es siempre la misma
+no modificas a la vista en si para hacer cosas, sino que haces todo directamente en el front
+con javascript
+El javac pasa a bytecode el codigo java nada mas
+en cambio todo lo q haces en html y js lo interpreta el navegador
+
+
+
+Base de datos: son tablas.Ej: cars: 1 fila es el objeto: id,color, brand, km. Las propiedades son cada una de esas columnas de la tabla.
+primarykey: es el ID, en la base de datos es lo unico que no se podra repetir
+
+
+
+
+   5 PILARES DE LA POO: HERENCIA, ENCAPSULAMIENTO, POLIMORFISMO, ABSTRACCION, Modularidad
+
+
+
+
+
+
+
+
+las anotaciones afectan tanto a las propiedades como a las clases y los metodos que se encuentran inmediatamente debajo
+eager carga todos los datos
+lazy para que me cargue ciertos datos espera que yo se lo pida con un get
+
+
+enum valor de una propiedad que NO ES VARIABLE
+
+
+los datos son planos en la base de datos, hibernate los trae y los convierte en objetos y se los pasa a jpa que los (instancia)
+
+
+.this referencia al objeto que esta instanciado y con 
+
+
+
+
+HERENCIA: super clase que es Vehículo, TIENE LAS PROPIEDADES COMUNES QUE VAN A TENER TODOS LOS VEHICULOS: color, marca, kilometraje. Pero no todos tienen Sirena. Si quisiera tener un vehículo con sirena haría una clase llamada, auto policial, la propiedad color, marca y km la heredará de la super clase así como sus métodos. La unica propiedad exclusiva de esa clase es sirena (no es heredada de la super clase)
+Polimorfismo aplicado a métodos: un método reacciona de diferente forma a otro método dependiendo de los parametros que reciba ese método. Por ejemplo: una versión descapotable como propiedad del vehiculo y otra que no es descapotable, como quiero construir ambas versiones en una voy a aclararlo y en la otra no. No todo el tiempo se usan todas las propiedades de ese objeto, se trabaja con varios constructores. Que no tenga una propiedad no quiere decir que el objeto dejará de crearse.
+Abstracción: extraer las características que son determinantes del objeto. Ejemplo: Si quiero generar un auto para vender autos es distinto que quiera crear un auto para generar autopartes. A la hora de vender un auto quizás no te interesa la bugía, quizá te interesan extraer otras propiedades, pero a la hora de generar autopartes si. Dependiendo la app que esté generando tengo que extraer las propiedades que me interesan y ya.
+Encapsulamiento: no se aplica a los métodos. Se aplica a las propiedades. Ej: Si quiero que todos los autos arranquen, frenen y aceleren estos métodos serán públicos, pero lo que yo quiero encapsular son las propiedades. A estas propiedades voy a acceder unicamente mediante la clase Car, no desde otra: entonces  estas propiedades serán private.
+Modularidad: permite subdividir una app en partes mas pequeñas, cada una de las cuales debe ser tan independiente como sea posible
+
+
+CLASE: donde tendremos los atributos/propiedades y metodos del objeto que queremos crear, es nuestra plantilla, MOLDE, donde podemos sacar muchos objetos con las mismas caracteristicas. ME SIRVE PARA CREAR EL OBJETO
+Cada objeto tiene atributos que son las caracteristicas de ese objeto y tiene metodos que son las acciones.
+
+
+
+ATRIBUTO/PROPIEDADES: caracteristicas de cierto objeto, SON SINONIMOS. Las definimos como privadas para que nadie pueda acceder/modificar a ellas fuera de nuestra clase. 
+Para acceder a los metodos hay que invocar a la clase.
+LAS PROPIEDADES QUE ENCAPSULAMOS EN LA TAREA ID, FIRST NAME, LAST NAME, EMAIL. Son las caracteristicas. Las encapsulamos con los modificadores de acceso privados. Esas se repiten en todos los clientes                            
+´´´´para acceder a los datos encapsulados/propiedades lo hacemos mediante getters (obtener) y setters (definir/modificar), que son métodos accesores´´´´   
+
+CONSTRUCTORES: son metodos que nos permiten construir los objetos. en el constructor le digo como se construyen las propiedades. constructores: son metodos para construir objetos.  El constructor vacio lo generamos porque spring jpa necesita el constructor vacio por defecto, para poder crear los clientes, despues lo redefinimos 
+
+el .THIS 
+
+MODIFICADORES DE ACCESO: PUBLICO Y PRIVADO - POR DEFECTO Y PROTEGIDOS. Usamos publico y privado.
+Privado: se pueden acceder adentro de esa clase nomas.
+Los publicos podemos hacer referencia en lugares desde fuera de la clase o desde fuera del paquete (desde fuera de la carpeta model)
+
+DIFERENCIA ENTRE METODO Y FUNCION: Una funcion es algo que yo quiero hacer pero no esta adentro de nada en particular. Un metodo es algo que yo quiero hacer cuando estoy adentro de un objeto o cuando estoy adentro de una clase. Si no estoy dentro de un objeto o no estoy dentro de una clase, esa accion se llama funcion.
+
+parametro: cuando declaro la funcion/metodo
+argumento: cuando llamamos a la funcion/método
+
+clase cubo: plantilla. atributos cubo: nombre, textura, dimension. Podemos crear muchos objetos a partir de la clase cubo, bloque de tnt por ejemplo, bloque de agua.
+clase personaje: atributos: nombre, skin, vida.. metodos de tnt que cuando explote le haga daña a persbnjae.
+
+
+HERENCIA: clase padre o superclase que heredará sus atributos a la clase hija. Ej: clase espada: hereda sus atributos a espada de fuego y en espada de fuego se le agregan los atributos propios de espada de fuego. Permite reutilizar el codigo que creamos en la clase y solo agrergar lo nuevo. ESPADA DE FUEGO EXTENDS ESPADA.
+
+POLIMORFISMO: trabaja cuando hay HERENCIA. Cuando se hereda el mismo metodo pero se modifica para cada objeto que creé. EJ: espada de hielo y espada de fuego heredan ambas la clase espada, pero la de fuego quema y la de hielo congela.
+
+@autowired enlaza el clientrepositoruy con el controlador para poder usar los metodos de client repository. con autowired estoy inyectando una dependencia para poder usarla.
+en criollo el autowire le tira un cable al repositorio supongamos que es el de client para hacer uso del mismo , por ende  este (client repository) interactua con la base de datos y hereda todos los metodos y atributos de jpa repository , por esto podemos hacer uso de todas estas caracteristicas en el cotroler desde el cual estamos haciendo el autowire
+
+@Entity Me permite realizar una tabla en la base de datos con las propiedades de la clase. Las anotaciones afectan a las clases, metodos, variables que estan inmediatamente debajo
+
+@ID: le dice que el long id será una clave primaria de la tabla client en la base de datos. Una clave primaria es una propiedad que no se repite en la base de datos.
+
+
+ADD.ACOUNT= metodo que no retorna nada que le pasamos un objeto de tipo cuenta.
+
+
+
+
+@Generated value: genera el valor de la propiedad ID de forma automatica en la tabla, (en la base de datos). Si no estuviese hay que hacerlo de forma manual. Strategy: estrategia de acuerdo a nuestra base de datos, en nuestro caso nuestra base de datos es H2. CON EL AUTO NOS ASEGURaMOS QUE EL PROGRAMA ELIJA LA MAS APTA PARA LA BASE DE DATOS NUESTRA. le decimos al generador que sera nativo, y luego al generic generator lo nombramos como nativo
+@Generic generator: en el generic generator le decis a hibernate como queres que genere las claves
+y le decis que haga todo native
+osea que lo maneje la base de datos. Por ej:
+te va a generar los datos en la columna id porque se lo dejas como native
+y te toma el nombre de la variable como nombre de columna
+y la estrategia creo que ahi podes poner como queres que se creen los datos
+por ej
+armame ids de dos en dos
+pero como lo dejas native te arma consecutivo
+@request mapping:
+
+la entidad de client en la base de datos es una tabla
+
+Recursividad: una cuenta le pertenece al cliente, ese cliente tiene la cuenta asociada, la cuenta le pertenece al cliente, etc... loop infinito. las propiedades se muestran a traves de los getters 
+
+DTO para evitar el json ignore, evita la recursividad y muestra el objeto como yo lo quiero mostrar. permite usar ciertas propiedades.
+------------------------------------------------------------------------------------------------------------
+
+CLAVE FORANEA ASOCIO CLIENTE CON CUENTA: CLIENT ID 1 TIENE CUENTA ID 1 Y CUENTA ID 2 Y CUENTA ID 3
+fetch TYPE: permite mandar dos tipos de señales: eager o lazy
+En este one to many si por ejemplo tenes cliente, y le pones eager te trae toda la informacion de las cuentas tambien del cliente, si pones solamente lazy, te trae la info del cuente sin sus cuentas.
+
+Set: es una interfaz. no se puede instanciar, se implementa. para inicializarlo utilizaemos el newHashSet: creo un espacio de memoria para guardar cuentas y le asigno el nombre a la propiedad de client: Set de accounts.
+si quiero instanciar un espacio de memoria de una list newHashlist.
+
+REPOSITORIO: es una interfaz (medio para interactuar con algo, para comunicarme con algo. ej. teclado para comunicarme con la computadora).
+Nuestro repositorio nos permite comunicarnos entre la APLICACION JAVA Y LA BASE DE DATOS. Ej: ClientRepository.save(Mailen) ---> guardo en la base de datos a Mailen mediante el Repository. voy a poder ofrecer mis recursos, voy a poder acceder a los datos mediante los metodos de rest (get put patch delete)
+En client repository, el long es la clave primaria. con qué va a trabajar (client) y cual es la clave primaria (long)
+@respositoryrestresource: se genera una api rest de forma automatica. agrega/afecta algo al respositorio. Le indica a Spring que debe generar el código necesario para que se pueda administrar la data de la aplicación desde el navegador usando JSON
+
+ENDPOINT: es una url de la api, por ej /api/clients es un endpoint que te trae todos los clientes
+
+
+EN CLIENT: one to many= uno a muchos, un cliente puede tener muchas cuentas. una cuenta le puede pertenecer solo a un cliente. asociamos por client, que es el valor de la propiedad que tiene account. le decimos que es eager le traemos el cliente con todas las cuentas asociadas a el. JOIN COLUMN le cambiamos el nombre a la columna que creamos con many to one (la columna del client_id)
+
+API (Aplication programing Interface): aplicacion programada que será una interfaz, un medio de comunicación. A la api le llegan las peticiones desde el front, las busca en el back y retorna algo hacia el front.
+api rest: nuestro repo sera un recurso de rest. 
+REST:
+ARQUITECTURA DE DATOS QUE TENDRA ciertos LINEAMIENTIOS: FORMA DE REPRESENTACION (json,xml), EL ESTADO en el que estan (estado actual de los datos al momento de ser solicitados) y como son transferidos.(forma en la que transferimos los datos: metodos http get, put, patch, post, delete)
+
+
+
+CONTROLLERS: son una clase, escucha y responde peticiones. cada vez que venga una peticion, desde el http(front), esa peticion llega al controlador y
+request mapping asocia una peticion a una ruta, en este caso /api
+rest controller: lo que devuelve es en formato json
+Spring prueba con request mapping hasta que encuentra algo que coincida (api/api). Si lo encuentra va a entrar al controller, sino va tirar error 404. Dentro del controlador empieza a avanzar hasta que se encuentra con el reques mapping
+
+ se fija si esa peticion pega con las rutas que asociamos. 
+
+
+
+cuando se refieren a peticiones quieren decir las solicitudes que se le mandan al servidor (get, post, put, delete) se escuchan en el front y se responden en el back
+
+
+------------------------------------------------------------------------------------------------------------------
+07/02 Explain cameron:
+
+path variable toma lo que esta dentro de las llaves, le dice que ese id es de tipo long
+
+En el BACKEND, con JAVA estaremos utilizando un framework: SPRING: conjunto de bibliotecas para crear programas modernos basados en java . En el back tendramos recursos expuestos mediante rutas (URL) 
+
+Sprnig DATA: del framework Spring me permitirá trabajar con los datos.
+Hibernate: ORM (OBJECT RELATIONAL MAPING) permite transformar los objetos de java para poder guardarlos en una fila de la base de datos. Trabaja en conjunto con JPA pero no es parte de Jpa.
+
+Spring JPA: Java persistance API. Es Uno de los modulos de spring que nos permite crear una aplicación en Java. Es una libreria que Facilita trabajar con objetos y bases de datos. Labura con Hibernate que se encarga de transformar un objeto para que pueda ser guardado en la base de datos y viceversa. acceso, gestion y persistencia de los datos en la base de datos.
+Si preguntan con que labura el  @repositoryrestresoutce: client objeto client y primary key de tipo long
+
+ELEMENT COLLECTION: TE PERMITE REALIZAR UNA RELACION DE UNO A MUCHOS DE FORMA AUTOMATICA (PORQUE SON DATOS SIMPLES)
+
+enum: tipo especial de clase que contiene constantes MAYUSCULAS
+
+JACKSON: hace la transformación del objeto Json que enviamos del front a otro objeto para poder trabajarlo en Java. Con el framework Spring ese objeto de Java podremos mandarlo a la Base de Datos y convertirlo en tabla (si es una clase), en fila (si es un objeto), o en columna (si es una propiedad del objeto).
+
+autowired:
+inyeccion de dependencia: puedo hacer uso del client repository en el controller y puedo acceder a los metodos que recibo en la interfaz por 
+
+cada request mapping escucha y responde (asocia una ruta) es un servlet (microprogramas donde controlas los distintos enpooint)
+
+pathvariable, el id de la ruta url es varuiable.
+opcional: si no encuentra un cliente devuelve un null. busca el dato, púede que exista como no
+
+
+
+
+Una librería te permite solucionar un problema concreto, mientras que un framework te brinda un set de herramientas para desarrollar sistemas o aplicaciones. Un framework, por lo general, contiene librerías (algunas veces no), provee buenas prácticas y resulta toda una experiencia de desarrollo.
+
+
+
+Bootrun: con esto corremos la aplicacion, compilamos, empaquetamos y ejecutamos la aplicación. Este conjunto de funcionalidades se llama plugin. 
+
+IDE: Entorno de desarrollo integrado, por ejemplo el IntelliJ es un IDE.
+
+Spring boot: capa o proyecto de spring, permite que las aps sean mas faciles de crear, cosas que podriamos hacer en meses permite hacerlas mucho mas rapidamente. Nos permite hacer todas las config iniciales en el proyecto para poder trabajar con Spring. Proporciona las combinaciones de paquetes comúnmente necesarios, además de herramientas para crear y ejecutar proyectos, además de muchas guías y tutoriales.
+
+
+
+
+Nuestro puerto por defecto para ingresar a la app es 8080
+SQL: es el lenguaje de las bases de datos, sirve para armar las tablas que se encuentran en la base de datos.
+
+Elegir version de SPRING, tipo de empaquetamiento, version de java, seleccionar las dependencias: 
+
+H2: Base de datos de prueba (permite que agregues y quites muchas cosas). H2 base de datos relacional: las tablas tienen relacion entre si. Cuando abrimos la consola de H2 estamos viendo las tablas que tiene. NO TIENE PERSISTENCIA DE DATOS, cuando dejamos de correr el programa (Intelijj) los datos no quedan guardados en memoria. 
+
+Rest repositories: se comunican con la base de datos. Son Rest porque estan delimitados por las restricciones Rest, que son las operaciones trhuth.  
+
+Spring Web: proporciona la infraestructura para la creación y ejecución de aplicaciones web, incluidas las appsRestfull, (que tienen los lineamientos de REST). Utiliza apache tomcat (nuestro servidor) como contenedor de servlets que se puede usar para compilar y ejecutar aplicaciones web realizadas en Java. Me permite usar MVC, que es una forma de hacer las cosas, secciona el codigo en tres partes: MODELO (donde estan modelados los datos) VISTA (vista dinamica, que nosotros no usamos porque usamos estáticas) y CONTROLADOR (se encarga de escuchar y responder)
+
+
+
+Request mapping: asocia (mapping) una peticion al endpoint (ruta) /api.
+Todas las peticiones que se hagan a /api el client controller estará involucrado.
+
+@Autowired: inyeccion de dependencia, lo usamos para para utilizar los metodos de clientRepository en el controlador
+
+
+
+Put te permite modificar todas las propiedades del objeto, mientras que patch te permite modificar una sola
+
+
+
+------------------------------------------------
+sofia
+ide: Intellij
+gradle: herramienta que facilita la construccion de codigo y descarga las librerias que necesitas para la dependencia que queres trabajar. Gradle te da los plugins que hacen tareas sin tener que escribir comando en cosola(boot run, clean, test)
+
+
+boot run: ejecuta el lenguaje que tengo escrito para poder verlo en el navegador, ejecuta java, compila java, ejecuta java, empaqueta java, etc. Levanta h2, inicia la app, levanta el servidor tomcat initializer y te da un punto de acceso a traves del puerto 8080
+
+
+
+
+clase: tengo distintas propiedades y metodos.
+id: de tipo long, mediante @id le indico que quiero que sea mi clave primaria de la base de datos.
+
+[11/2 16:59] Rodrigo Mind Hub: Mailén! Apache TomCat es el servidor que levantamos cada vez que le damos al bootRun
+[11/2 17:00] Rodrigo Mind Hub: Y eso es gracias a Spring Web
+[11/2 17:00] Rodrigo Mind Hub: Acordate que es una de las dependencias que agregamos con el Spring Initializr
+[11/2 17:03] Rodrigo Mind Hub: Incluso fijate que cuando ejecutamos la aplicación, en la consola incluso aparece lo de Apache TomCat
+[11/2 17:03] Rodrigo Mind Hub: Eso y el punto de acceso que nos da para acceder
+[11/2 17:03] Rodrigo Mind Hub: 8080 en nuestro caso
+[11/2 17:06] Rodrigo Mind Hub: En realidad vos podés acceder al servidor GRACIAS a que tenemos esa dependencia en nuestro proyecto
+[11/2 17:07] Rodrigo Mind Hub: Por eso es una dependencia precisamente, porque dependemos de eso para q nuestra aplicación funcione como queremos
+[11/2 17:07] Rodrigo Mind Hub: Y el servidor se levanta automáticamente con bootRun, que es un plugin tengo entendido
+Ese plugin compila, empaqueta, levanta el servidor, monta la aplicación aplicación en el servidor y te da el punto de acceso
+Podemos acceder al servidor GRACIAS a que tenemos Spring web como dependencia agregada con el Spring Initializer. Ese servidor es el TomCat, y lo levantamos cada vez que le damos al bootrun
+
+
+suit alert= modales
+
+
+
+
+H2 es una base de datos relacional que se encuentra escrita en Java y funciona como una base de datos en memoria, cuyo uno de sus puntos fuertes es que puede trabajar como una base de datos embebida en aplicaciones Java o ejecutarse en modo cliente servidor. Es decir, que añadida en nuestras aplicaciones como una dependencia más y una vez configurada la conexión, nos va a permitir realizar pruebas y trabajar como si fuera una base de datos relacional. Pero hay que tener en cuenta que es en memoria, por lo que nunca debería ser usada para entornos productivos.
+H2 es una base de datos relacional que se encuentra escrita en Java y funciona como una base de datos en memoria, cuyo uno de sus puntos fuertes es que puede trabajar como una base de datos embebida en aplicaciones Java o ejecutarse en modo cliente servidor. Es decir, que añadida en nuestras aplicaciones como una dependencia más y una vez configurada la conexión, nos va a permitir realizar pruebas y trabajar como si fuera una base de datos relacional. Pero hay que tener en cuenta que es en memoria, por lo que nunca debería ser usada para entornos productivos.
+
+
+DTO: LO que vos vasa mostrar en el JSON.
+
+
+Spring boot aplication: todo proyecto que hagamos con spring boot tendra esta anotacion. esrta anotacion hereda el comportamiento de un conjunto de anotaciones:
+
+componentScan

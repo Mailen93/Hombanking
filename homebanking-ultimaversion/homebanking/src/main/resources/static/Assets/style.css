@@ -1,0 +1,811 @@
+/* body {
+  background-image: url("./img/wwang_040522_102.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+} */
+.background{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.main_accounts {
+   display: flex;
+   /* align-items: center; */
+   /* justify-content: space-between; */
+   /* flex-direction: column; */
+  position: relative;
+} 
+
+.main_cards{
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+  position: relative;
+} 
+
+footer {
+  display: flex;
+  min-height: 10vh;
+  width: 100%;
+  background-color: #00094e;
+  align-items: center;
+}
+
+#cards{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
+  
+  
+}
+
+
+#modal {
+  display: flex;
+  position: absolute;
+  z-index: 100;
+  left: 100%;
+  top: 5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 90%;
+  height: 200px;
+  background-color: #008be4;
+  color: white;
+  margin: 0 auto;
+  border-radius: 10px;
+  transition: all;
+}
+
+.carousel_accounts{
+  width: 80%;
+  height: 600px;
+  margin-top: 3rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.carousel-item{
+position: relative !important;
+}
+
+.carousel-caption{
+  position: absolute !important;
+  top: 450px !important;
+  left: 50% !important;
+  translate: -50% 0 !important;
+}
+
+.carouselExampleCaptions img {
+  max-height: 100% !important;
+}
+
+.carousel_label p, h5{
+text-shadow: 4px 1px 4px black;
+}
+
+.carousel-item img {
+  max-height: 100% !important;
+}
+
+.w-100{
+  height: 100%;
+  width: 100%;
+}
+
+.botonNormal{
+  background: transparent !important;
+  border: none !important;
+}
+.welcome_accounts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  color: whitesmoke;
+  backdrop-filter: blur(50px);
+  border-radius: 1rem;
+}
+.welcome_accounts h2{
+  font-size: 3rem;
+  padding: 1rem;
+  text-shadow: 6px 3px 8px black;
+}
+.welcome_loans{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  color: whitesmoke;
+  backdrop-filter: blur(50px);
+  border-radius: 1rem;
+}
+.welcome_loans h2{
+  font-size: 3rem;
+  padding: 1rem;
+  text-shadow: 6px 3px 8px black;
+}
+
+.cards_title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  margin-top: auto;
+  font-size: 3rem;
+  text-shadow: 6px 3px 8px black;
+  backdrop-filter: blur(50px);
+  border-radius: 1rem;
+  /* margin-top: 5rem;
+  font-size: larger;
+  color: whitesmoke; */
+
+}
+.cardsContainer {
+  display: flex;
+  height: 30vh;
+  justify-content:center;
+  align-items: center;
+  background: none;
+  width: 100%;
+}
+
+.generalContainer{
+  width: 100%;
+  display: flex;
+}
+
+.card {
+  background-color: transparent !important;
+  border: none !important;
+  width: 320px;
+  height: 190px;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  perspective: 600px;
+}
+
+.card__partSilver {
+  box-shadow: 6px 3px 15px 2px black;
+  top: 0;
+  position: absolute;
+  z-index: -1000;
+  left: 0;
+  display: inline-block;
+  width: 320px;
+  height: 190px;
+  background-color: #00094e;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.card__partGold {
+  box-shadow: 6px 3px 15px 2px black;
+  top: 0;
+  position: absolute;
+  z-index: -1000;
+  left: 0;
+  display: inline-block;
+  width: 320px;
+  height: 190px;
+  background: linear-gradient(130deg, rgb(186 120 2), rgb(245 208 111), rgb(186 120 2)) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.card__partTitanium {
+  box-shadow: 6px 3px 15px 2px black;
+  top: 0;
+  position: absolute;
+  z-index: -1000;
+  left: 0;
+  display: inline-block;
+  width: 320px;
+  height: 190px;
+  background: linear-gradient(130deg, rgb(90, 90, 88), rgb(46, 44, 38), rgba(26, 24, 24, 0.992)) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.card__front {
+  padding: 18px;
+  -webkit-transform: rotateY(0);
+  -moz-transform: rotateY(0);
+}
+
+.card__back {
+  padding: 18px 0;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+}
+
+.card__black-line {
+  margin-top: 5px;
+  height: 38px;
+  background-color: #303030;
+}
+
+.card__logo {
+  height: 2rem;
+}
+
+.card__front-logo {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.card__square {
+  border-radius: 5px;
+  height: 30px;
+}
+
+.card_numer {
+  display: block;
+  width: 100%;
+  word-spacing: 4px;
+  font-size: 20px;
+  text-shadow: 3px 2px 3px black;
+  letter-spacing: 2px;
+  color: #fff;
+  background-color: transparent;
+  border: transparent;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.card__space-75 {
+  width: 75%;
+  float: left;
+}
+
+.card__space-25 {
+  width: 25%;
+  float: left;
+}
+
+.card__label {
+  font-size: 12px;
+  text-shadow: 2px 1px 2px black;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
+}
+
+.card__info {
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-size: 10px;
+  line-height: 18px;
+  color: #fff;
+  text-shadow: 2px 1px 2px black;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card__back-content {
+  padding: 15px 15px 0;
+}
+
+.card__secret--last {
+  color: #303030;
+  text-align: right;
+  margin: 0;
+  font-size: 14px;
+}
+
+.card__secret {
+  padding: 5px 12px;
+  background-color: #fff;
+  position: relative;
+}
+
+.card__secret:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  height: calc(100% + 6px);
+  width: calc(100% - 42px);
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ededed,
+    #ededed 5px,
+    #f9f9f9 5px,
+    #f9f9f9 10px
+  );
+}
+
+.card__back-logo {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.card__back-square {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+
+}
+.imagen_pareja img{
+  border-radius: 1rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  width: 1250px;
+  object-position: center;
+  object-fit: contain;
+}
+
+
+
+.card:hover .card__front {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.card:hover .card__back {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+}
+
+#cards {
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin-top: -8rem
+}
+
+.modalOpen {
+  animation: modal 0.3s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes modal {
+  100% {
+    transform: translateX(-105%);
+  }
+}
+
+#detail {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sticky{
+  position: sticky;
+  top: 10vh;
+  height: 650px;
+  z-index: 1;
+}
+.barra_lateral {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: whitesmoke;
+  width: 200px;
+  margin-top: 3rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  height: 600px;
+  overflow: hidden;
+}
+
+.barra_lateral >div{
+  width: 100%;
+  padding: 0 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #008be4;
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 10vh;
+  background-color: #00094e;
+}
+
+.client {
+  display: flex;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  color: whitesmoke;
+}
+
+.logo {
+  width: 4rem;
+  height: 2rem;
+}
+
+.spans_container {
+  display: flex;
+  gap: 2rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
+}
+
+.opciones {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  gap: 10px;
+  color: #00094e;
+  text-decoration: none;
+}
+
+.opciones a {
+  text-decoration: none;
+  color: #00094e;
+  font-weight: bolder;
+}
+
+.tarjetas {
+  backdrop-filter: blur(10px);
+  background-color: #012c7ac9;
+  border-radius: 2rem;
+  width: 500px;
+  height: 250px;
+  transition: ease-in-out 0.3s;
+  color: whitesmoke;
+  box-shadow: 15px 4px 20px 0px black;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjetas p {
+  font-size: x-large;
+  padding: 0.5rem;
+  margin-bottom: 0;
+  background-color: #01ffff5e;
+  font-weight: bolder;
+}
+
+.tarjetas:hover {
+  background-color: #00094edb;
+  box-shadow: 15px 4px 20px 0px rgba(245, 245, 245, 0.682);
+}
+
+.tarjetas:hover p {
+  background-color: #01ffffb4;
+  color: #00094e;
+}
+.boton {
+  padding: 6px;
+  font-weight: bolder;
+  text-decoration: none;
+  margin-top: 6px;
+  margin-left: 6px;
+}
+
+.boton a {
+  text-decoration: none;
+  color: whitesmoke;
+  border-radius: 10px;
+  background-color: #00094edb;
+  padding: 6px;
+  margin-top: 16px;
+}
+
+.boton:hover a {
+  color: #00094e;
+  background-color: #008be4;
+}
+
+#accounts{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center;
+}
+
+.accounts_section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.account_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 3rem 0;
+  gap: 5rem;
+}
+
+.VIN_container {
+  display: flex;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.LOAN_container {
+  display: flex;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 2rem;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.LOAN_container h2 {
+  font-size: 1.5rem;
+}
+
+.redes {
+  display: flex;
+  color: whitesmoke;
+  width: 20%;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.derechos {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  padding-right: 2rem;
+  align-items: center;
+  color: whitesmoke;
+}
+
+.table_container {
+  color: whitesmoke;
+  margin-top: 3rem;
+  width: 800px;
+}
+
+.loans {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.totalLoans {
+  position: absolute;
+  bottom: 10px;
+  right: 40px;
+}
+
+.accountDetail {
+  display: flex;
+  position: relative;
+  min-height: 80vh;
+}
+
+.detailExit {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  border: 1px;
+  border-radius: 100%;
+  background-color: white;
+  text-align: center;
+  color: red;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hamb {
+  display: none;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 6px;
+  transition: all;
+}
+
+.hamb div {
+  position: relative;
+  width: 2rem;
+  height: 4px;
+  border: white;
+  background-color: white;
+}
+
+.openTop {
+  /* transform: rotateZ(45deg); */
+  animation: openT 0.3s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  top: 5px;
+}
+
+.openMid {
+  display: none;
+}
+
+.openBot {
+  animation: openB 0.3s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  bottom: 5px;
+}
+
+@keyframes openT {
+  100% {
+    transform: rotateZ(45deg);
+  }
+}
+
+@keyframes openB {
+  100% {
+    transform: rotateZ(-45deg);
+  }
+}
+
+@media (min-width: 374px) and (max-width: 768px) {
+  body {
+    height: 100vh;
+  }
+
+  main {
+    overflow-x: hidden;
+  }
+
+  #carouselExampleCaptions{
+    display: none;
+  }
+
+  #accounts{
+    height: 100vh;
+  }
+
+  .accounts_section{
+    align-items: center;
+    justify-content: center;
+    overflow-x: scroll;
+  }
+
+  .account_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    place-content: center;
+    gap: 16px;
+  }
+
+  .client h2 {
+    font-size: medium;
+  }
+
+  .hamb {
+    display: flex;
+  }
+
+  .derechos {
+    display: none;
+  }
+
+  .redes {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
+  }
+
+  #app {
+    height: 90vh;
+  }
+  .barra_lateral {
+    display: none;
+  }
+  .spans_container {
+    display: none;
+  }
+  .tarjetas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12rem;
+    max-width: 24%;
+    padding: 1rem;
+  }
+  .tarjetas h2 {
+    font-size: small;
+  }
+  .tarjetas p {
+    font-size: small;
+  }
+
+
+
+  .account_container {
+    margin: 0;
+    padding: 1rem;
+    padding: 0;
+    min-height: 35vh;
+   
+  }
+  .totalLoans {
+    display: none;
+  }
+
+  .VIN_container {
+    padding: 0;
+  }
+
+  .LOAN_container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0;
+    font-size: 1px;
+  }
+
+  .table_responsive {
+    width: 90%;
+    font-size: small;
+    margin-top: 0;
+  }
+
+  .table_responsive h2 {
+    font-size: large;
+  }
+
+  .accountDetail {
+    margin-top: 0;
+  }
+  .cellMob {
+    display: none;
+  }
+}

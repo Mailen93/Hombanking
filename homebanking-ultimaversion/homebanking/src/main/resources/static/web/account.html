@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Assets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Accounts</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <header>
+        <div class="Navbar">
+          <div class="client">
+            <img class="logo" src="../Assets/img/MindBank.png" alt="logo" />
+          </div>
+
+          <div class="spans_container">
+            <span style="font-size: 1.5em; color: whitesmoke">
+              <i class="fa-solid fa-credit-card"></i>
+            </span>
+            <span style="font-size: 1.5em; color: whitesmoke">
+              <i class="fa-solid fa-bell"></i>
+            </span>
+            <span style="font-size: 1.5em; color: whitesmoke">
+              <i class="fa-solid fa-user"></i>
+            </span>
+          </div>
+
+        </div>
+      </header>
+
+      <main class="accountDetail">
+        <div class="barra_lateral">
+          <div>
+            <h4 class="pt-4">Operations</h4>
+            <div class="opciones">
+              <i class="fa-solid fa-money-bill-transfer"></i>
+              <a href="#">Transfers</a>
+            </div>
+            <div class="opciones">
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <a href="#">Recharges</a>
+            </div>
+            <h4 class="pt-4">Products</h4>
+            <div class="opciones">
+              <i class="fa-solid fa-receipt"></i>
+              <a href="#">Services</a>
+            </div>
+            <div class="opciones">
+              <i class="fa-solid fa-sack-dollar"></i>
+              <a href="#">Investments</a>
+            </div>
+            <div class="opciones">
+              <i class="fa-solid fa-money-check-dollar"></i>
+              <a href="#">Lendings</a>
+            </div>
+            <div class="opciones">
+              <i class="fa-solid fa-shield-halved"></i>
+              <a href="#">Insurances</a>
+            </div>
+            <h4 class="pt-4">Security</h4>
+            <div class="opciones">
+              <i class="fa-solid fa-fingerprint"></i>
+              <a href="#">Token MindBank</a>
+            </div>
+            <div class="opciones">
+              <i class="fa-solid fa-lock"></i>
+              <a href="#">Keys</a>
+            </div>
+            <h4 class="pt-4">Others</h4>
+            <div class="opciones">
+              <i class="fa-solid fa-coins"></i>
+              <a href="#">Expenses</a>
+            </div>
+            <div class="opciones">
+              <i class="fa-solid fa-sack-dollar"></i>
+              <a href="#">Benefits</a>
+            </div>
+          </div>
+        </div>
+
+        <section id="detail">
+          <div class="table_container p-4 tarjetas table_responsive">
+            <a class="detailExit" href="/web/accounts.html">X</a>
+            <h2 class="table_title">Transactions</h2>
+
+            <table class="table">
+              <thead>
+                <tr class="table_container">
+                  <th class="cell cellMob">Number</th>
+                  <th class="cell">Type</th>
+                  <th class="cell">Amount</th>
+                  <th class="cell">Description</th>
+                  <th class="cell">Date</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr class="table_container" v-for="trans of transaction">
+                  <td class="cell cellMob">{{trans.id}}</td>
+                  <td class="cell">{{trans.type}}</td>
+                  <td
+                    class="cell text-danger fw-bolder"
+                    v-if="trans.type =='DEBIT'"
+                  >
+                    ${{trans.amount}}
+                  </td>
+                  <td class="cell text-success fw-bolder" v-else>
+                    ${{trans.amount}}
+                  </td>
+                  <td class="cell">{{trans.description}}</td>
+                  <td class="cell">{{trans.date}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="redes">
+          <span style="font-size: 2em; color: whitesmoke">
+            <i class="fa-brands fa-twitter"></i>
+          </span>
+          <span style="font-size: 2em; color: whitesmoke">
+            <i class="fa-brands fa-instagram"></i>
+          </span>
+          <span style="font-size: 2em; color: whitesmoke">
+            <i class="fa-brands fa-youtube"></i>
+          </span>
+        </div>
+        <div class="derechos">
+          <p>© 2023 MindBank Bank - All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../Assets/javascript/account.js"></script>
+    <script
+      src="https://kit.fontawesome.com/a9a67006ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
