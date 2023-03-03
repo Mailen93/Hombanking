@@ -48,7 +48,7 @@ public class CardController {
         Card addNewCard = new Card(randomNumberCard(cardRepository),returnCvvNumber(), type, color, LocalDate.now(),LocalDate.now().plusYears(5), client );
         client.addCard(addNewCard);
         cardRepository.save(addNewCard);
-        return new ResponseEntity<>("CREASTE TU CARD LOCO", HttpStatus.CREATED);
+        return new ResponseEntity<>("You have created a new card", HttpStatus.CREATED);
     }
 
 }
