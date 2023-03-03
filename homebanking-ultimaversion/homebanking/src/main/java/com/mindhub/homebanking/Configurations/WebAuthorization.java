@@ -22,22 +22,46 @@ import javax.servlet.http.HttpSession;
 
         http.authorizeRequests()
 
-                .antMatchers("/rest/**").hasAuthority("ADMIN")
+                /*.antMatchers("/rest/**").hasAuthority("ADMIN")
                 .antMatchers("/h2-console").hasAuthority("ADMIN")
-
                 .antMatchers("/api/login", "/api/clients").permitAll()
                 .antMatchers("/web/index.html").permitAll()
-
                 .antMatchers("/api/logout").hasAnyAuthority("CLIENT","ADMIN")
-
                 .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients/current/cards").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/clients").hasAuthority("ADMIN")
-
                 .antMatchers("/api/clients/**").hasAnyAuthority("CLIENT")
                 .antMatchers("/web/accounts.html").hasAnyAuthority("CLIENT")
                 .antMatchers("/web/cards.html").hasAuthority("CLIENT")
                 .antMatchers("/web/account.html").hasAuthority("CLIENT");
+*/
+              /*  .antMatchers("/web/index.html").permitAll()
+                .antMatchers("/web/accounts.html").hasAuthority("CLIENT")
+                .antMatchers("/web/account.html").hasAuthority("CLIENT")
+                .antMatchers("/web/cards.html").hasAuthority("CLIENT")
+                .antMatchers("/web/create-cards.html").hasAuthority("CLIENT")
+                .antMatchers("/manager/manager.html").hasAuthority("ADMIN")
+                .antMatchers("/h2-console").hasAuthority("ADMIN")
+                .antMatchers("/rest/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/clients/current").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/clients/current/cards").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/logout").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/**").hasAuthority("ADMIN");*/
+
+                .antMatchers("/web/index.html").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.GET, "/api/clients/current/accounts").hasAuthority("CLIENT")
+                .antMatchers( HttpMethod.POST,"/api/clients/current/cards").hasAuthority("CLIENT")
+                .antMatchers( HttpMethod.GET,"/api/clients/current/cards").hasAuthority("CLIENT")
+                .antMatchers("/localhost:8080/manager.html").hasAuthority("ADMIN")
+                .antMatchers("/api/clients").hasAuthority("ADMIN")
+                .antMatchers("/h2-console/").hasAuthority("ADMIN")
+                .antMatchers("/rest/").hasAuthority("ADMIN")
+                .antMatchers("/api/client/current").hasAuthority("CLIENT")
+                .antMatchers("/web/**").hasAuthority("CLIENT");
 
 
 

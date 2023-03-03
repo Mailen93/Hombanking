@@ -37,12 +37,18 @@ import static java.util.stream.Collectors.toList;
             return new AccountsDTO(accountRepo.findById(id).orElse(null));
         }
 
-        @RequestMapping(path = ("/clients/current/accounts"), method = RequestMethod.POST)
 
+        @RequestMapping("/clients/current/accounts")
+        public List<AccountsDTO> getCurrentAccounts(Authentication authentication) {
+            return clientRepositories.findByEmail(authentication.getName()).getAccounts().stream().map(account -> new AccountsDTO(account)).collect(toList());
+        }
+
+
+        @RequestMapping(path = ("/clients/current/accounts"), method = RequestMethod.POST)
         public ResponseEntity<Object> newAccount(Authentication authentication) {
             Client client = clientRepositories.findByEmail(authentication.getName());
             if (client.getAccounts().size() >= 3) {
-                return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+                return new ResponseEntity<>("You can't have more accounts", HttpStatus.FORBIDDEN);
             }
             Account newAccount = new Account(Utilities.Number(accountRepo), LocalDateTime.now(), 0);
             client.addAccount(newAccount);
