@@ -53,36 +53,42 @@
         </div>
       </header>
 
+      <div id="navModal" :class="[isActive ? 'modalOpen' : 'modalClose']">
+        <button
+          type="button"
+          class="botonNormal"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Transactions
+        </button>
+        <div class="opciones" v-if="accounts.length < 3">
+          <i class="fa-solid fa-plus"></i>
+          <a @click="createAccount" href="#accounts">Add account</a>
+        </div>
+        <div class="opciones">
+          <i class="fa-solid fa-receipt"></i>
+          <a href="#accounts">Accounts</a>
+        </div>
+        <div class="opciones">
+          <i class="fa-solid fa-sack-dollar"></i>
+          <a href="#loans">Loans</a>
+        </div>
+        <div class="opciones">
+          <i class="fa-solid fa-money-check-dollar"></i>
+          <a href="cards.html">Cards</a>
+        </div>
+        <a href="#"
+        class="logOut"
+        @click="logOut"
+        ><i class="fa-solid fa-right-from-bracket"></i
+      ><span class="logOutMobile">Log out</span></a>
+      </div>
+
       <main class="main_accounts">
 
-        <div id="navModal" :class="[isActive ? 'modalOpen' : 'modalClose']">
-          <button
-            type="button"
-            class="botonNormal"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Transactions
-          </button>
-          <div class="opciones" v-if="accounts.length < 3">
-            <i class="fa-solid fa-plus"></i>
-            <a @click="createAccount" href="#accounts">Add account</a>
-          </div>
-          <div class="opciones">
-            <i class="fa-solid fa-receipt"></i>
-            <a href="#accounts">Accounts</a>
-          </div>
-          <div class="opciones">
-            <i class="fa-solid fa-sack-dollar"></i>
-            <a href="#loans">Loans</a>
-          </div>
-        </div>
         
-        <div id="modal">
-          <h2>Usuario</h2>
-          <h2>Tarjetas</h2>
-          <h2>Notificaciones</h2>
-        </div>
+    
 
         <!-- */BARRA LATERAL*/ -->
 

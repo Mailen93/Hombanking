@@ -45,7 +45,32 @@
         </div>
       </header>
 
+      <div id="navModal" :class="[isActive ? 'modalOpen' : 'modalClose']">
+        <div class="opciones" v-if="cards.length < 6">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          <a href="./createcards.html">Add New card</a>
+        </div>
+        
+        <div class="opciones" v-if="accounts.length < 3">
+          <i class="fa-solid fa-plus"></i>
+          <a @click="createAccount" href="#accounts">Add account</a>
+        </div>
+        <div class="opciones">
+          <i class="fa-solid fa-receipt"></i>
+          <a href="/web/accounts.html">Accounts</a>
+        </div>
+        
+        <a href="#"
+        class="logOut"
+        @click="logOut"
+        ><i class="fa-solid fa-right-from-bracket"></i
+      ><span class="logOutMobile">Log out</span></a>
+      
+      </div>
+
       <main class="main_cards">
+
+        
         <div class="sticky">
           <div class="barra_lateral">
             <div class="">

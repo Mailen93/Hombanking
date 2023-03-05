@@ -759,7 +759,27 @@ h5 {
   display: none;
 }
 
+.logOut{
+  display: flex;
+  color: #00094e;
+  text-decoration: none;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
 
+.logOut  {
+  text-decoration: none;
+}
+
+.logOutMobile{
+  display: none;
+}
+
+.operation{
+  display: flex;
+  flex-direction: column;
+}
 
 
 
@@ -789,6 +809,9 @@ h5 {
     padding: 0;
   }
 
+  .logOutMobile{
+    display: flex;
+  }
 
   .account_container{
     flex-direction: column;
