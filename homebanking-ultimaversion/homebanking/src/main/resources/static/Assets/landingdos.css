@@ -37,6 +37,7 @@ h2 {
 .scroll-animations-example > .scrollsection {
   /* padding: 10vh 10vh 10vh 10vmax; */
   padding-left: 12vh;
+  padding-top: 10vh;
   min-width: 220vh;
 }
 .scroll-animations-example > .scrollsection > .item {
