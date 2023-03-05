@@ -71,11 +71,8 @@ public class TransactionController {
         accountDestino.setBalance(accountDestino.getBalance()+amount);
         accountRepository.save(accountOrigen);
         accountRepository.save(accountDestino);
-        
-
 
         return new ResponseEntity<>("Transacción Exitosa",HttpStatus.CREATED);}
-
 
 }
 //Debe recibir el monto, la descripción, número de cuenta de origen y número de cuenta de destino como parámetros de solicitud
