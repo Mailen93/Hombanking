@@ -66,11 +66,8 @@
           <i class="fa-solid fa-plus"></i>
           <a @click="createAccount" href="#accounts">Add account</a>
         </div>
-        <div class="opciones">
-          <i class="fa-solid fa-receipt"></i>
-          <a href="#accounts">Accounts</a>
-        </div>
-        <div class="opciones">
+      
+        <div class="opciones" v-on:click="h">
           <i class="fa-solid fa-sack-dollar"></i>
           <a href="#loans">Loans</a>
         </div>
