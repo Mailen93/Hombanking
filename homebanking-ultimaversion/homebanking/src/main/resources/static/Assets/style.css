@@ -5,15 +5,13 @@
   overflow-x: hidden;
 } */
 
-#transact_body{
+#transact_body {
   background-image: url(../Assets/img/wwang_040522_102.jpg);
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
-  
-
 }
-.background{
-  position:fixed;
+.background {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -23,21 +21,21 @@
 }
 
 .main_accounts {
-   display: flex;
-   /* align-items: center; */
-   /* justify-content: space-between; */
-   /* flex-direction: column; */
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  /* flex-direction: column; */
   position: relative;
-} 
+}
 
-.main_cards{
+.main_cards {
   display: flex;
   align-items: center;
   min-height: 80vh;
   position: relative;
-} 
+}
 
-.generalContainer{
+.generalContainer {
   display: flex;
   flex-wrap: wrap;
 }
@@ -55,16 +53,13 @@ footer p {
   margin-bottom: 0;
 }
 
-#cards{
+#cards {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
   flex-direction: column;
-  
-  
 }
-
 
 #modal {
   display: flex;
@@ -85,7 +80,7 @@ footer p {
   transition: all;
 }
 
-.carousel_accounts{
+.carousel_accounts {
   width: 80%;
   height: 600px;
   margin-top: 3rem;
@@ -93,11 +88,11 @@ footer p {
   overflow: hidden;
 }
 
-.carousel-item{
-position: relative !important;
+.carousel-item {
+  position: relative !important;
 }
 
-.carousel-caption{
+.carousel-caption {
   position: absolute !important;
   top: 450px !important;
   left: 50% !important;
@@ -108,37 +103,38 @@ position: relative !important;
   max-height: 100% !important;
 }
 
-.carousel_label p, h5{
-text-shadow: 4px 1px 4px black;
+.carousel_label p,
+h5 {
+  text-shadow: 4px 1px 4px black;
 }
 
 .carousel-item img {
   max-height: 100% !important;
 }
 
-.w-100{
+.w-100 {
   height: 100%;
   width: 100%;
 }
 
-.botonNormal{
+.botonNormal {
   background: transparent !important;
   border: none !important;
 }
-.welcome_accounts{
+.welcome_accounts {
   backdrop-filter: blur(10px);
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0px 0px 20px 2px black;
 }
 
-.welcome_accounts h2{
+.welcome_accounts h2 {
   color: whitesmoke;
   font-size: 3rem;
   text-shadow: 1px 0 5px black;
 }
 
-.welcome_loans{
+.welcome_loans {
   backdrop-filter: blur(8px);
   padding: 1rem;
   border-radius: 1rem;
@@ -151,21 +147,20 @@ text-shadow: 4px 1px 4px black;
   text-shadow: 1px 0 5px black;
 }
 
-
-.cards_title{
+.cards_title {
   backdrop-filter: blur(10px);
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0px 0px 20px 2px black;
 }
 
-.cards_title h2{
+.cards_title h2 {
   color: whitesmoke;
   font-size: 3rem;
   text-shadow: 1px 0 5px black;
 }
 
-.generalContainer{
+.generalContainer {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -219,7 +214,12 @@ text-shadow: 4px 1px 4px black;
   display: inline-block;
   width: 320px;
   height: 190px;
-  background: linear-gradient(130deg, rgb(186 120 2), rgb(245 208 111), rgb(186 120 2)) !important;
+  background: linear-gradient(
+    130deg,
+    rgb(186 120 2),
+    rgb(245 208 111),
+    rgb(186 120 2)
+  ) !important;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -245,7 +245,12 @@ text-shadow: 4px 1px 4px black;
   display: inline-block;
   width: 320px;
   height: 190px;
-  background: linear-gradient(130deg, rgb(90, 90, 88), rgb(46, 44, 38), rgba(26, 24, 24, 0.992)) !important;
+  background: linear-gradient(
+    130deg,
+    rgb(90, 90, 88),
+    rgb(46, 44, 38),
+    rgba(26, 24, 24, 0.992)
+  ) !important;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -383,20 +388,17 @@ text-shadow: 4px 1px 4px black;
   position: absolute;
   bottom: 15px;
   left: 15px;
-
 }
 .imagen_pareja {
   width: 100%;
 }
 
-.imagen_pareja img{
+.imagen_pareja img {
   border-radius: 1rem;
   width: 100%;
   object-position: center;
   object-fit: cover;
 }
-
-
 
 .card:hover .card__front {
   -webkit-transform: rotateY(180deg);
@@ -412,11 +414,11 @@ text-shadow: 4px 1px 4px black;
   color: white;
   text-align: center;
   width: 100%;
-  
+
   padding: 2rem;
 }
 
-#modal{
+#modal {
   display: none;
 }
 
@@ -426,9 +428,21 @@ text-shadow: 4px 1px 4px black;
   animation-fill-mode: forwards;
 }
 
+.modalClose {
+  animation: modalOff 0.3s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+}
+
 @keyframes modal {
   100% {
-    transform: translateX(-105%);
+    transform: translateX(0%);
+  }
+}
+
+@keyframes modalOff {
+  100% {
+    transform: translateX(-110%);
   }
 }
 
@@ -439,7 +453,7 @@ text-shadow: 4px 1px 4px black;
   justify-content: center;
   align-items: center;
 }
-.sticky{
+.sticky {
   position: sticky;
   top: 10vh;
   height: 650px;
@@ -458,7 +472,7 @@ text-shadow: 4px 1px 4px black;
   overflow: hidden;
 }
 
-.barra_lateral >div{
+.barra_lateral > div {
   width: 100%;
   padding: 0 1rem;
   padding-bottom: 2rem;
@@ -494,10 +508,9 @@ text-shadow: 4px 1px 4px black;
   gap: 2rem;
   padding-left: 1rem;
   padding-right: 2rem;
-  
 }
 
-.spans_container a{
+.spans_container a {
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
@@ -507,7 +520,6 @@ text-shadow: 4px 1px 4px black;
   display: flex;
   align-items: center;
   justify-content: start;
-  width: 100%;
   gap: 10px;
   color: #00094e;
   text-decoration: none;
@@ -532,7 +544,7 @@ text-shadow: 4px 1px 4px black;
   flex-direction: column;
 }
 
-.tarjetas{
+.tarjetas {
   padding: 2rem;
 }
 
@@ -577,7 +589,7 @@ text-shadow: 4px 1px 4px black;
   background-color: #008be4;
 }
 
-#accounts{
+#accounts {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -588,11 +600,12 @@ text-shadow: 4px 1px 4px black;
   gap: 2rem;
 }
 
-.accounts_section{
+.accounts_section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
 }
 
 .account_container {
@@ -666,7 +679,7 @@ text-shadow: 4px 1px 4px black;
   gap: 2rem;
 }
 
-.loans{
+.loans {
   width: 100%;
 }
 
@@ -745,33 +758,9 @@ text-shadow: 4px 1px 4px black;
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#navModal {
+  display: none;
+}
 
 @media (min-width: 374px) and (max-width: 768px) {
   body {
@@ -779,21 +768,80 @@ text-shadow: 4px 1px 4px black;
   }
 
   main {
-    overflow-x: hidden;
+    position: relative;
   }
 
-  #carouselExampleCaptions{
+  footer{
     display: none;
   }
 
-
-  .accounts_section{
-    align-items: center;
-    justify-content: center;
-    overflow-x: scroll;
+  #accounts{
+    flex-direction: column;
+    justify-content: start;
+    padding: 0;
+    height: 95vh;
   }
 
+  #loans{
+    padding: 0;
+  }
+
+ 
+
   .account_container{
+    flex-direction: column;
+    width: 100vh
+  }
+
+  #carouselExampleCaptions {
+    display: none;
+  }
+
+  #navModal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    top: 1vh;
+    right: 3vh;
+    background-color: white;
+    z-index: 100;
+    transform: translateX(-110%);
+    padding: 1rem;
+  }
+
+  .welcome_accounts h2 {
+    font-size: large;
+    margin: 0
+  }
+
+  .welcome_loans h2{
+    font-size: large;
+    margin: 0
+  }
+
+
+  .Navbar {
+    position: sticky;
+  }
+
+  .opciones {
+    gap: 0;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .accounts_section {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    padding-top: 1rem;
+  }
+
+  .account_container {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -830,13 +878,17 @@ text-shadow: 4px 1px 4px black;
   .spans_container {
     display: none;
   }
+
+  
   .tarjetas {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     height: 12rem;
-    max-width: 24%;
     padding: 1rem;
+    width: 95%;
+
   }
   .tarjetas h2 {
     font-size: small;
@@ -845,14 +897,11 @@ text-shadow: 4px 1px 4px black;
     font-size: small;
   }
 
-
-
   .account_container {
     margin: 0;
     padding: 1rem;
     padding: 0;
     min-height: 35vh;
-   
   }
   .totalLoans {
     display: none;
@@ -862,11 +911,16 @@ text-shadow: 4px 1px 4px black;
     padding: 0;
   }
 
-  .VIN_container h2{
+  .VIN_container h2 {
     font-size: 1rem;
   }
 
-  .VIN_title{
+  .VIN_container h3 {
+    font-size: medium;
+    left: 1rem;
+  }
+
+  .VIN_title {
     display: flex;
     flex-direction: column;
   }

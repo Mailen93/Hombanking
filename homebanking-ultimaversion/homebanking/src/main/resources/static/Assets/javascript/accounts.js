@@ -8,6 +8,7 @@ createApp({
       clients: [],
       loans: [],
       allDateTransactions: [],
+      isActive: false,
     };
   },
   created() {
@@ -75,7 +76,8 @@ createApp({
       document.querySelector('.htop').classList.toggle('openTop')
       document.querySelector('.hmid').classList.toggle('openMid')
       document.querySelector('.hbot').classList.toggle('openBot')
-      document.querySelector('#modal').classList.toggle('modalOpen')
+      document.querySelector('#navModal').classList.toggle('modalOpen')
+      this.isActive = !this.isActive
       
     }
   }

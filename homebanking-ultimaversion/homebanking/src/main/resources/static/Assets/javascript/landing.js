@@ -31,13 +31,7 @@ class Example {
         });
     }
 
-    hideImages() {
-        [].forEach.call(this.images, (image) => {
-            image.classList.remove('-active');
-        });
-
-        setTimeout(this.showImages.bind(this), 2000);
-    }
+  
 }
 
 

@@ -49,6 +49,29 @@
       </header>
 
       <main class="main_accounts">
+
+        <div id="navModal" :class="[isActive ? 'modalOpen' : 'modalClose']">
+          <button
+            type="button"
+            class="botonNormal"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Transactions
+          </button>
+          <div class="opciones" v-if="accounts.length < 3">
+            <i class="fa-solid fa-plus"></i>
+            <a @click="createAccount" href="#accounts">Add account</a>
+          </div>
+          <div class="opciones">
+            <i class="fa-solid fa-receipt"></i>
+            <a href="#accounts">Accounts</a>
+          </div>
+          <div class="opciones">
+            <i class="fa-solid fa-sack-dollar"></i>
+            <a href="#loans">Loans</a>
+          </div>
+        </div>
         <img
           class="background"
           src="../Assets/img/wwang_040522_102.jpg"
@@ -77,7 +100,6 @@
                   Transactions
                 </button>
               </div>
-            
 
               <div class="opciones" v-if="accounts.length < 3">
                 <i class="fa-solid fa-plus"></i>
@@ -269,71 +291,78 @@
           </section>
         </div>
       </main>
-      <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog modal-lg">
-        <div class="modal-content" style="background-color:#00094edb;">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel" style="color: whitesmoke;">All transactions</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <table class="table">
-              <thead>
-                <tr class="table_container">
-                  <th class="cell cellMob">Number</th>
-                  <th class="cell">Type</th>
-                  <th class="cell">Amount</th>
-                  <th class="cell">Description</th>
-                  <th class="cell">Date</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <tr
-                  class="table_container"
-                  v-for="trans of allDateTransactions"
-                  v-if="allDateTransactions"
-                >
-                  <td class="cell cellMob">{{trans.id}}</td>
-                  <td class="cell">{{trans.type}}</td>
-                  <td
-                    class="cell text-danger fw-bolder"
-                    v-if="trans.type =='DEBIT'"
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog modal-lg">
+          <div class="modal-content" style="background-color: #00094edb">
+            <div class="modal-header">
+              <h5
+                class="modal-title"
+                id="exampleModalLabel"
+                style="color: whitesmoke"
+              >
+                All transactions
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr class="table_container">
+                    <th class="cell cellMob">Number</th>
+                    <th class="cell">Type</th>
+                    <th class="cell">Amount</th>
+                    <th class="cell">Description</th>
+                    <th class="cell">Date</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr
+                    class="table_container"
+                    v-for="trans of allDateTransactions"
+                    v-if="allDateTransactions"
                   >
-                    ${{trans.amount}}
-                  </td>
-                  <td class="cell text-success fw-bolder" v-else>
-                    ${{trans.amount}}
-                  </td>
-                  <td class="cell">{{trans.description}}</td>
-                  <td class="cell">{{trans.date}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-outline-info"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+                    <td class="cell cellMob">{{trans.id}}</td>
+                    <td class="cell">{{trans.type}}</td>
+                    <td
+                      class="cell text-danger fw-bolder"
+                      v-if="trans.type =='DEBIT'"
+                    >
+                      ${{trans.amount}}
+                    </td>
+                    <td class="cell text-success fw-bolder" v-else>
+                      ${{trans.amount}}
+                    </td>
+                    <td class="cell">{{trans.description}}</td>
+                    <td class="cell">{{trans.date}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-info"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
 
     <!-- Modal -->
