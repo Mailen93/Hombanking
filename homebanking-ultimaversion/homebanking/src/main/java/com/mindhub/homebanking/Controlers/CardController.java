@@ -1,5 +1,7 @@
 package com.mindhub.homebanking.Controlers;
 
+import com.mindhub.homebanking.dtos.AccountsDTO;
+import com.mindhub.homebanking.dtos.CardDTO;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.CardColor;
 import com.mindhub.homebanking.models.CardType;
@@ -15,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
+import java.util.List;
 
 import static com.mindhub.homebanking.Utils.Utilities.*;
+import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("/api")
@@ -25,6 +29,11 @@ public class CardController {
     ClientRepositories clientRepositories;
     @Autowired
     CardRepository cardRepository;
+
+    @RequestMapping("/clients/current/cards")
+    public List<CardDTO> getCurrentCards(Authentication authentication) {
+        return clientRepositories.findByEmail(authentication.getName()).getCards().stream().map(card -> new CardDTO(card)).collect(toList());
+    }
 
     @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
     public ResponseEntity<Object> newCard(Authentication authentication,
@@ -39,7 +48,7 @@ public class CardController {
         Card addNewCard = new Card(randomNumberCard(cardRepository),returnCvvNumber(), type, color, LocalDate.now(),LocalDate.now().plusYears(5), client );
         client.addCard(addNewCard);
         cardRepository.save(addNewCard);
-        return new ResponseEntity<>("CREASTE TU CARD LOCO", HttpStatus.CREATED);
+        return new ResponseEntity<>("You have created a new card", HttpStatus.CREATED);
     }
 
 }

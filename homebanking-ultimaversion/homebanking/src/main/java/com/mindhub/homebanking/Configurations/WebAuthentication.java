@@ -15,14 +15,13 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-
-public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
+public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter { //OBJ Q USA SPRING SEC PARA SABER COMO BUSCARA LOS DETALLES DE USUARIO
 
     @Autowired
     private ClientRepositories clientRepositories;
 
     @Override
-    public void init(AuthenticationManagerBuilder auth) throws Exception {
+    public void init(AuthenticationManagerBuilder auth) throws Exception { //CAMBIAR POR UNO NUEVO QUE IMPLEMENTE LA BUSQUEDA DE LOS DETALLES DE USUARIO A TRAVES DEL REPO CLIENT
 
         auth.userDetailsService(inputName -> {
 
@@ -52,11 +51,8 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
 
     }
     @Bean
-
     public PasswordEncoder passwordEncoder() {
-
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
     }
 }
 

@@ -41,16 +41,16 @@ public class ClientController{
             @RequestParam String email, @RequestParam String password) {
 
         if (first.isEmpty()){
-            return new ResponseEntity<>("Missing First Name", HttpStatus.FORBIDDEN);}
+            return new ResponseEntity<>("Missing First Name", HttpStatus.BAD_REQUEST);}
         else if (lastName.isEmpty()){
-            return new ResponseEntity<>("Missing Last Name", HttpStatus.FORBIDDEN);}
+            return new ResponseEntity<>("Missing Last Name", HttpStatus.BAD_REQUEST);}
         else if (email.isEmpty()){
-            return new ResponseEntity<>("Missing Email", HttpStatus.FORBIDDEN);}
+            return new ResponseEntity<>("Missing Email", HttpStatus.BAD_REQUEST);}
         else if (password.isEmpty()){
-            return new ResponseEntity<>("Missing Password", HttpStatus.FORBIDDEN);}
+            return new ResponseEntity<>("Missing Password", HttpStatus.BAD_REQUEST);}
 
         if (clientRepositories.findByEmail(email) !=  null) {
-            return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);}
+            return new ResponseEntity<>("Email already in use", HttpStatus.BAD_REQUEST);}
 
        Client newClient = new Client(first, lastName, email, passwordEncoder.encode(password));
         Account account = new Account(Utilities.Number(accountRepository), LocalDateTime.now(), 0);
