@@ -40,7 +40,7 @@ createApp({
                     timer: 2000
                 })
                 .then(()=>{
-                    // window.location.href = '/web/transfers.html';
+                    swindow.location.href = '/web/transfers.html';
                 }),console.log(response)
             })
             .catch(error => {
