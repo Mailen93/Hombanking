@@ -41,21 +41,21 @@ public class TransactionController {
                                                    Authentication authentication){
        Client client = clientRepositories.findByEmail(authentication.getName());
        if (amount.isNaN()){
-            return new ResponseEntity<>("NO SE PUEDE MAN", HttpStatus.BAD_REQUEST);}
+            return new ResponseEntity<>("Empty amount", HttpStatus.BAD_REQUEST);}
        if (description.isEmpty()) {
-           return new ResponseEntity<>("The description is empty", HttpStatus.BAD_REQUEST);}
+           return new ResponseEntity<>("Empty description", HttpStatus.BAD_REQUEST);}
        if (nDeCuentaOr.isEmpty()) {
-           return new ResponseEntity<>("Number Empty", HttpStatus.BAD_REQUEST);}
+           return new ResponseEntity<>("Empty origin account", HttpStatus.BAD_REQUEST);}
        if (nDeCuentaDest.isEmpty()){
-           return new ResponseEntity<>("Number Empty",HttpStatus.BAD_REQUEST);}
+           return new ResponseEntity<>("Empty destination account",HttpStatus.BAD_REQUEST);}
        if (nDeCuentaDest.equals(nDeCuentaOr)){
-           return new ResponseEntity<>("YOU ARE STUPID",HttpStatus.CONFLICT);}
+           return new ResponseEntity<>("You can't transfer to the same account",HttpStatus.CONFLICT);}
        if (client.getAccounts().stream().noneMatch(account -> account.getNumber().equals(nDeCuentaOr))){
-           return new ResponseEntity<>("VERIFICAR Q LA CUENTA DE ORIGEN PERTENEZCA AL CLIENTE AUTENTICADO", HttpStatus.BAD_REQUEST);}
+           return new ResponseEntity<>("This account doesn't exist", HttpStatus.BAD_REQUEST);}
        if (!accountRepository.existsByNumber(nDeCuentaDest)){
            return new ResponseEntity<>("The account is correct", HttpStatus.BAD_REQUEST);}
        if (accountRepository.findByNumber(nDeCuentaOr).getBalance() < amount){
-           return new ResponseEntity<>("NO TENES SUFICIENTE GUITA", HttpStatus.BAD_REQUEST);}
+           return new ResponseEntity<>("Not enough money in the account", HttpStatus.BAD_REQUEST);}
 
         Transaction newTransactionDest = new Transaction(TransactionType.CREDIT, amount, description, LocalDateTime.now());
         Transaction newTransactionOr = new Transaction(TransactionType.DEBIT, amount, description, LocalDateTime.now());
@@ -72,7 +72,7 @@ public class TransactionController {
         accountRepository.save(accountOrigen);
         accountRepository.save(accountDestino);
 
-        return new ResponseEntity<>("Transacción Exitosa",HttpStatus.CREATED);}
+        return new ResponseEntity<>("Transfer succesfull",HttpStatus.CREATED);}
 
 }
 //Debe recibir el monto, la descripción, número de cuenta de origen y número de cuenta de destino como parámetros de solicitud
