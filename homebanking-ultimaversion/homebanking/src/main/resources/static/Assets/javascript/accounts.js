@@ -25,7 +25,6 @@ createApp({
           this.loans = response.data.loans;
           this.allTransactions();
           this.allDateTransactions = this.allDateTransactions.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-          console.log(this.allDateTransactions)
         })
         .catch((err) => console.log(err));
     },

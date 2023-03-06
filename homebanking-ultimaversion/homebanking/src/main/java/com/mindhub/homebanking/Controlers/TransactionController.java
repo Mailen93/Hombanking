@@ -51,8 +51,8 @@ public class TransactionController {
        if (nDeCuentaDest.equals(nDeCuentaOr)){
            return new ResponseEntity<>("YOU ARE STUPID",HttpStatus.CONFLICT);}
        if (client.getAccounts().stream().noneMatch(account -> account.getNumber().equals(nDeCuentaOr))){
-           return new ResponseEntity<>("NO ES TUYA JOAQUI", HttpStatus.BAD_REQUEST);}
-       if (accountRepository.existsByNumber(nDeCuentaDest)){
+           return new ResponseEntity<>("VERIFICAR Q LA CUENTA DE ORIGEN PERTENEZCA AL CLIENTE AUTENTICADO", HttpStatus.BAD_REQUEST);}
+       if (!accountRepository.existsByNumber(nDeCuentaDest)){
            return new ResponseEntity<>("The account is correct", HttpStatus.BAD_REQUEST);}
        if (accountRepository.findByNumber(nDeCuentaOr).getBalance() < amount){
            return new ResponseEntity<>("NO TENES SUFICIENTE GUITA", HttpStatus.BAD_REQUEST);}
