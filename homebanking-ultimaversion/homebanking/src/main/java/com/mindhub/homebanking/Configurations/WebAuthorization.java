@@ -53,8 +53,6 @@ import javax.servlet.http.HttpSession;
 
         http.csrf().disable();
 
-
-
         //disabling frameOptions so h2-console can be accessed
 
         http.headers().frameOptions().disable();
