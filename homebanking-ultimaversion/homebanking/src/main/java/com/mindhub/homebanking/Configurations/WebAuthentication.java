@@ -15,7 +15,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter { //OBJ Q USA SPRING SEC PARA SABER COMO BUSCARA LOS DETALLES DE USUARIO
+public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {             //OBJ Q USA SPRING SEC PARA SABER COMO BUSCARA LOS DETALLES DE USUARIO
 
     @Autowired
     private ClientRepositories clientRepositories;
@@ -56,3 +56,4 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter { /
     }
 }
 
+//IR A HOMEBANKING AP

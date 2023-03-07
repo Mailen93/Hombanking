@@ -55,7 +55,7 @@ public class ClientController{
             return new ResponseEntity<>("Email already in use", HttpStatus.BAD_REQUEST);}
 
        Client newClient = new Client(first, lastName, email, passwordEncoder.encode(password));
-        Account account = new Account(Utilities.Number(accountRepository), LocalDateTime.now(), 0);
+        Account account = new Account(Utilities.Number(accountRepository), LocalDateTime.now(), 0.0);
         newClient.addAccount(account);
         clientRepositories.save(newClient);
         accountRepository.save(account);
@@ -66,3 +66,5 @@ public class ClientController{
         String email = authentication.getName();
         return new ClientDTO(clientRepositories.findByEmail(email));}
 }
+
+//IR A ACCOUNT CONTROLLER
