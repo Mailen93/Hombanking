@@ -14,7 +14,7 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
 
-    private long Id;
+    private Long Id;
     private String number;
     private String cvv;
     private CardType type;
@@ -39,7 +39,7 @@ public class Card {
         this.cardHolder = cardHolder;
     }
 
-    public long getId() {return Id;}
+    public Long getId() {return Id;}
 
     public String getNumber() {return number;}
 

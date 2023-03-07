@@ -32,8 +32,7 @@ public class CardController {
 
     @RequestMapping("/clients/current/cards")
     public List<CardDTO> getCurrentCards(Authentication authentication) {
-        return clientRepositories.findByEmail(authentication.getName()).getCards().stream().map(card -> new CardDTO(card)).collect(toList());
-    }
+        return clientRepositories.findByEmail(authentication.getName()).getCards().stream().map(card -> new CardDTO(card)).collect(toList());}
 
     @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
     public ResponseEntity<Object> newCard(Authentication authentication,
@@ -48,8 +47,7 @@ public class CardController {
         Card addNewCard = new Card(randomNumberCard(cardRepository),returnCvvNumber(), type, color, LocalDate.now(),LocalDate.now().plusYears(5), client );
         client.addCard(addNewCard);
         cardRepository.save(addNewCard);
-        return new ResponseEntity<>("You have created a new card", HttpStatus.CREATED);
-    }
+        return new ResponseEntity<>("You have created a new card", HttpStatus.CREATED);}
 
 }
 

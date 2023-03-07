@@ -13,13 +13,13 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
     @GenericGenerator(name = "native",strategy = "native")
-    private long id;
+    private Long id;
 
     private String number;
 
     private LocalDateTime creationDate;
 
-    private double balance;
+    private Double balance;
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name="client_id")
@@ -30,7 +30,7 @@ public class Account {
 
     public Account(){}
 
-    public Account(String numb, LocalDateTime creationDate, double balance){
+    public Account(String numb, LocalDateTime creationDate, Double balance){
         this.number = numb;
         this.creationDate = creationDate;
         this.balance = balance;
@@ -48,14 +48,14 @@ public class Account {
 
     public void setCreationDate(LocalDateTime creationDate){ this.creationDate = creationDate;}
 
-    public double getBalance () {return balance;}
+    public Double getBalance () {return balance;}
 
-    public void setBalance (double balance){this.balance = balance;}
+    public void setBalance (Double balance){this.balance = balance;}
 
     public Client getClient() {return client;}
 
     public void setClient(Client client) {this.client = client;}
-    public long getId() {return id;}
+    public Long getId() {return id;}
 
 
     public void addTransaction(Transaction transaction){

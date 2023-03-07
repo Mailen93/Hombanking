@@ -32,9 +32,11 @@ public class ClientController{
     @RequestMapping("/clients")
     public List<ClientDTO> getClientDto(){
         return clientRepositories.findAll().stream().map(client -> new ClientDTO(client)).collect(toList());}
+
     @RequestMapping("/clients/{id}")
     public Optional<Object> getClient(@PathVariable Long id){
         return clientRepositories.findById(id).map(ClientDTO::new);}
+
     @RequestMapping(path = "/clients", method = RequestMethod.POST)
     public ResponseEntity<Object> register(
             @RequestParam String first, @RequestParam String lastName,

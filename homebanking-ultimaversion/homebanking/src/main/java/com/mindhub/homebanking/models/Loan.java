@@ -19,11 +19,9 @@ public class Loan {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator( name = "native", strategy = "native")
-    private long id;
-
+    private Long id;
     private String name;
-
-    private int maxAmount;
+    private Integer maxAmount;
 
     @ElementCollection //MAPEA
     @Column (name = "payments")
@@ -33,50 +31,40 @@ public class Loan {
     private Set<ClientLoan> clientLoans = new HashSet<>();
 
     public Loan(){}
-    public Loan(String name, int maxAmount, List<Integer> payments){
+    public Loan(String name, Integer maxAmount, List<Integer> payments){
         this.name = name;
         this.maxAmount = maxAmount;
-        this.payments = payments;
-    }
+        this.payments = payments;}
         public void addClientLoan(ClientLoan clientLoan1){
             clientLoan1.setLoan(this);
-            clientLoans.add(clientLoan1);
-        }
+            clientLoans.add(clientLoan1);}
 
 
-    public long getId(){
+    public Long getId(){
         return id;
     }
-
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
-    public int getMaxAmount() {
+    public Integer getMaxAmount() {
         return maxAmount;
     }
-
-    public void setMaxAmount(int maxAmount) {
+    public void setMaxAmount(Integer maxAmount) {
         this.maxAmount = maxAmount;
     }
-
     public List<Integer> getPayments() {
         return payments;
     }
-
     public List<Client> getClients() {
-        return clientLoans.stream().map(clientLoan -> clientLoan.getClient()).collect(toList());
-    }
-
+        return clientLoans.stream().map(clientLoan -> clientLoan.getClient()).collect(toList());}
     public void setPayments(List<Integer> payments) {
         this.payments = payments;
     }
+
 }
