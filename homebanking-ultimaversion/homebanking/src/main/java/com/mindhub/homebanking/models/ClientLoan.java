@@ -15,7 +15,7 @@ public class ClientLoan {
 
     private Integer payments;
 
-    private double amount;
+    private Double amount;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
@@ -27,7 +27,7 @@ public class ClientLoan {
 
     public ClientLoan(){}
 
-    public ClientLoan(double amount, Integer payments) {
+    public ClientLoan(Double amount, Integer payments) {
         this.payments = payments;
         this.amount = amount;
     }
@@ -44,11 +44,11 @@ public class ClientLoan {
         this.payments = payments;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

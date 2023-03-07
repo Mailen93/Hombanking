@@ -29,20 +29,15 @@ import static java.util.stream.Collectors.toList;
 
         @RequestMapping("/accounts")
         public List<AccountsDTO> getAccounts() {
-            return accountRepo.findAll().stream().map(account -> new AccountsDTO(account)).collect(toList());
-        }
+            return accountRepo.findAll().stream().map(account -> new AccountsDTO(account)).collect(toList());}
 
         @RequestMapping("/accounts/{id}")
         public AccountsDTO getAccounts(@PathVariable Long id) {
-            return new AccountsDTO(accountRepo.findById(id).orElse(null));
-        }
-
+            return new AccountsDTO(accountRepo.findById(id).orElse(null));}
 
         @RequestMapping("/clients/current/accounts")
         public List<AccountsDTO> getCurrentAccounts(Authentication authentication) {
-            return clientRepositories.findByEmail(authentication.getName()).getAccounts().stream().map(account -> new AccountsDTO(account)).collect(toList());
-        }
-
+            return clientRepositories.findByEmail(authentication.getName()).getAccounts().stream().map(account -> new AccountsDTO(account)).collect(toList());}
 
         @RequestMapping(path = ("/clients/current/accounts"), method = RequestMethod.POST)
         public ResponseEntity<Object> newAccount(Authentication authentication) {
@@ -50,9 +45,10 @@ import static java.util.stream.Collectors.toList;
             if (client.getAccounts().size() >= 3) {
                 return new ResponseEntity<>("You can't have more accounts", HttpStatus.FORBIDDEN);
             }
-            Account newAccount = new Account(Utilities.Number(accountRepo), LocalDateTime.now(), 0);
+            Account newAccount = new Account(Utilities.Number(accountRepo), LocalDateTime.now(), 0.0);
             client.addAccount(newAccount);
             accountRepo.save(newAccount);
-                return new ResponseEntity<>(HttpStatus.CREATED);
-            }
+                return new ResponseEntity<>(HttpStatus.CREATED);}
         }
+
+//        IR A CARD CONTROLLER
