@@ -4,12 +4,8 @@ import ch.qos.logback.core.joran.conditional.IfAction;
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.dtos.LoanDTO;
-import com.mindhub.homebanking.models.Client;
-import com.mindhub.homebanking.models.Loan;
-import com.mindhub.homebanking.repositories.AccountRepository;
-import com.mindhub.homebanking.repositories.ClientLoanRepository;
-import com.mindhub.homebanking.repositories.ClientRepositories;
-import com.mindhub.homebanking.repositories.LoanRepository;
+import com.mindhub.homebanking.models.*;
+import com.mindhub.homebanking.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -37,9 +34,11 @@ public class LoanController {
     private LoanRepository loanRepository;
     @Autowired
     private ClientLoanRepository clientLoanRepository;
+    @Autowired
+    private TransactionRepository transactionRepository;
 
 
-    @RequestMapping("/Loans")
+    @RequestMapping("/loans")
     public List<LoanDTO> getLoans() {
         return loanRepository.findAll().stream().map(LoanDTO::new).collect(toList());}
     @Transactional
@@ -68,12 +67,21 @@ public class LoanController {
             return new ResponseEntity<>("la cuenta de destino no existe", HttpStatus.BAD_REQUEST);}
         if (!client.getAccounts().contains(accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()))){
             return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);}
-        if (client.getLoan().equals(client.getLoan())){
+        if (client.getLoan().contains(loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null))){
             return new ResponseEntity<>("no podes tener el mismo prestamo 2 veces", HttpStatus.BAD_REQUEST);}
+
+        ClientLoan clientLoan = new ClientLoan(loanApplicationDTO.getAmount()*1.2, loanApplicationDTO.getPayments());
+        client.addClientLoan(clientLoan);
+        loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null).addClientLoan(clientLoan);
+        clientLoanRepository.save(clientLoan);
+
+        Transaction transaction = new Transaction(TransactionType.CREDIT,loanApplicationDTO.getAmount(),loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null) + "loan approved", LocalDateTime.now());
+        accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).addTransaction(transaction);
+        accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).setBalance(accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).getBalance()+loanApplicationDTO.getAmount());
+        accountRepository.save(accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()));
+        transactionRepository.save(transaction);
+
         return new ResponseEntity<>("Loan succesfull",HttpStatus.CREATED);}
-}
-
-
 }
 
  /*   Debe recibir un objeto de solicitud de crédito con los datos del préstamo
