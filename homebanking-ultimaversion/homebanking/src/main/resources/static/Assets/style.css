@@ -1441,15 +1441,15 @@ h5 {
     backdrop-filter: blur(4px);
     display: flex;
     min-height: 100%;
-    padding: 2rem;
+    padding: 1rem;
     gap: 1rem;
-    top: 7rem;
+    top: 9rem;
     overflow: hidden;
-    width: 80%;
+    width: 90%;
   }
 
   .account_detail {
-    max-width: 50%;
+    width: 100%;
     height: 98%;
     color: whitesmoke;
     background-color: #00094e9f;
@@ -1569,7 +1569,10 @@ h5 {
     color: whitesmoke;
     display: flex;
     overflow-x: scroll;
+
   }
+
+
 
   .loans_information{
     display: flex;
@@ -1606,5 +1609,14 @@ h5 {
   }
   ._loan h2, h3{
     text-align: start;
+  }
+  .loan_title{
+    position: absolute;
+    background-color: white;
+    color: #00094e;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 28px;
+    padding: 1rem;
   }
 }

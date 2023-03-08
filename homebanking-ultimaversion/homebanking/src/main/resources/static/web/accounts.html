@@ -260,9 +260,10 @@
           </div>
           <div class="principal_container">
             <div class="loans_container">
+              <h2 class="loan_title">Check out your loans details:</h2>
               <div class="loans_detail">
                 <div v-for="loan of loans" class="_loan">
-                  <h2 style="font-size: 56px;">Loan {{loan.name}}</h2>
+                  <h2 style="font-size: 48px; color: aliceblue;">Loan {{loan.name}}</h2>
                   <h3>Total of payments: {{loan.payments}}</h3>
                   <h2>Final amount: ${{loan.amount}}</h2>
                   <h2>This is the loan {{loan.id}} of {{loans.length}}</h2>
