@@ -173,7 +173,7 @@
             </div>
             <!-- DIV DECORATIVO -->
             <div class="decorative"></div>
-            <div class="opacity"></div>
+            
 
             <div class="accounts_container">
               <div class="account_detail" v-for="account of accounts">
@@ -188,6 +188,7 @@
                       text-align: center;
                       text-transform: uppercase;
                       letter-spacing: 2px;
+                      font-size: 18px;
                     "
                   >
                     Account N°: <span>{{account.number}}</span>
@@ -202,7 +203,11 @@
                 </div>
               </div>
             </div>
+            <a class="down_arrow_to_loans" href="#accounts"
+              ><i class="fa-solid fa-chevron-down"></i
+            ></a>
           </div>
+          <div class="opacityAccounts"></div>
           <img class="deco" src="../Assets/img/digital.png" alt="" />
         </section>
 
