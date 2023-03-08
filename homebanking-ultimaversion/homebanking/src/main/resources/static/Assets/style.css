@@ -15,16 +15,16 @@ body {
   align-items: center;
   justify-content: space-evenly;
 }
-.banner_img{
+.banner_img {
   width: 100%;
   height: 100%;
-  background-position:right;
+  background-position: right;
   background-size: cover;
   object-fit: cover;
   position: absolute;
 }
 
-.welcome{
+.welcome {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -33,10 +33,9 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  
 }
 
-.welcomeMindBank{
+.welcomeMindBank {
   background-color: rgba(0, 0, 0, 0.401);
   backdrop-filter: blur(6px);
   color: whitesmoke;
@@ -49,16 +48,15 @@ body {
   justify-content: space-evenly;
   align-items: center;
   margin-top: -3rem;
-  
 }
 
-.welcomeMindBank h1{
+.welcomeMindBank h1 {
   font-size: 26px;
   letter-spacing: 12px;
   margin: 0;
 }
 
-.welcomeMindBank p{
+.welcomeMindBank p {
   font-size: 18px;
   letter-spacing: 4px;
   margin: 0;
@@ -76,7 +74,6 @@ body {
   flex-direction: column;
   justify-content: center;
   margin-top: -4rem;
-
 }
 
 .questions h2 {
@@ -87,31 +84,31 @@ body {
   margin-bottom: 2rem;
 }
 
-.questions ul, li {
+.questions ul,
+li {
   font-size: 18px;
   list-style-type: none;
 }
 
 .questions li {
-  margin-top: 1rem
+  margin-top: 1rem;
 }
 
-.down_arrow{
+.down_arrow {
   position: absolute;
   font-size: 32px;
   color: whitesmoke;
   bottom: 6rem;
   z-index: 20;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-.opacity{
+.opacity {
   position: absolute;
   width: 100%;
   height: 100%;
   background: linear-gradient(#1118272e, #1118273f, #1118276b, #111827);
 }
-
 
 #accounts {
   width: 100vw;
@@ -124,8 +121,6 @@ body {
   background-size: cover;
 }
 
-
-
 .accounts_nav {
   width: 100%;
   min-height: 1.5rem;
@@ -133,7 +128,7 @@ body {
   color: white;
   text-transform: uppercase;
   letter-spacing: 4px;
-  padding: .5rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -143,10 +138,10 @@ body {
 }
 
 .accounts_nav h2 {
-  margin: 0
+  margin: 0;
 }
 
-.hamb_accounts{
+.hamb_accounts {
   z-index: 20;
   height: 100%;
   width: 40%;
@@ -169,10 +164,10 @@ body {
   padding: 1rem;
 }
 
-.decorative{
+.decorative {
   position: absolute;
-  height:100vh;
-  background: linear-gradient(#0f172a,#0f172a);
+  height: 100vh;
+  background: linear-gradient(#0f172a, #0f172a);
   transform: rotateZ(65deg);
   top: 18rem;
   width: 100vw;
@@ -180,23 +175,22 @@ body {
   z-index: 20;
 }
 
-.deco{
+.deco {
   width: 100%;
-  bottom:1rem;
+  bottom: 1rem;
   right: 0rem;
   object-fit: cover;
   position: absolute;
   z-index: 30;
-
 }
-.flex_accounts_container{
+.flex_accounts_container {
   display: flex;
   flex-direction: column;
   position: relative;
   align-items: center;
 }
 
-.accounts_container{
+.accounts_container {
   width: 95%;
   height: 40vh;
   background-color: rgba(245, 245, 245, 0.181);
@@ -206,15 +200,54 @@ body {
   backdrop-filter: blur(4px);
   overflow-x: scroll;
   padding: 6px;
+  padding-bottom: 0;
 }
 
-.account_detail{
+.account_detail {
   width: 100%;
-  height: 100%;
+  height: 98%;
   color: whitesmoke;
-  border: 1px solid #00094e;
-  padding: 6px;
-  margin-bottom: 4px;
+  background-color: #00094e9f;
+  backdrop-filter: blur(6px);
+  padding: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.dinero_disponible {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.dinero_disponible h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.dinero_disponible span {
+  margin: 0;
+  font-size: 24px;
+}
+
+.toTransactionsButton {
+  padding: 0.5rem 0;
+  background-color: whitesmoke;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  color: #00094e;
+}
+.toTransactionsButton a{
+  text-decoration: none;
+  color: #00094e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .OpacityDiv {
@@ -233,8 +266,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
-
 
 .background {
   position: fixed;
@@ -825,8 +856,6 @@ h5 {
   background-color: #008be4;
 }
 
-
-
 .accounts_section {
   display: flex;
   flex-direction: column;
@@ -1019,7 +1048,6 @@ h5 {
     margin-top: 2rem;
   }
 
-
   #accounts {
     flex-direction: column;
     justify-content: start;
@@ -1030,7 +1058,7 @@ h5 {
     padding: 0;
   }
 
-  .welcome{
+  .welcome {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -1042,8 +1070,8 @@ h5 {
     padding-top: 1rem;
     margin-top: 3rem;
   }
-  
-  .welcomeMindBank{
+
+  .welcomeMindBank {
     background-color: rgba(0, 0, 0, 0.401);
     backdrop-filter: blur(2px);
     color: whitesmoke;
@@ -1056,21 +1084,20 @@ h5 {
     justify-content: space-evenly;
     align-items: center;
     margin-top: 0;
-    
   }
-  
-  .welcomeMindBank h1{
+
+  .welcomeMindBank h1 {
     font-size: 18px;
     letter-spacing: 8px;
     margin: 0;
   }
-  
-  .welcomeMindBank p{
+
+  .welcomeMindBank p {
     font-size: 12px;
     letter-spacing: 3px;
     margin: 0;
   }
-  
+
   .questions {
     background-color: rgba(0, 0, 0, 0.401);
     backdrop-filter: blur(2px);
@@ -1084,15 +1111,16 @@ h5 {
     justify-content: space-evenly;
     margin-top: 1rem;
   }
-  
+
   .questions h2 {
     font-size: 22px;
     letter-spacing: 3px;
     margin: 0;
     padding-left: 1rem;
   }
-  
-  .questions ul, li {
+
+  .questions ul,
+  li {
     font-size: 14px;
   }
 

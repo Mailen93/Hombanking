@@ -174,18 +174,36 @@
             <!-- DIV DECORATIVO -->
             <div class="decorative"></div>
             <div class="opacity"></div>
-            
+
             <div class="accounts_container">
               <div class="account_detail" v-for="account of accounts">
-                <div>
-                  <h2>Account N°: <span>{{account.number}}</span></h2>
-                  <h3>Date: <span>{{account.creationDate}}</span></h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem">
+                  <h3 style="font-size: 16px">
+                    Date: <span>{{account.creationDate.slice(0,7)}}</span>
+                  </h3>
+                  <h2
+                    style="
+                      background-color: #00094e;
+                      padding: 10px;
+                      text-align: center;
+                      text-transform: uppercase;
+                      letter-spacing: 2px;
+                    "
+                  >
+                    Account N°: <span>{{account.number}}</span>
+                  </h2>
                 </div>
-                <div><h2>Dinero disponible:</h2><span>${{account.balance}}</span></div>
+                <div class="dinero_disponible">
+                  <h2>Dinero disponible:</h2>
+                  <span>${{account.balance}}</span>
+                </div>
+                <div class="toTransactionsButton">
+                  <a :href='"account.html?id=" + account.id'>transactions</a>
+                </div>
               </div>
             </div>
           </div>
-          <img class="deco" src="../Assets/img/digital.png" alt="">
+          <img class="deco" src="../Assets/img/digital.png" alt="" />
         </section>
 
         <section id="loans">
