@@ -9,7 +9,7 @@ html {
 body {
   min-height: 100%;
   background-color: whitesmoke;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #banner {
