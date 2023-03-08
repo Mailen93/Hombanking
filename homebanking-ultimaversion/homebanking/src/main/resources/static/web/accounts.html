@@ -209,41 +209,79 @@
               </div>
             </div>
             <div class="addAccount" v-if="accounts.length < 3">
-              <i class="fa-solid fa-plus" style="color: #1E293B;"></i>
-              <a @click="createAccount" href="#accounts" style="text-decoration: none; color: #1E293B;">Add account</a>
+              <i class="fa-solid fa-plus" style="color: #1e293b"></i>
+              <a
+                @click="createAccount"
+                href="#accounts"
+                style="text-decoration: none; color: #1e293b"
+                >Add account</a
+              >
             </div>
             <a class="down_arrow_to_loans" href="#loans"
               ><i class="fa-solid fa-chevron-down"></i
             ></a>
-            
           </div>
-          
+
           <div class="opacityAccounts"></div>
           <img class="deco" src="../Assets/img/digital.png" alt="" />
         </section>
+        <!-- 
+        <div class="loans" v-if="loans.length > 0">
+          <div class="account_container">
+            <div class="tarjetas" v-for="loan of loans">
+              <div class="LOAN_container">
+                <h2>Loan: {{loan.name}} ||</h2>
+                <h2>Payments: {{loan.payments}}</h2>
+              </div>
+              <p class="dinero">Amount: ${{loan.amount}}</p>
+              <h4 class="totalLoans">Total Loans: {{loans.length}}</h4>
+            </div>
+          </div>
+        </div> -->
 
         <section id="loans">
-          <div class="imagen_pareja">
-            <img
-              src="../Assets/img/interna-homebanking.jpg"
-              alt="imagen pareja"
-            />
+          <div class="decorative_loans"></div>
+          <div class="accounts_nav">
+            <h2>Your loans</h2>
+            <div class="hamb_accounts">
+              <div id="hamburger" class="hamb" v-on:click="h">
+                <div class="htopAcc"></div>
+                <div class="hmidAcc"></div>
+                <div class="hbotAcc"></div>
+              </div>
+            </div>
+            <div class="links_container_accounts">
+              <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
+              <a href="#"><i class="fa-solid fa-bell"></i></a>
+              <a href="#"
+                ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
+              ></a>
+            </div>
           </div>
-          <div class="welcome_loans">
-            <h2>Welcome to your loans</h2>
-          </div>
-          <div class="loans" v-if="loans.length > 0">
-            <div class="account_container">
-              <div class="tarjetas" v-for="loan of loans">
-                <div class="LOAN_container">
-                  <h2>Loan: {{loan.name}} ||</h2>
-                  <h2>Payments: {{loan.payments}}</h2>
-                </div>
-                <p class="dinero">Amount: ${{loan.amount}}</p>
-                <h4 class="totalLoans">Total Loans: {{loans.length}}</h4>
+          <div class="principal_container">
+            <div class="loans_container">
+              <div class="loans_detail">HOLAAAAA</div>
+              <div class="loans_information">
+                <h2>Why choose us?</h2>
+                <ul>
+                  <li>
+                    Do you need a credit card to make that special gift
+                    possible?
+                  </li>
+                  <li>Do you want to get a brand new house?</li>
+                  <li>
+                    With us your family is safe, we have the best insurance
+                    policies
+                  </li>
+                  <li>
+                    Do you need a credit card to make that special gift
+                    possible?
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+          <div class="opacityAccounts"></div>
         </section>
       </main>
 
