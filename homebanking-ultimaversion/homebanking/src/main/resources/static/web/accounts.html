@@ -139,6 +139,13 @@
                   <div class="hbotAcc"></div>
                 </div>
               </div>
+              <div class="links_container_accounts">
+                <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
+                <a href="#"><i class="fa-solid fa-bell"></i></a>
+                <a href="#"
+                  ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
+                ></a>
+              </div>
             </div>
             <!-- MODAL  -->
             <div
@@ -173,8 +180,6 @@
             </div>
             <!-- DIV DECORATIVO -->
             <div class="decorative"></div>
-            
-
             <div class="accounts_container">
               <div class="account_detail" v-for="account of accounts">
                 <div style="display: flex; flex-direction: column; gap: 1rem">
@@ -203,10 +208,16 @@
                 </div>
               </div>
             </div>
-            <a class="down_arrow_to_loans" href="#accounts"
+            <div class="addAccount" v-if="accounts.length < 3">
+              <i class="fa-solid fa-plus" style="color: #1E293B;"></i>
+              <a @click="createAccount" href="#accounts" style="text-decoration: none; color: #1E293B;">Add account</a>
+            </div>
+            <a class="down_arrow_to_loans" href="#loans"
               ><i class="fa-solid fa-chevron-down"></i
             ></a>
+            
           </div>
+          
           <div class="opacityAccounts"></div>
           <img class="deco" src="../Assets/img/digital.png" alt="" />
         </section>

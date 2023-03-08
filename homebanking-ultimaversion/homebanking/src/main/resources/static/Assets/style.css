@@ -1,4 +1,4 @@
-*{
+* {
   scroll-behavior: smooth;
 }
 
@@ -114,113 +114,7 @@ li {
   background: linear-gradient(#1118272e, #1118273f, #1118276b, #111827);
 }
 
-#accounts {
-  width: 100vw;
-  height: 100vh;
-  background-color: whitesmoke;
-  position: relative;
-  overflow: hidden;
-  background-image: url("img/transaction.jpg");
-  background-position: bottom;
-  background-size: cover;
-}
 
-.accounts_nav {
-  width: 100%;
-  min-height: 1.5rem;
-  background-color: #00094e;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  overflow-y: hidden;
-  position: block;
-  z-index: 30;
-}
-
-.accounts_nav h2 {
-  margin: 0;
-}
-
-.hamb_accounts {
-  z-index: 20;
-  height: 100%;
-  width: 40%;
-  display: flex;
-  justify-content: end;
-}
-
-#navModalAcc {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  top: 14vh;
-  right: 3vh;
-  background-color: white;
-  z-index: 100;
-  transform: translateX(-110%);
-  padding: 1rem;
-}
-
-.decorative {
-  position: absolute;
-  height: 100vh;
-  background: linear-gradient(#0f172a, #0f172a);
-  transform: rotateZ(65deg);
-  top: 18rem;
-  width: 100vw;
-  position: absolute;
-  z-index: 20;
-}
-
-.deco {
-  width: 100%;
-  bottom: 1rem;
-  right: 0rem;
-  object-fit: cover;
-  position: absolute;
-  z-index: 30;
-}
-.flex_accounts_container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-}
-
-.accounts_container {
-  width: 95%;
-  height: 40vh;
-  background-color: rgba(245, 245, 245, 0.181);
-  z-index: 20;
-  position: absolute;
-  top: 7.5rem;
-  backdrop-filter: blur(4px);
-  overflow-x: scroll;
-  padding: 6px;
-  padding-bottom: 0;
-  scroll-snap-type: mandatory;
-}
-
-.account_detail {
-  width: 100%;
-  height: 98%;
-  color: whitesmoke;
-  background-color: #00094e9f;
-  backdrop-filter: blur(6px);
-  padding: 8px;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  scroll-snap-align: center;
-}
 
 .dinero_disponible {
   display: flex;
@@ -240,30 +134,7 @@ li {
   font-size: 24px;
 }
 
-.toTransactionsButton {
-  padding: 0.5rem 0;
-  background-color: whitesmoke;
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
-  border-radius: 10px;
-  color: #00094e;
-}
 
-.toTransactionsButton a{
-  text-decoration: none;
-  color: #00094e;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.down_arrow_to_loans {
-  z-index: 30;
-  position: absolute;
-  color: whitesmoke;
-  font-size: 32px;
-  top: 60vh
-}
 
 .opacityAccounts {
   position: absolute;
@@ -1147,6 +1018,143 @@ h5 {
     font-size: 14px;
   }
 
+  #accounts {
+    width: 100vw;
+    height: 100vh;
+    background-color: whitesmoke;
+    position: relative;
+    overflow: hidden;
+    background-image: url("img/transaction.jpg");
+    background-position: bottom;
+    background-size: cover;
+  }
+  
+  .accounts_nav {
+    width: 100%;
+    min-height: 1.5rem;
+    background-color: #00094e;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow-y: hidden;
+    position: block;
+    z-index: 30;
+  }
+  
+.links_container_accounts{
+  display: none;
+}
+
+  .accounts_nav h2 {
+    margin: 0;
+  }
+  
+  .hamb_accounts {
+    z-index: 20;
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: end;
+  }
+  
+  #navModalAcc {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    top: 14vh;
+    right: 3vh;
+    background-color: white;
+    z-index: 100;
+    transform: translateX(-110%);
+    padding: 1rem;
+  }
+  
+  .decorative {
+    position: absolute;
+    height: 100vh;
+    background: linear-gradient(#0f172a, #0f172a);
+    transform: rotateZ(65deg);
+    top: 18rem;
+    width: 100vw;
+    position: absolute;
+    z-index: 20;
+  }
+  
+  .deco {
+    width: 100%;
+    bottom: 1rem;
+    right: 0rem;
+    object-fit: cover;
+    position: absolute;
+    z-index: 30;
+  }
+  .flex_accounts_container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+  }
+  
+  .accounts_container {
+    width: 95%;
+    height: 40vh;
+    background-color: rgba(245, 245, 245, 0.181);
+    z-index: 20;
+    position: absolute;
+    top: 7.5rem;
+    backdrop-filter: blur(4px);
+    overflow-x: scroll;
+    padding: 6px;
+    padding-bottom: 0;
+    scroll-snap-type: mandatory;
+  }
+  
+  .account_detail {
+    width: 100%;
+    height: 98%;
+    color: whitesmoke;
+    background-color: #00094e9f;
+    backdrop-filter: blur(6px);
+    padding: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    scroll-snap-align: center;
+  }
+
+  .toTransactionsButton {
+    padding: 0.5rem 0;
+    background-color: whitesmoke;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    color: #00094e;
+  }
+  
+  .toTransactionsButton a {
+    text-decoration: none;
+    color: #00094e;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .down_arrow_to_loans {
+    z-index: 30;
+    position: absolute;
+    color: whitesmoke;
+    font-size: 32px;
+    top: 60vh;
+  }
+
   .logOutMobile {
     display: flex;
   }
@@ -1315,9 +1323,216 @@ h5 {
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
+  .deco {
+    width: 64%;
+    bottom: 2.6rem;
+    right: 9rem;
+    object-fit: cover;
+    position: absolute;
+    z-index: 30;
+  
+  }
+  .accounts_container{
+    max-width: 70%;
+    top:6rem;
+  }
 
+  .down_arrow_to_loans{
+    top: 36rem
+  }
+
+  .decorative {
+    position: absolute;
+    height: 70vh;
+    background: linear-gradient(#0f172a, #0f172a);
+    transform: rotateZ(-20deg);
+    top: 20rem;
+    min-width: 2000px ;
+    position: absolute;
+    z-index: 20;
+  }
 }
 
 @media (min-width: 1023px) and (max-width: 1920px) {
-  
+  #accounts {
+    width: 100vw;
+    height: 100vh;
+    background-color: whitesmoke;
+    position: relative;
+    overflow: hidden;
+    background-image: url("img/transaction.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .accounts_nav {
+    width: 100%;
+    min-height: 1.5rem;
+    background-color: #00094e;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow-y: hidden;
+    position: block;
+    z-index: 30;
+  }
+
+  .addAccount {
+    background-color: white;
+    padding: 1rem;
+    position: absolute;
+    z-index: 30;
+    bottom: -32rem;
+    width: 28%;
+    font-size: 25px;
+    text-transform: uppercase;
+    padding-left: 1rem;
+  }
+  .links_container_accounts {
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .links_container_accounts a {
+    color: white;
+    font-size: 24px;
+  }
+
+  .accounts_nav h2 {
+    margin: 0;
+  }
+
+  .hamb_accounts {
+    z-index: 20;
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: end;
+  }
+
+  #navModalAcc {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    top: 14vh;
+    right: 3vh;
+    background-color: white;
+    z-index: 100;
+    transform: translateX(-110%);
+    padding: 1rem;
+  }
+
+  .decorative {
+    position: absolute;
+    height: 100vh;
+    background: linear-gradient(#0f172a, #0f172a);
+    transform: rotateZ(-25deg);
+    top: 30rem;
+    min-width: 2000px;
+    position: absolute;
+    z-index: 20;
+  }
+
+  .deco {
+    width: 40%;
+    bottom: 2rem;
+    right: 4rem;
+    object-fit: cover;
+    position: absolute;
+    z-index: 40;
+    display: flex;
+  }
+  .flex_accounts_container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .accounts_container {
+    background-color: rgba(245, 245, 245, 0.181);
+    z-index: 20;
+    position: absolute;
+    backdrop-filter: blur(4px);
+    display: flex;
+    min-height: 100%;
+    padding: 2rem;
+    gap: 1rem;
+    top: 7rem;
+    overflow: hidden;
+    width: 80%;
+  }
+
+  .account_detail {
+    max-width: 35%;
+    height: 98%;
+    color: whitesmoke;
+    background-color: #00094e9f;
+    backdrop-filter: blur(6px);
+    padding: 1rem;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+
+  .dinero_disponible {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .dinero_disponible h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .dinero_disponible span {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .toTransactionsButton {
+    padding: 0.5rem 0;
+    background-color: whitesmoke;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    color: #00094e;
+  }
+
+  .toTransactionsButton a {
+    text-decoration: none;
+    color: #00094e;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .down_arrow_to_loans {
+    z-index: 30;
+    position: absolute;
+    color: whitesmoke;
+    font-size: 32px;
+    top: 90vh;
+  }
+
+  .opacityAccounts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0f172a57;
+    z-index: 10;
+  }
 }
