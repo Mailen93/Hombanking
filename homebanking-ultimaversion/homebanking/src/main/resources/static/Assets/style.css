@@ -1542,13 +1542,14 @@ h5 {
     background-color: #0f172a;
   }
   .principal_container{
-    width: 100%;
+    width: 90%;
     height: 100%;
     z-index: 20;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 4rem;
+    margin: 0 auto;
   }
 
   .loans_container{
@@ -1565,6 +1566,9 @@ h5 {
   .loans_detail{
     width: 50%;
     background-color: rgba(0, 0, 0, 0.49);
+    color: whitesmoke;
+    display: flex;
+    overflow-x: scroll;
   }
 
   .loans_information{
@@ -1589,5 +1593,18 @@ h5 {
     letter-spacing: 3px;
     margin-top: 1rem;
   }
-
+  ._loan{
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 4rem;
+  }
+  ._loan h2, h3{
+    text-align: start;
+  }
 }
