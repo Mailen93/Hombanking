@@ -114,8 +114,6 @@ li {
   background: linear-gradient(#1118272e, #1118273f, #1118276b, #111827);
 }
 
-
-
 .dinero_disponible {
   display: flex;
   width: 100%;
@@ -133,8 +131,6 @@ li {
   margin: 0;
   font-size: 24px;
 }
-
-
 
 .opacityAccounts {
   position: absolute;
@@ -1028,7 +1024,7 @@ h5 {
     background-position: bottom;
     background-size: cover;
   }
-  
+
   .accounts_nav {
     width: 100%;
     min-height: 1.5rem;
@@ -1044,15 +1040,15 @@ h5 {
     position: block;
     z-index: 30;
   }
-  
-.links_container_accounts{
-  display: none;
-}
+
+  .links_container_accounts {
+    display: none;
+  }
 
   .accounts_nav h2 {
     margin: 0;
   }
-  
+
   .hamb_accounts {
     z-index: 20;
     height: 100%;
@@ -1060,7 +1056,7 @@ h5 {
     display: flex;
     justify-content: end;
   }
-  
+
   #navModalAcc {
     position: absolute;
     display: flex;
@@ -1075,7 +1071,7 @@ h5 {
     transform: translateX(-110%);
     padding: 1rem;
   }
-  
+
   .decorative {
     position: absolute;
     height: 100vh;
@@ -1086,7 +1082,7 @@ h5 {
     position: absolute;
     z-index: 20;
   }
-  
+
   .deco {
     width: 100%;
     bottom: 1rem;
@@ -1101,7 +1097,7 @@ h5 {
     position: relative;
     align-items: center;
   }
-  
+
   .accounts_container {
     width: 95%;
     height: 40vh;
@@ -1115,7 +1111,7 @@ h5 {
     padding-bottom: 0;
     scroll-snap-type: mandatory;
   }
-  
+
   .account_detail {
     width: 100%;
     height: 98%;
@@ -1139,20 +1135,24 @@ h5 {
     border-radius: 10px;
     color: #00094e;
   }
-  
+
   .toTransactionsButton a {
     text-decoration: none;
     color: #00094e;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
-  
+
   .down_arrow_to_loans {
-    z-index: 30;
+    z-index: 40;
     position: absolute;
     color: whitesmoke;
     font-size: 32px;
     top: 60vh;
+  }
+
+  .addAccount {
+    display: none;
   }
 
   .logOutMobile {
@@ -1330,15 +1330,14 @@ h5 {
     object-fit: cover;
     position: absolute;
     z-index: 30;
-  
   }
-  .accounts_container{
+  .accounts_container {
     max-width: 70%;
-    top:6rem;
+    top: 6rem;
   }
 
-  .down_arrow_to_loans{
-    top: 36rem
+  .down_arrow_to_loans {
+    top: 36rem;
   }
 
   .decorative {
@@ -1347,13 +1346,13 @@ h5 {
     background: linear-gradient(#0f172a, #0f172a);
     transform: rotateZ(-20deg);
     top: 20rem;
-    min-width: 2000px ;
+    min-width: 2000px;
     position: absolute;
     z-index: 20;
   }
 }
 
-@media (min-width: 1023px) and (max-width: 1920px) {
+@media (min-width: 769px) and (max-width: 1920px) {
   #accounts {
     width: 100vw;
     height: 100vh;
@@ -1441,7 +1440,8 @@ h5 {
   }
 
   .deco {
-    width: 40%;
+    max-width: 70vh;
+    max-height: 60vh;
     bottom: 2rem;
     right: 4rem;
     object-fit: cover;
@@ -1472,17 +1472,25 @@ h5 {
   }
 
   .account_detail {
-    max-width: 35%;
+    max-width: 50%;
     height: 98%;
     color: whitesmoke;
     background-color: #00094e9f;
     backdrop-filter: blur(6px);
-    padding: 1rem;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .accountDetail h2 {
+    background-color: #00094e;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 
   .dinero_disponible {
@@ -1495,7 +1503,7 @@ h5 {
   }
   .dinero_disponible h2 {
     margin: 0;
-    font-size: 18px;
+    font-size: 12px;
   }
 
   .dinero_disponible span {
