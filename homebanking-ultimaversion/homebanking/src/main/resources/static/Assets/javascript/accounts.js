@@ -75,8 +75,13 @@ createApp({
       document.querySelector('.htop').classList.toggle('openTop')
       document.querySelector('.hmid').classList.toggle('openMid')
       document.querySelector('.hbot').classList.toggle('openBot')
+      document.querySelector('.htopAcc').classList.toggle('openTop')
+      document.querySelector('.hmidAcc').classList.toggle('openMid')
+      document.querySelector('.hbotAcc').classList.toggle('openBot')
       document.querySelector('#navModal').classList.toggle('modalOpen')
+      document.querySelector('#navModalAcc').classList.toggle('modalOpen')
       this.isActive = !this.isActive
+      console.log(this.isActive)
       
     }
   }

@@ -86,10 +86,17 @@
             <div class="questions">
               <h2>Why choose us?</h2>
               <ul>
-                <li>Do you need a credit card to make that special gift possible?</li>
+                <li>
+                  Do you need a credit card to make that special gift possible?
+                </li>
                 <li>Do you want to get a brand new house?</li>
-                <li>With us your family is safe, we have the best insurance policies</li>
-                <li>Do you need a credit card to make that special gift possible?</li>
+                <li>
+                  With us your family is safe, we have the best insurance
+                  policies
+                </li>
+                <li>
+                  Do you need a credit card to make that special gift possible?
+                </li>
               </ul>
             </div>
           </div>
@@ -99,24 +106,86 @@
             class="banner_img"
           />
           <div class="opacity"></div>
+          <a class="down_arrow" href="#accounts"
+            ><i class="fa-solid fa-chevron-down"></i
+          ></a>
         </section>
 
-        <section id="accounts">
-          <div class="welcome_accounts">
-            <h2>Welcome to your accounts</h2>
+        <!-- CONTENIDO SECTION ACCOUNTS -->
+        <!-- <div class="welcome_accounts">
+          <h2>Welcome to your accounts</h2>
+        </div>
+        <div class="account_container">
+          <div class="tarjetas" v-for="account of accounts">
+            <div class="VIN_container">
+              <h2>Accounts N°: <span>{{account.number}}</span></h2>
+              <h3>Date: {{parseDate(account.creationDate)}}</h3>
+            </div>
+            <p class="dinero">Dinero disponible: ${{account.balance}}</p>
+            <div class="boton">
+              <a :href='"account.html?id=" + account.id'>View transactions</a>
+            </div>
           </div>
-          <div class="account_container">
-            <div class="tarjetas" v-for="account of accounts">
-              <div class="VIN_container">
-                <h2>Accounts N°: <span>{{account.number}}</span></h2>
-                <h3>Date: {{parseDate(account.creationDate)}}</h3>
+        </div> -->
+
+        <section id="accounts">
+          <div class="flex_accounts_container">
+            <div class="accounts_nav">
+              <h2>Your accounts</h2>
+              <div class="hamb_accounts">
+                <div id="hamburger" class="hamb" v-on:click="h">
+                  <div class="htopAcc"></div>
+                  <div class="hmidAcc"></div>
+                  <div class="hbotAcc"></div>
+                </div>
               </div>
-              <p class="dinero">Dinero disponible: ${{account.balance}}</p>
-              <div class="boton">
-                <a :href='"account.html?id=" + account.id'>View transactions</a>
+            </div>
+            <!-- MODAL  -->
+            <div
+              id="navModalAcc"
+              :class="[isActive ? 'modalOpen' : 'modalClose']"
+            >
+              <button
+                type="button"
+                class="botonNormal"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Transactions
+              </button>
+              <div class="opciones" v-if="accounts.length < 3">
+                <i class="fa-solid fa-plus"></i>
+                <a @click="createAccount" href="#accounts">Add account</a>
+              </div>
+
+              <div class="opciones" v-on:click="h">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <a href="#loans">Loans</a>
+              </div>
+              <div class="opciones">
+                <i class="fa-solid fa-money-check-dollar"></i>
+                <a href="cards.html">Cards</a>
+              </div>
+              <a href="#" class="logOut" @click="logOut"
+                ><i class="fa-solid fa-right-from-bracket"></i
+                ><span class="logOutMobile">Log out</span></a
+              >
+            </div>
+            <!-- DIV DECORATIVO -->
+            <div class="decorative"></div>
+            <div class="opacity"></div>
+            
+            <div class="accounts_container">
+              <div class="account_detail" v-for="account of accounts">
+                <div>
+                  <h2>Account N°: <span>{{account.number}}</span></h2>
+                  <h3>Date: <span>{{account.creationDate}}</span></h3>
+                </div>
+                <div><h2>Dinero disponible:</h2><span>${{account.balance}}</span></div>
               </div>
             </div>
           </div>
+          <img class="deco" src="../Assets/img/digital.png" alt="">
         </section>
 
         <section id="loans">
