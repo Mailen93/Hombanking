@@ -191,7 +191,6 @@ footer {
   width: 100vw;
   background-color: #00094e;
   align-items: center;
-
 }
 
 footer p {
@@ -817,8 +816,6 @@ h5 {
   width: 800px;
 }
 
-
-
 .accountDetail {
   display: flex;
   position: relative;
@@ -918,14 +915,11 @@ h5 {
 ///// ACA ESTAN LOS MEDIA QUERY //// */
 
 @media (min-width: 374px) and (max-width: 768px) {
-
-
   #accounts {
     flex-direction: column;
     justify-content: start;
     padding: 0;
   }
-
 
   .welcome {
     height: 100%;
@@ -1175,8 +1169,6 @@ h5 {
     margin: 0;
   }
 
-  
-
   .Navbar {
     position: block;
   }
@@ -1250,7 +1242,7 @@ h5 {
     padding: 1rem;
     padding: 0;
   }
-  
+
   .VIN_container {
     padding: 0;
   }
@@ -1293,6 +1285,92 @@ h5 {
   .cellMob {
     display: none;
   }
+
+  #loans {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../Assets/img/loans.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+  }
+  .decorative_loans {
+    min-width: 200%;
+    height: 70%;
+    background-color: white;
+    transform: rotateZ(22deg);
+    position: absolute;
+    top: 60vh;
+    left: -70vh;
+    background-color: #0f172a;
+
+  }
+
+  .principal_container {
+    width: 90%;
+    height: 70%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 4rem;
+  }
+
+  .loans_container {
+    min-width: 70%;
+    min-height: 80%;
+    background-color: rgba(255, 255, 255, 0.155);
+    z-index: 20;
+    backdrop-filter: blur(6px);
+    display: flex;
+    padding: 2rem;
+  }
+
+  .loans_detail {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.49);
+    color: whitesmoke;
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  .loans_information {
+    display: none;
+  }
+
+  ._loan {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 1rem;
+  }
+  ._loan h2 {
+    font-size: 22px;
+    margin-top: 1rem;
+  }
+
+  ._loan h3 {
+    font-size: 12px
+  }
+
+  .loan_title {
+    position: absolute;
+    background-color: white;
+    color: #00094e;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 10px;
+    padding: 8px;
+  }
+
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
@@ -1323,10 +1401,93 @@ h5 {
     position: absolute;
     z-index: 20;
   }
+
+  #loans {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../Assets/img/loans.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .decorative_loans {
+    min-width: 200%;
+    height: 70%;
+    top: 70vh;
+    transform: rotateZ(22deg);
+    position: absolute;
+    background-color: #0f172a;
+  
+  }
+
+  .principal_container {
+    width: 90%;
+    height: 70%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 4rem;
+  }
+
+  .loans_container {
+    min-width: 70%;
+    min-height: 80%;
+    background-color: rgba(255, 255, 255, 0.155);
+    z-index: 20;
+    backdrop-filter: blur(6px);
+    display: flex;
+    padding: 2rem;
+  }
+
+  .loans_detail {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.49);
+    color: whitesmoke;
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  .loans_information {
+    display: none;
+  }
+
+  ._loan {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 1rem;
+  }
+  ._loan h2 {
+    font-size: 28px;
+    margin-top: 1rem;
+  }
+
+  ._loan h3 {
+    font-size: 16px
+  }
+
+  .loan_title {
+    position: absolute;
+    background-color: white;
+    color: #00094e;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 12px;
+    padding: 10px;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1920px) {
-
   main {
     overflow: hidden;
   }
@@ -1531,7 +1692,7 @@ h5 {
     position: relative;
     overflow: hidden;
   }
-  .decorative_loans{
+  .decorative_loans {
     min-width: 200%;
     height: 70%;
     background-color: white;
@@ -1541,7 +1702,7 @@ h5 {
     left: -70vh;
     background-color: #0f172a;
   }
-  .principal_container{
+  .principal_container {
     width: 90%;
     height: 100%;
     z-index: 20;
@@ -1552,7 +1713,7 @@ h5 {
     margin: 0 auto;
   }
 
-  .loans_container{
+  .loans_container {
     min-width: 70%;
     min-height: 80%;
     background-color: rgba(255, 255, 255, 0.155);
@@ -1560,21 +1721,17 @@ h5 {
     backdrop-filter: blur(6px);
     display: flex;
     padding: 2rem;
-
   }
 
-  .loans_detail{
+  .loans_detail {
     width: 50%;
     background-color: rgba(0, 0, 0, 0.49);
     color: whitesmoke;
     display: flex;
     overflow-x: scroll;
-
   }
 
-
-
-  .loans_information{
+  .loans_information {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -1596,7 +1753,7 @@ h5 {
     letter-spacing: 3px;
     margin-top: 1rem;
   }
-  ._loan{
+  ._loan {
     min-width: 100%;
     min-height: 100%;
     display: flex;
@@ -1607,10 +1764,11 @@ h5 {
     letter-spacing: 4px;
     padding: 4rem;
   }
-  ._loan h2, h3{
+  ._loan h2,
+  h3 {
     text-align: start;
   }
-  .loan_title{
+  .loan_title {
     position: absolute;
     background-color: white;
     color: #00094e;
