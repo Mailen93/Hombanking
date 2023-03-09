@@ -19,7 +19,7 @@ import java.util.Optional;
 
 import static com.mindhub.homebanking.Utils.Utilities.GenerateNumber;
 import static java.util.stream.Collectors.toList;
-@RestController
+@RestController                     //CREAR NUEVO RECURSO PARA REGISTRAR UN CLIENTE
 @RequestMapping("/api")
 public class ClientController{
     @Autowired
@@ -62,7 +62,7 @@ public class ClientController{
         return new ResponseEntity<>("Welcome!!!",HttpStatus.CREATED);}
 
     @RequestMapping("/clients/current")
-    public ClientDTO getCurrentClient(Authentication authentication){
+    public ClientDTO getCurrentClient(Authentication authentication){   //OBJETO DONDE ESTAN LOS DATOS DEL CLENTE AUTENICADO
         String email = authentication.getName();
         return new ClientDTO(clientRepositories.findByEmail(email));}
 }

@@ -22,7 +22,7 @@ import java.util.List;
 import static com.mindhub.homebanking.Utils.Utilities.*;
 import static java.util.stream.Collectors.toList;
 
-@RestController
+@RestController   //CREAR METODO QUE NOS PERMITA CREAR TARJETAS
 @RequestMapping("/api")
 public class CardController {
     @Autowired

@@ -12,6 +12,10 @@ body {
   overflow-x: hidden;
 }
 
+body h2 {
+  margin: 0;
+}
+
 #banner {
   height: 100vh;
   position: relative;
@@ -52,7 +56,6 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: -3rem;
 }
 
 .welcomeMindBank h1 {
@@ -133,13 +136,6 @@ li {
   font-size: 24px;
 }
 
-.opacityAccounts {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #0f172a57;
-  z-index: 10;
-}
 
 .OpacityDiv {
   position: absolute;
@@ -147,15 +143,6 @@ li {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.321);
   z-index: 10;
-}
-
-.carousel-item {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  background-size: cover;
-  background-position: center;
 }
 
 .background {
@@ -234,39 +221,6 @@ footer p {
   backdrop-filter: blur(1px);
 }
 
-.carrouselContainer {
-  width: 100%;
-  height: 90vh;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-
-.carousel-item img {
-  object-fit: cover;
-  object-position: center;
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-caption {
-  position: absolute !important;
-  top: 450px !important;
-  left: 50% !important;
-  translate: -50% 0 !important;
-}
-
-.carousel_label p,
-h5 {
-  text-shadow: 4px 1px 4px black;
-}
-
-.carousel-item img {
-  max-height: 100% !important;
-}
-
 .w-100 {
   height: 100%;
   width: 100%;
@@ -343,7 +297,12 @@ h5 {
   display: inline-block;
   width: 320px;
   height: 190px;
-  background-color: #00094e;
+  background-color: linear-gradient(
+    130deg,
+    rgba(77, 76, 74, 0.858),
+    rgba(104, 103, 102, 0.801),
+    rgb(49, 49, 48)
+  ) !important;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1064,10 +1023,10 @@ h5 {
     position: absolute;
     z-index: 30;
   }
+
   .flex_accounts_container {
     display: flex;
     flex-direction: column;
-    position: relative;
     align-items: center;
   }
 
@@ -1305,7 +1264,6 @@ h5 {
     top: 60vh;
     left: -70vh;
     background-color: #0f172a;
-
   }
 
   .principal_container {
@@ -1358,7 +1316,7 @@ h5 {
   }
 
   ._loan h3 {
-    font-size: 12px
+    font-size: 12px;
   }
 
   .loan_title {
@@ -1370,7 +1328,6 @@ h5 {
     font-size: 10px;
     padding: 8px;
   }
-
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
@@ -1420,7 +1377,6 @@ h5 {
     transform: rotateZ(22deg);
     position: absolute;
     background-color: #0f172a;
-  
   }
 
   .principal_container {
@@ -1473,7 +1429,7 @@ h5 {
   }
 
   ._loan h3 {
-    font-size: 16px
+    font-size: 16px;
   }
 
   .loan_title {
@@ -1491,10 +1447,172 @@ h5 {
   main {
     overflow: hidden;
   }
+
+  /* 
+  ///////// CARDS ////////// */
+
+  #cardsSection {
+    width: 100%;
+    height: 100vh;
+    background-color: #0f172a;
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .navBarCards {
+    background-color: #00094e;
+    min-height: 6rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cardsLogoContainer {
+    color: whitesmoke;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1rem;
+  }
+
+  .cardsLogoContainer img {
+    width: 8rem;
+    height: 4rem;
+  }
+
+  .cardsLinksContainer {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .cardsLinksContainer a {
+    text-decoration: none;
+    color: whitesmoke;
+  }
+
+  .cards_principal_container {
+    width: 65%;
+    height: 95%;
+    background-color: rgba(245, 245, 245, 0.278);
+    backdrop-filter: blur(2px);
+    margin-left: 1rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .cards_banner {
+    background-image: url("../Assets/img/pexels-pixabay-259249.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .banner_opacity {
+    width: 100%;
+    height: 100%;
+    background-color: #0f172a93;
+  }
+  .banner_decoration {
+    min-width: 3000px;
+    height: 70%;
+    background-color: #111827;
+    transform: rotate(-15deg);
+    left:-24rem;
+    top:24rem;
+    position: absolute;
+    z-index: 2  ;
+  }
+
+ .deco_cards{
+  position: absolute;
+  max-width: 40rem;
+  bottom: 1rem;
+  right: 2rem;
+  z-index: 2;
+ }
+ .info_cards {
+  width: 50%;
+  height: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40vh;
+ }
+
+ .info_cards h2 {
+  font-size: 20px;
+  padding: 1rem;
+  color: whitesmoke;
+  width: 70%;
+  text-align: center;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+ .visa_btn{
+  color: whitesmoke;
+  letter-spacing: 10px;
+  width: 90%;
+  padding: 1rem 0;
+  margin-top: 1rem;
+  border: 2px solid #111827;
+ }
+
+
+.credit {
+  height: 90%;
+  width: 100%;
+  background-color: #00094e83;
+  color: whitesmoke;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.debit{
+  height: 90%;
+  width: 50%;
+  background-color: #0f172a63;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding: 8px;
+}
+
+.credit_container{
+  width: 90%;
+  height: 90%;
+  overflow-y: scroll;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+  /* 
+  /////////////////// ACCOUNTS ////////////////// */
+
   #accounts {
     width: 100vw;
     height: 100vh;
-    background-color: whitesmoke;
+ 
     position: relative;
     overflow: hidden;
     background-image: url("img/transaction.jpg");
@@ -1681,6 +1799,8 @@ h5 {
     background-color: #0f172a57;
     z-index: 10;
   }
+  /* 
+  ////////// LOANS //////////// */
 
   #loans {
     width: 100%;

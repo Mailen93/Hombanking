@@ -25,16 +25,17 @@
         <div class="Navbar">
           <div class="client">
             <img class="logo" src="../Assets/img/MindBank.png" alt="logo" />
-            <h2>Welcome {{clients.firstName}} {{clients.lastName}}</h2>
+            <h2>Hi {{clients.firstName}}, these are your cards</h2>
           </div>
 
           <div class="spans_container">
-            <span style="font-size: 1.5em; color: whitesmoke">
-              <i class="fa-solid fa-bell"></i>
-            </span>
-            <a href="/web/accounts.html" style="font-size: 1.5em; color: whitesmoke">
-              <i class="fa-solid fa-user"></i>
-            </a>
+            <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
+
+            <a href="#"><i class="fa-solid fa-bell"></i></a>
+
+            <a href="#"
+              ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
+            ></a>
           </div>
 
           <div id="hamburger" class="hamb" v-on:click="h">
@@ -45,223 +46,165 @@
         </div>
       </header>
 
-      <div id="navModal" :class="[isActive ? 'modalOpen' : 'modalClose']">
-        <div class="opciones" v-if="cards.length < 6">
-          <i class="fa-solid fa-arrows-rotate"></i>
-          <a href="./createcards.html">Add New card</a>
-        </div>
-        
-        <div class="opciones" v-if="accounts.length < 3">
-          <i class="fa-solid fa-plus"></i>
-          <a @click="createAccount" href="#accounts">Add account</a>
-        </div>
-        <div class="opciones">
-          <i class="fa-solid fa-receipt"></i>
-          <a href="/web/accounts.html">Accounts</a>
-        </div>
-        
-        <a href="#"
-        class="logOut"
-        @click="logOut"
-        ><i class="fa-solid fa-right-from-bracket"></i
-      ><span class="logOutMobile">Log out</span></a>
-      
-      </div>
+      <main>
+        <section id="cardsSection">
+          <div class="cards_banner">
+            <div class="banner_opacity"></div>
+          </div>
 
-      <main class="main_cards">
+          <div class="banner_decoration"></div>
+          <img class="deco_cards" src="../Assets/img/banking.png" alt="" />
 
-        
-        <div class="sticky">
-          <div class="barra_lateral">
-            <div class="">
-              <h4 class="pt-4">Operations</h4>
-              <div class="opciones">
-                <i class="fa-solid fa-money-bill-transfer"></i>
-                <a href="#">Transfers</a>
+          <div class="cards_principal_container">
+            <div class="credit">
+             
+              <div
+                class="credit_container"   
+              >
+              <div v-for="card of cards"
+              v-if="cards.length > 0" >
+                <div class="card" v-if="card.cardColor == 'GOLD'">
+                  <div class="card__front card__partGold">
+                    <img
+                      class="card__front-square card__square"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
+                    />
+                    <img
+                      class="card__front-logo card__logo"
+                      src="../Assets/img/removeb.png"
+                    />
+                    <p class="card_numer">{{card.number}}</p>
+                    <div class="card__space-75">
+                      <span class="card__label">{{card.cardHolder}}</span>
+                      <p class="card__info">{{card.cardType}}</p>
+                    </div>
+                    <div class="card__space-25">
+                      <span class="card__label">Expires</span>
+                      <p class="card__info">{{parseDate(card.thruDate)}}</p>
+                    </div>
+                  </div>
+
+                  <div class="card__back card__partGold">
+                    <div class="card__black-line"></div>
+                    <div class="card__back-content">
+                      <div class="card__secret">
+                        <p class="card__secret--last">{{card.cvv}}</p>
+                      </div>
+                      <img
+                        class="card__back-square card__square"
+                        src="https://static.vecteezy.com/system/resources/previews/011/843/770/original/credit-card-chip-free-vector.jpg"
+                      />
+                      <img
+                        class="card__back-logo card__logo"
+                        src="../Assets/img/removeb.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="card" v-if="card.cardColor == 'TITANIUM'">
+                  <div class="card__front card__partTitanium">
+                    <img
+                      class="card__front-square card__square"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
+                    />
+                    <img
+                      class="card__front-logo card__logo"
+                      src="../Assets/img/removeb.png"
+                    />
+                    <p class="card_numer">{{card.number}}</p>
+                    <div class="card__space-75">
+                      <span class="card__label">{{card.cardHolder}}</span>
+                      <p class="card__info">{{card.cardType}}</p>
+                    </div>
+                    <div class="card__space-25">
+                      <span class="card__label">Expires</span>
+                      <p class="card__info">{{parseDate(card.thruDate)}}</p>
+                    </div>
+                  </div>
+
+                  <div class="card__back card__partTitanium">
+                    <div class="card__black-line"></div>
+                    <div class="card__back-content">
+                      <div class="card__secret">
+                        <p class="card__secret--last">{{card.cvv}}</p>
+                      </div>
+                      <img
+                        class="card__back-square card__square"
+                        src="https://static.vecteezy.com/system/resources/previews/011/843/770/original/credit-card-chip-free-vector.jpg"
+                      />
+                      <img
+                        class="card__back-logo card__logo"
+                        src="../Assets/img/removeb.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="card" v-if="card.cardColor == 'SILVER'">
+                  <div class="card__front card__partSilver">
+                    <img
+                      class="card__front-square card__square"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
+                    />
+                    <img
+                      class="card__front-logo card__logo"
+                      src="../Assets/img/removeb.png"
+                    />
+                    <p class="card_numer">{{card.number}}</p>
+                    <div class="card__space-75">
+                      <span class="card__label">{{card.cardHolder}}</span>
+                      <p class="card__info">{{card.cardType}}</p>
+                    </div>
+                    <div class="card__space-25">
+                      <span class="card__label">Expires</span>
+                      <p class="card__info">{{parseDate(card.thruDate)}}</p>
+                    </div>
+                  </div>
+
+                  <div class="card__back card__partSilver">
+                    <div class="card__black-line"></div>
+                    <div class="card__back-content">
+                      <div class="card__secret">
+                        <p class="card__secret--last">{{card.cvv}}</p>
+                      </div>
+                      <img
+                        class="card__back-square card__square"
+                        src="https://static.vecteezy.com/system/resources/previews/011/843/770/original/credit-card-chip-free-vector.jpg"
+                      />
+                      <img
+                        class="card__back-logo card__logo"
+                        src="../Assets/img/removeb.png"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="opciones" v-if="cards.length < 6">
-                <i class="fa-solid fa-arrows-rotate"></i>
-                <a href="./createcards.html">Add New card</a>
+              <div v-else=>YOU DON'T HAVE ANY CARDS YET</div>
               </div>
-            </div>
-            <div>
-              <h4 class="pt-4">Products</h4>
-              <div class="opciones">
-                <i class="fa-solid fa-receipt"></i>
-                <a href="#">Services</a>
-              </div>
-              <div class="opciones">
-                <i class="fa-solid fa-sack-dollar"></i>
-                <a href="#">Investments</a>
-              </div>
-              <div class="opciones">
-                <i class="fa-solid fa-money-check-dollar"></i>
-                <a href="#loans">Loans</a>
-              </div>
-              <div class="opciones">
-                <i class="fa-solid fa-shield-halved"></i>
-                <a href="#">Insurances</a>
-              </div>
-            </div>
-            <div>
-              <h4 class="pt-4">Security</h4>
-              <div class="opciones">
-                <i class="fa-solid fa-fingerprint"></i>
-                <a href="#">Token MindBank</a>
-              </div>
-              <div class="opciones">
-                <i class="fa-solid fa-lock"></i>
-                <a href="#">Keys</a>
-              </div>
-            </div>
-            <div>
-              <h4 class="pt-4">Others</h4>
-              <div class="opciones">
-                <i class="fa-solid fa-coins"></i>
-                <a href="#">Expenses</a>
-              </div>
-              <div class="opciones">
-                <i class="fa-solid fa-sack-dollar"></i>
-                <a href="#">Benefits</a>
-              </div>
+             
             </div>
           </div>
-        </div>
-        <img
-          class="background"
-          src="../Assets/img/wwang_040522_102.jpg"
-          alt=""
-        />
 
-        <section id="cards">
-          <div class="cards_title">
-            <h1>Your Cards</h1>
-          </div>
-          <div class="generalContainer">
-            <div
-              class="cardsContainer"
-              v-for="card in cards"
-              v-if="cards.length > 0"
+          <div class="info_cards">
+            <h2>Benefits of our cards</h2>
+            <button
+              class="visa_btn"
+              style="background-color: rgb(168, 168, 168)"
             >
-              <div class="card" v-if="card.cardColor == 'GOLD'">
-                <div class="card__front card__partGold">
-                  <img
-                    class="card__front-square card__square"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
-                  />
-                  <img
-                    class="card__front-logo card__logo"
-                    src="../Assets/img/removeb.png"
-                  />
-                  <p class="card_numer">{{card.number}}</p>
-                  <div class="card__space-75">
-                    <span class="card__label">{{card.cardHolder}}</span>
-                    <p class="card__info">{{card.cardType}}</p>
-                  </div>
-                  <div class="card__space-25">
-                    <span class="card__label">Expires</span>
-                    <p class="card__info">{{parseDate(card.thruDate)}}</p>
-                  </div>
-                </div>
-
-                <div class="card__back card__partGold">
-                  <div class="card__black-line"></div>
-                  <div class="card__back-content">
-                    <div class="card__secret">
-                      <p class="card__secret--last">{{card.cvv}}</p>
-                    </div>
-                    <img
-                      class="card__back-square card__square"
-                      src="https://static.vecteezy.com/system/resources/previews/011/843/770/original/credit-card-chip-free-vector.jpg"
-                    />
-                    <img
-                      class="card__back-logo card__logo"
-                      src="../Assets/img/removeb.png"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="card" v-if="card.cardColor == 'TITANIUM'">
-                <div class="card__front card__partTitanium">
-                  <img
-                    class="card__front-square card__square"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
-                  />
-                  <img
-                    class="card__front-logo card__logo"
-                    src="../Assets/img/removeb.png"
-                  />
-                  <p class="card_numer">{{card.number}}</p>
-                  <div class="card__space-75">
-                    <span class="card__label">{{card.cardHolder}}</span>
-                    <p class="card__info">{{card.cardType}}</p>
-                  </div>
-                  <div class="card__space-25">
-                    <span class="card__label">Expires</span>
-                    <p class="card__info">{{parseDate(card.thruDate)}}</p>
-                  </div>
-                </div>
-
-                <div class="card__back card__partTitanium">
-                  <div class="card__black-line"></div>
-                  <div class="card__back-content">
-                    <div class="card__secret">
-                      <p class="card__secret--last">{{card.cvv}}</p>
-                    </div>
-                    <img
-                      class="card__back-square card__square"
-                      src="https://static.vecteezy.com/system/resources/previews/011/843/770/original/credit-card-chip-free-vector.jpg"
-                    />
-                    <img
-                      class="card__back-logo card__logo"
-                      src="../Assets/img/removeb.png"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="card" v-if="card.cardColor == 'SILVER'">
-                <div class="card__front card__part">
-                  <img
-                    class="card__front-square card__square"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
-                  />
-                  <img
-                    class="card__front-logo card__logo"
-                    src="../Assets/img/removeb.png"
-                  />
-                  <p class="card_numer">{{card.number}}</p>
-                  <div class="card__space-75">
-                    <span class="card__label">{{card.cardHolder}}</span>
-                    <p class="card__info">{{card.cardType}}</p>
-                  </div>
-                  <div class="card__space-25">
-                    <span class="card__label">Expires</span>
-                    <p class="card__info">{{parseDate(card.thruDate)}}</p>
-                  </div>
-                </div>
-
-                <div class="card__back card__part">
-                  <div class="card__black-line"></div>
-                  <div class="card__back-content">
-                    <div class="card__secret">
-                      <p class="card__secret--last">{{card.cvv}}</p>
-                    </div>
-                    <img
-                      class="card__back-square card__square"
-                      src="https://static.vecteezy.com/system/resources/previews/011/843/770/original/credit-card-chip-free-vector.jpg"
-                    />
-                    <img
-                      class="card__back-logo card__logo"
-                      src="../Assets/img/removeb.png"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div v-else><h2>You don't have any cards yet</h2></div>
+              VISA SILVER
+            </button>
+            <button
+              class="visa_btn"
+              style="background-color: rgb(197, 170, 22)"
+            >
+              VISA GOLD
+            </button>
+            <button class="visa_btn" style="background-color: black">
+              VISA TITANIUM
+            </button>
           </div>
         </section>
       </main>
+
     </div>
 
     <footer>
