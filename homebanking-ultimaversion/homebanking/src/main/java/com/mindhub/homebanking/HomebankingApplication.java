@@ -19,7 +19,7 @@ import static com.mindhub.homebanking.Utils.Utilities.returnCvvNumber;
 @SpringBootApplication  //Le indica a spring que será mi punto de partida, la clase principal de una app sprinboot y trae anotaciones de coniguracion
 public class HomebankingApplication {
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder; //CREAR WEB AUTHORIZATION
 
 	public static void main(String[] args) {SpringApplication.run(HomebankingApplication.class, args);}
 	@Bean  //Le digo a spring que instancie el metodo innit data para que sea usada ni bien se ejecute el main

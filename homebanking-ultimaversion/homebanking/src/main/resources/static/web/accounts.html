@@ -240,7 +240,7 @@
         </div> -->
 
         <section id="loans">
-          <div class="decorative_loans"></div>
+          
           <div class="accounts_nav">
             <h2>Your loans</h2>
             <div class="hamb_accounts">
@@ -260,12 +260,13 @@
           </div>
           <div class="principal_container">
             <div class="loans_container">
+              <h2 class="loan_title">Check out your loans details:</h2>
               <div class="loans_detail">
                 <div v-for="loan of loans" class="_loan">
-                  <h2 style="font-size: 56px;">Loan {{loan.name}}</h2>
+                  <h2>Loan {{loan.name}}</h2>
                   <h3>Total of payments: {{loan.payments}}</h3>
                   <h2>Final amount: ${{loan.amount}}</h2>
-                  <h2>This is the loan {{loan.id}} of {{loans.length}}</h2>
+                  <h3>This is the loan {{loan.id}} of {{loans.length}}</h2>
                 </div>
               </div>
               <div class="loans_information">
@@ -288,7 +289,7 @@
               </div>
             </div>
           </div>
-          <div class="opacityAccounts"></div>
+          <div class="decorative_loans"></div>
         </section>
       </main>
 
@@ -340,7 +341,7 @@
                       ${{trans.amount}}
                     </td>
                     <td class="cell">{{trans.description}}</td>
-                    <td class="cell">{{trans.date}}</td>
+                    <td class="cell">{{trans.date.slice(0, 16)}}</td>
                   </tr>
                 </tbody>
               </table>

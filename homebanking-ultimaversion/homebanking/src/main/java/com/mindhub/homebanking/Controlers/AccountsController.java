@@ -18,7 +18,7 @@ import java.util.List;
 import static com.mindhub.homebanking.Utils.Utilities.GenerateNumber;
 import static java.util.stream.Collectors.toList;
 
-    @RestController
+    @RestController   //CREAR UN NUEVO RECURSO PARA CREAR CUENTAS
     @RequestMapping("/api")
     public class AccountsController {
 
