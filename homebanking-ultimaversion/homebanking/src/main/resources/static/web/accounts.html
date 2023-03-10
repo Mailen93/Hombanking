@@ -24,12 +24,12 @@
       <header>
         <div class="Navbar">
           <div class="client">
-            <img class="logo" src="../Assets/img/MindBank.png" alt="logo" />
+            <img class="logo" src="../Assets/img/removeb.png" alt="logo" />
             <h2>Welcome {{clients.firstName}} {{clients.lastName}}</h2>
           </div>
 
           <div class="spans_container">
-            <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
+            <a href="cards.html"><i class="fa-solid fa-credit-card"></i><h5>Your Cards</h5></a>
 
             <a href="#"><i class="fa-solid fa-bell"></i></a>
 
@@ -131,6 +131,7 @@
         <section id="accounts">
           <div class="flex_accounts_container">
             <div class="accounts_nav">
+              <img class= "logo" src="../Assets/img/removeb.png" alt="">
               <h2>Your accounts</h2>
               <div class="hamb_accounts">
                 <div id="hamburger" class="hamb" v-on:click="h">
@@ -141,7 +142,6 @@
               </div>
               <div class="links_container_accounts">
                 <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
-                <a href="#"><i class="fa-solid fa-bell"></i></a>
                 <a href="#"
                   ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
                 ></a>
@@ -242,6 +242,7 @@
         <section id="loans">
           
           <div class="accounts_nav">
+            <img class="logo" src="../Assets/img/removeb.png" alt="">
             <h2>Your loans</h2>
             <div class="hamb_accounts">
               <div id="hamburger" class="hamb" v-on:click="h">
