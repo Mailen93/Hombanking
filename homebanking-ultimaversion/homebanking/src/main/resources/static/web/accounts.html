@@ -82,23 +82,44 @@
             <div class="welcomeMindBank">
               <h1>WELCOME TO MINDBANK</h1>
               <p>We came to make your goals posible</p>
+              <div class="addAccount" v-if="accounts.length < 3">
+                <i class="fa-solid fa-plus" style="color: #1e293b"></i>
+                <a
+                  @click="createAccount"
+                  style="text-decoration: none; color: #1e293b"
+                  >Add account</a
+                >
+              </div>
             </div>
-            <div class="questions">
-              <h2>Why choose us?</h2>
-              <ul>
-                <li>
-                  Do you need a credit card to make that special gift possible?
-                </li>
-                <li>Do you want to get a brand new house?</li>
-                <li>
-                  With us your family is safe, we have the best insurance
-                  policies
-                </li>
-                <li>
-                  Do you need a credit card to make that special gift possible?
-                </li>
-              </ul>
+            <div class="accounts_container2">
+              <div class="account_detail" v-for="account of accounts">
+                <div style="display: flex; flex-direction: column; gap: 1rem">
+                  <h3 style="font-size: 16px">
+                    Date: <span>{{account.creationDate.slice(0,7)}}</span>
+                  </h3>
+                  <h2
+                    style="
+                      background-color: #00094e;
+                      padding: 10px;
+                      text-align: center;
+                      text-transform: uppercase;
+                      letter-spacing: 2px;
+                      font-size: 18px;
+                    "
+                  >
+                    Account N°: <span>{{account.number}}</span>
+                  </h2>
+                </div>
+                <div class="dinero_disponible">
+                  <h2>Dinero disponible:</h2>
+                  <span>${{account.balance}}</span>
+                </div>
+                <div class="toTransactionsButton">
+                  <a :href='"account.html?id=" + account.id'>transactions</a>
+                </div>
+              </div>
             </div>
+           
           </div>
           <img
             src="../Assets/img/pexels-croberin-photography-1422408.jpg"
@@ -110,23 +131,6 @@
             ><i class="fa-solid fa-chevron-down"></i
           ></a>
         </section>
-
-        <!-- CONTENIDO SECTION ACCOUNTS -->
-        <!-- <div class="welcome_accounts">
-          <h2>Welcome to your accounts</h2>
-        </div>
-        <div class="account_container">
-          <div class="tarjetas" v-for="account of accounts">
-            <div class="VIN_container">
-              <h2>Accounts N°: <span>{{account.number}}</span></h2>
-              <h3>Date: {{parseDate(account.creationDate)}}</h3>
-            </div>
-            <p class="dinero">Dinero disponible: ${{account.balance}}</p>
-            <div class="boton">
-              <a :href='"account.html?id=" + account.id'>View transactions</a>
-            </div>
-          </div>
-        </div> -->
 
         <section id="accounts">
           <div class="flex_accounts_container">
@@ -180,43 +184,23 @@
             </div>
             <!-- DIV DECORATIVO -->
             <div class="decorative"></div>
-            <div class="accounts_container">
-              <div class="account_detail" v-for="account of accounts">
-                <div style="display: flex; flex-direction: column; gap: 1rem">
-                  <h3 style="font-size: 16px">
-                    Date: <span>{{account.creationDate.slice(0,7)}}</span>
-                  </h3>
-                  <h2
-                    style="
-                      background-color: #00094e;
-                      padding: 10px;
-                      text-align: center;
-                      text-transform: uppercase;
-                      letter-spacing: 2px;
-                      font-size: 18px;
-                    "
-                  >
-                    Account N°: <span>{{account.number}}</span>
-                  </h2>
-                </div>
-                <div class="dinero_disponible">
-                  <h2>Dinero disponible:</h2>
-                  <span>${{account.balance}}</span>
-                </div>
-                <div class="toTransactionsButton">
-                  <a :href='"account.html?id=" + account.id'>transactions</a>
-                </div>
-              </div>
-            </div>
-            <div class="addAccount" v-if="accounts.length < 3">
-              <i class="fa-solid fa-plus" style="color: #1e293b"></i>
-              <a
-                @click="createAccount"
-                href="#accounts"
-                style="text-decoration: none; color: #1e293b"
-                >Add account</a
-              >
-            </div>
+             <div class="questions">
+              <h2>Why choose us?</h2>
+              <ul>
+                <li>
+                  Do you need a credit card to make that special gift possible?
+                </li>
+                <li>Do you want to get a brand new house?</li>
+                <li>
+                  With us your family is safe, we have the best insurance
+                  policies
+                </li>
+                <li>
+                  Do you need a credit card to make that special gift possible?
+                </li>
+              </ul>
+            </div> 
+            
             <a class="down_arrow_to_loans" href="#loans"
               ><i class="fa-solid fa-chevron-down"></i
             ></a>
@@ -225,19 +209,7 @@
           <div class="opacityAccounts"></div>
           <img class="deco" src="../Assets/img/digital.png" alt="" />
         </section>
-        <!-- 
-        <div class="loans" v-if="loans.length > 0">
-          <div class="account_container">
-            <div class="tarjetas" v-for="loan of loans">
-              <div class="LOAN_container">
-                <h2>Loan: {{loan.name}} ||</h2>
-                <h2>Payments: {{loan.payments}}</h2>
-              </div>
-              <p class="dinero">Amount: ${{loan.amount}}</p>
-              <h4 class="totalLoans">Total Loans: {{loans.length}}</h4>
-            </div>
-          </div>
-        </div> -->
+    
 
         <section id="loans">
           
