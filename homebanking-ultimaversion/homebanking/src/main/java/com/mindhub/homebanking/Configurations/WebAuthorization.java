@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-
                 .antMatchers("/web/index.html").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
@@ -34,14 +33,9 @@ import javax.servlet.http.HttpSession;
                 .antMatchers("/api/client/current").hasAuthority("CLIENT")
                 .antMatchers("/web/**").hasAuthority("CLIENT");
 
-
-
         http.formLogin()
-
                 .usernameParameter("email")
-
                 .passwordParameter("password")
-
                 .loginPage("/api/login");
 
 
@@ -58,7 +52,7 @@ import javax.servlet.http.HttpSession;
 
         // if user is not authenticated, just send an authentication failure response
 
-        http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
+//        http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
         // if login is successful, just clear the flags asking for authentication
 

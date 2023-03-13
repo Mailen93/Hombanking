@@ -37,7 +37,8 @@ public class ClientController{
     public Optional<Object> getClient(@PathVariable Long id){
         return clientRepositories.findById(id).map(ClientDTO::new);}
 
-    @RequestMapping(path = "/clients", method = RequestMethod.POST)
+//    @RequestMapping(path = "/clients", method = RequestMethod.POST)
+    @PostMapping("/clients")
     public ResponseEntity<Object> register(
             @RequestParam String first, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password) {

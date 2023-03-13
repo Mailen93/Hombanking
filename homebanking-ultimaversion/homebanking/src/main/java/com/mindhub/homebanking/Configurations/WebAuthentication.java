@@ -30,7 +30,7 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {  
 
             if (client != null) {
 
-                if (client.getEmail().equals("admin@gmail.com")) {
+                if (client.getEmail().contains("admin")) {
 
                     return new User(client.getEmail(), client.getPassword(),
 
