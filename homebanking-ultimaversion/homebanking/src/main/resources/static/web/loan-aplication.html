@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Assets/loan-aplication.css" />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Loan Aplication</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <nav class="navbar">
+          <div class="logo_name">
+            <img src="../Assets/img/removeb.png" alt="" />
+            <h2>{{client.firstName}} {{client.lastName}} apply to your Loan</h2>
+          </div>
+          <div class="links">
+            <a href="/accounts.html"
+              ><i class="fa-solid fa-user"></i>
+              <h5>Your Accounts</h5></a
+            >
+            <a href="cards.html"
+              ><i class="fa-solid fa-credit-card"></i>
+              <h5>Your Cards</h5></a
+            >
+            <a href="#"
+              ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i>
+              <h5>Log Out</h5></a
+            >
+            <a href="#"></a>
+          </div>
+          <div class="hamburger" @click="hamb">
+            <div id="hTop"></div>
+            <div id="hMid"></div>
+            <div id="hBot"></div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        
+      </main>
+
+      <footer>
+
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../Assets/javascript/loans-aplication.js"></script>
+    <script
+      src="https://kit.fontawesome.com/a9a67006ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

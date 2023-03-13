@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    min-height: 100px;
+    background-color: #0b0f14;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logo_name {
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.logo_name img {
+    width: 5rem;
+}
+
+.links{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 20px;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.hamburger{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-right: 1rem;
+    display: none;
+}
+
+.hamburger div{
+    background-color: whitesmoke;
+    height: 3px;
+    width: 32px;
+}
+
+.hTopOpen {
+    transform: rotateZ(45deg) translateY(6px);
+}
+.hTopClose {
+
+}
+
+.hMidOpen {
+    display: none;
+}
+.hMidClose {
+    
+}
+.hBotOpen {
+    transform: rotateZ(-45deg) translateY(-6px);
+}
+.hBotClose {
+    
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .logo_name h2{
+        display: none;
+    }
+    .links {
+        display: none;
+    }
+
+    .hamburger{
+        display: flex;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .links{
+        display: none;
+    }
+
+    .hamburger{
+        display: flex;
+    }
+}
+
+
