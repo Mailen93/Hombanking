@@ -30,12 +30,8 @@
 
           <div class="spans_container">
             <a href="cards.html"><i class="fa-solid fa-credit-card"></i><h5>Your Cards</h5></a>
-
-            <a href="#"><i class="fa-solid fa-bell"></i></a>
-
             <a href="#"
-              ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
-            ></a>
+              ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i><h5>Log Out</h5></a>
           </div>
 
           <!-- */HAMBURGUESA*/ -->
@@ -134,21 +130,24 @@
 
         <section id="accounts">
           <div class="flex_accounts_container">
-            <div class="accounts_nav">
-              <img class= "logo" src="../Assets/img/removeb.png" alt="">
-              <h2>Your accounts</h2>
-              <div class="hamb_accounts">
-                <div id="hamburger" class="hamb" v-on:click="h">
-                  <div class="htopAcc"></div>
-                  <div class="hmidAcc"></div>
-                  <div class="hbotAcc"></div>
-                </div>
+            <div class="Navbar">
+              <div class="client">
+                <img class="logo" src="../Assets/img/removeb.png" alt="logo" />
+                <h2>Welcome {{clients.firstName}} {{clients.lastName}}</h2>
               </div>
-              <div class="links_container_accounts">
-                <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
+    
+              <div class="spans_container">
+                <a href="cards.html"><i class="fa-solid fa-credit-card"></i><h5>Your Cards</h5></a>
                 <a href="#"
-                  ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
-                ></a>
+                  ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i><h5>Log Out</h5></a>
+              </div>
+    
+              <!-- */HAMBURGUESA*/ -->
+    
+              <div id="hamburger" class="hamb" v-on:click="h">
+                <div class="htop"></div>
+                <div class="hmid"></div>
+                <div class="hbot"></div>
               </div>
             </div>
             <!-- MODAL  -->
@@ -213,33 +212,40 @@
 
         <section id="loans">
           
-          <div class="accounts_nav">
-            <img class="logo" src="../Assets/img/removeb.png" alt="">
-            <h2>Your loans</h2>
-            <div class="hamb_accounts">
-              <div id="hamburger" class="hamb" v-on:click="h">
-                <div class="htopAcc"></div>
-                <div class="hmidAcc"></div>
-                <div class="hbotAcc"></div>
-              </div>
+          <div class="Navbar">
+            <div class="client">
+              <img class="logo" src="../Assets/img/removeb.png" alt="logo" />
+              <h2>Welcome {{clients.firstName}} {{clients.lastName}}</h2>
             </div>
-            <div class="links_container_accounts">
-              <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
-              <a href="#"><i class="fa-solid fa-bell"></i></a>
+  
+            <div class="spans_container">
+              <a href="cards.html"><i class="fa-solid fa-credit-card"></i><h5>Your Cards</h5></a>
               <a href="#"
-                ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
-              ></a>
+                ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i><h5>Log Out</h5></a>
+            </div>
+  
+            <!-- */HAMBURGUESA*/ -->
+  
+            <div id="hamburger" class="hamb" v-on:click="h">
+              <div class="htop"></div>
+              <div class="hmid"></div>
+              <div class="hbot"></div>
             </div>
           </div>
           <div class="principal_container">
             <div class="loans_container">
               <h2 class="loan_title">Check out your loans details:</h2>
               <div class="loans_detail">
-                <div v-for="loan of loans" class="_loan">
+                <div v-for="loan of loans" class="_loan" v-if="loans.length > 0">
                   <h2>Loan {{loan.name}}</h2>
                   <h3>Total of payments: {{loan.payments}}</h3>
                   <h2>Final amount: ${{loan.amount}}</h2>
                   <h3>This is the loan {{loan.id}} of {{loans.length}}</h2>
+                </div>
+                <div v-else="" class="_loan">
+                  <h2>
+                    You don't have any loan yet
+                  </h2>
                 </div>
               </div>
               <div class="loans_information">

@@ -711,6 +711,7 @@ footer p {
   background-color: #008be4;
 }
 
+
 .accounts_section {
   display: flex;
   flex-direction: column;
@@ -876,6 +877,46 @@ footer p {
   flex-direction: column;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 ///// ACA ESTAN LOS MEDIA QUERY //// */
 
@@ -967,13 +1008,13 @@ footer p {
     width: 100%;
     min-height: 1.5rem;
     background-color: #0b0f14;
-    color: white;
+    color: whitesmoke;
     text-transform: uppercase;
     letter-spacing: 4px;
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     overflow-y: hidden;
     position: block;
     z-index: 30;
@@ -1086,7 +1127,7 @@ footer p {
   }
 
   .addAccount {
-    background-color: white;
+    background-color: whitesmoke;
     font-size: 12px;
     text-transform: uppercase;
     padding: 8px;
@@ -1637,25 +1678,29 @@ footer p {
     width: 100%;
     min-height: 1.5rem;
     background-color: #0b0f14;
-    color: white;
+    color: whitesmoke;
     text-transform: uppercase;
     letter-spacing: 4px;
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     overflow-y: hidden;
     position: block;
     z-index: 30;
   }
+ 
 
   .addAccount {
-    background-color: white;
+    background-color: whitesmoke;
     padding: 1rem;
-    font-size: 25px;
+    font-size: 20px;
     text-transform: uppercase;
     padding-left: 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
   }
+
   .links_container_accounts {
     width: 20%;
     display: flex;
