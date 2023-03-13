@@ -3,6 +3,40 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#loanAply{
+    width: 100%;
+    height: 100vh;
+    background-color: aliceblue;
+    display: flex;
+}
+
+.loanFormContainer {
+    width: 50%;
+    height: 100%;
+    background-image: url("../Assets/img/loan2.jpg");
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loanForm{
+    width: 80%;
+    height: 80%;
+    background-color: #0b0f1455;
+    backdrop-filter: blur(4px);
+}
+
+.loanInfo {
+    width: 50%;
+    height: 100%;
+    background-color: #0b0f14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .navbar {
     width: 100%;
     min-height: 100px;

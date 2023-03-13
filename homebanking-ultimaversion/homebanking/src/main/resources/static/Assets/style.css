@@ -70,6 +70,14 @@ body h2 {
   margin: 0;
 }
 
+.botonNormal{
+  color: whitesmoke;
+  text-decoration:overline;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
 .questions {
   background-color: rgba(0, 0, 0, 0.401);
   backdrop-filter: blur(6px);
@@ -175,7 +183,7 @@ footer {
   display: flex;
   min-height: 10vh;
   width: 100vw;
-  background-color: #00094e;
+  background-color: #0b0f14;
   align-items: center;
 }
 
@@ -614,8 +622,7 @@ footer p {
 }
 
 .logo {
-  width: 4rem;
-  height: 2rem;
+  width: 6rem;
 }
 
 .spans_container {
@@ -632,6 +639,7 @@ footer p {
   display: flex;
   gap: 1rem;
   transition: all 0.4s ease;
+  align-items: center;
 }
 
 .spans_container a:hover {
@@ -1694,7 +1702,7 @@ footer p {
   .addAccount {
     background-color: whitesmoke;
     padding: 1rem;
-    font-size: 20px;
+    font-size: 18px;
     text-transform: uppercase;
     padding-left: 1rem;
     border-radius: .5rem;

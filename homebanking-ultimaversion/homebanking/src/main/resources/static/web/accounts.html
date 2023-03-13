@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <div id="app">
+    <div id="app" style="scroll-snap-type: y mandatory; overflow: auto;">
       <header>
         <div class="Navbar">
           <div class="client">
@@ -30,8 +30,8 @@
 
           <div class="spans_container">
             <a href="cards.html"><i class="fa-solid fa-credit-card"></i><h5>Your Cards</h5></a>
-            <a href="#"
-              ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i><h5>Log Out</h5></a>
+            <a href="#"  @click="logOut"
+              ><i class="fa-solid fa-right-from-bracket"></i><h5>Log Out</h5></a>
           </div>
 
           <!-- */HAMBURGUESA*/ -->
@@ -72,8 +72,8 @@
         >
       </div>
 
-      <main class="main_accounts">
-        <section id="banner">
+      <main class="main_accounts" >
+        <section id="banner" style="scroll-snap-align: center;">
           <div class="welcome">
             <div class="welcomeMindBank">
               <h1>WELCOME TO MINDBANK</h1>
@@ -86,6 +86,14 @@
                   >Add account</a
                 >
               </div>
+              <button
+                  type="button"
+                  class="botonNormal"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                 Last Transactions
+              </button>
             </div>
             <div class="accounts_container2">
               <div class="account_detail" v-for="account of accounts">
@@ -128,7 +136,7 @@
           ></a>
         </section>
 
-        <section id="accounts">
+        <section id="accounts" style="scroll-snap-align: center;">
           <div class="flex_accounts_container">
             <div class="Navbar">
               <div class="client">
@@ -150,6 +158,73 @@
                 <div class="hbot"></div>
               </div>
             </div>
+
+     <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr class="table_container">
+                  <th class="cell cellMob">Number</th>
+                  <th class="cell">Type</th>
+                  <th class="cell">Amount</th>
+                  <th class="cell">Description</th>
+                  <th class="cell">Date</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr
+                  class="table_container"
+                  v-for="trans of allDateTransactions"
+                  v-if="allDateTransactions"
+                >
+                  <td class="cell cellMob">{{trans.id}}</td>
+                  <td class="cell">{{trans.type}}</td>
+                  <td
+                    class="cell text-danger fw-bolder"
+                    v-if="trans.type =='DEBIT'"
+                  >
+                    ${{trans.amount}}
+                  </td>
+                  <td class="cell text-success fw-bolder" v-else>
+                    ${{trans.amount}}
+                  </td>
+                  <td class="cell">{{trans.description}}</td>
+                  <td class="cell">{{trans.date}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
             <!-- MODAL  -->
             <div
               id="navModalAcc"
@@ -210,7 +285,7 @@
         </section>
     
 
-        <section id="loans">
+        <section id="loans" style="scroll-snap-align: center;">
           
           <div class="Navbar">
             <div class="client">
@@ -387,6 +462,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       AOS.init();
     </script>
