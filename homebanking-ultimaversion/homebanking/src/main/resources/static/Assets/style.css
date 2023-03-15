@@ -109,6 +109,23 @@ li {
 .questions li {
   margin-top: 1rem;
 }
+.back_home{
+  display: flex;
+ background-color: #0f172a;
+ color: whitesmoke;
+ padding: .5rem;
+ width: 100%;
+ letter-spacing: 4px;
+ box-shadow: 4px 3px 3px 0px black;
+ text-decoration: none;
+ align-items: center;
+ justify-content: center;
+}
+
+.back_home i,a{
+  color: whitesmoke;
+  transition: all .8s ease;
+}
 
 .down_arrow {
   position: absolute;
@@ -642,6 +659,10 @@ footer p {
   align-items: center;
 }
 
+.spans_container a h5 {
+  margin:0
+}
+
 .spans_container a:hover {
   color: #008be4;
 }
@@ -719,6 +740,10 @@ footer p {
   background-color: #008be4;
 }
 
+.back_home:hover i, a{
+  color: #008be4;
+}
+
 
 .accounts_section {
   display: flex;
@@ -770,7 +795,7 @@ footer p {
   display: flex;
   color: whitesmoke;
   width: 20%;
-  justify-content: space-around;
+  justify-content:space-around;
   align-items: center;
   padding-left: 2rem;
 }
@@ -778,10 +803,12 @@ footer p {
 .derechos {
   display: flex;
   width: 100%;
-  justify-content: right;
+  justify-content:center;
   padding-right: 2rem;
-  align-items: center;
+  align-items:end;
   color: whitesmoke;
+  flex-direction: column;
+  margin-right: 2rem;
 }
 
 .table_container {
@@ -1133,7 +1160,7 @@ footer p {
     font-size: 32px;
     top: 60vh;
   }
-
+nav
   .addAccount {
     background-color: whitesmoke;
     font-size: 12px;

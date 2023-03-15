@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class TransactionDTO {
-
     private Long id;
     private TransactionType type;
     private Double amount;
@@ -15,7 +14,6 @@ public class TransactionDTO {
     private LocalDateTime date;
 
     public TransactionDTO(){}
-
     public TransactionDTO(Transaction transaction) {
         this.id = transaction.getId();
         this.type = transaction.getType();
@@ -27,19 +25,15 @@ public class TransactionDTO {
     public Long getId() {
         return id;
     }
-
     public TransactionType getType() {
         return type;
     }
-
     public Double getAmount() {
         return amount;
     }
-
     public String getDescription() {
         return description;
     }
-
     public LocalDateTime getDate() {
         return date;
     }

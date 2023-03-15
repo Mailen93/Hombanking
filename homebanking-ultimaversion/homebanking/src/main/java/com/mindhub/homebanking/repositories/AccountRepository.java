@@ -11,5 +11,4 @@ import org.springframework.web.bind.annotation.RestController;
 public interface AccountRepository extends JpaRepository<Account, Long>{
     Boolean existsByNumber(String number);
     Account findByNumber(String number);
-
 }

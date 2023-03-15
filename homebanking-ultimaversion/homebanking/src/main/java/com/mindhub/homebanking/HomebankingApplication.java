@@ -18,11 +18,11 @@ import static com.mindhub.homebanking.Utils.Utilities.returnCvvNumber;
 
 @SpringBootApplication  //Le indica a spring que será mi punto de partida, la clase principal de una app sprinboot y trae anotaciones de coniguracion
 public class HomebankingApplication {
-	@Autowired
-	private PasswordEncoder passwordEncoder; //CREAR WEB AUTHORIZATION
+//	@Autowired
+//	private PasswordEncoder passwordEncoder; //CREAR WEB AUTHORIZATION
 
 	public static void main(String[] args) {SpringApplication.run(HomebankingApplication.class, args);}
-	@Bean  //Le digo a spring que instancie el metodo innit data para que sea usada ni bien se ejecute el main
+/*	@Bean  //Le digo a spring que instancie el metodo innit data para que sea usada ni bien se ejecute el main
 	public CommandLineRunner initData(ClientRepositories Clientrepositories, AccountRepository AccountR, TransactionRepository TransacR, LoanRepository LoanR, ClientLoanRepository CloanR, CardRepository CardR) {
 		return (args) -> {
 //comandlinerunner interfaz que me permite ejecutar una tarea luego que la app se haya inicializado. init Data: metodo que implementa la interfaz y crea los objetos necesarios para inicializar la app (clientes, cuentas, trans, prestamos)
@@ -48,9 +48,8 @@ public class HomebankingApplication {
 			Loan hipotecario = new Loan("Hipotecario", 500000, List.of(12,24,36,48,60));
 			Loan automotriz = new Loan("Automotriz", 300000, List.of(6,12,24,36));
 			Loan personal = new Loan("Personal", 100000, List.of(6,12,24));
-			Card card1 = new Card(randomNumberCard(CardR),returnCvvNumber(),CardType.CREDIT, CardColor.TITANIUM, LocalDate.now(),LocalDate.now().plusYears(5),client1);
-			Card card2 = new Card(randomNumberCard(CardR),returnCvvNumber(),CardType.DEBIT, CardColor.GOLD, LocalDate.now(),LocalDate.now().plusYears(5),client1);
-
+			Card card1 = new Card(randomNumberCard(CardR),returnCvvNumber(),CardType.CREDIT, CardColor.TITANIUM, LocalDate.now(),LocalDate.now().plusYears(5),client1,true);
+			Card card2 = new Card(randomNumberCard(CardR),returnCvvNumber(),CardType.DEBIT, CardColor.GOLD, LocalDate.now(),LocalDate.now().plusYears(5),client1,true);
 
 			ClientLoan clientLoan1 = new ClientLoan(400000.0, 60);  //creo el objeto
 			ClientLoan clientLoan2 = new ClientLoan(50000.0, 12);
@@ -79,12 +78,10 @@ public class HomebankingApplication {
 			client1.addCard(card1);
 			client1.addCard(card2);
 
-
 			client2.addClientLoan(clientLoan3);
 			personal.addClientLoan(clientLoan3);
 			client2.addClientLoan(clientLoan4);
 			automotriz.addClientLoan(clientLoan4);
-			
 
 			Clientrepositories.save(client1);
 			Clientrepositories.save(client2);
@@ -112,5 +109,5 @@ public class HomebankingApplication {
 			CardR.save(card2);
 
 		};
-	}
+	}*/
 }

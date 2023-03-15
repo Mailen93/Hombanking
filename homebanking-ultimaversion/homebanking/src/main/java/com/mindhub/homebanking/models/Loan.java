@@ -12,10 +12,8 @@ import java.util.Set;
 
 import static java.util.stream.Collectors.toList;
 
-
 @Entity
 public class Loan {
-
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator( name = "native", strategy = "native")
@@ -39,7 +37,6 @@ public class Loan {
             clientLoan1.setLoan(this);
             clientLoans.add(clientLoan1);}
 
-
     public Long getId(){
         return id;
     }
@@ -61,10 +58,8 @@ public class Loan {
     public List<Integer> getPayments() {
         return payments;
     }
-    public List<Client> getClients() {
-        return clientLoans.stream().map(clientLoan -> clientLoan.getClient()).collect(toList());}
+    public List<Client> getClients() {return clientLoans.stream().map(clientLoan -> clientLoan.getClient()).collect(toList());}
     public void setPayments(List<Integer> payments) {
         this.payments = payments;
     }
-
 }

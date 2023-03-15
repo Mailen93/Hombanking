@@ -24,8 +24,6 @@ import static java.util.stream.Collectors.toList;
 @RestController
 @RequestMapping("/api")
 public class LoanController {
-
-
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -37,10 +35,10 @@ public class LoanController {
     @Autowired
     private TransactionRepository transactionRepository;
 
-
     @RequestMapping("/loans")
     public List<LoanDTO> getLoans() {
         return loanRepository.findAll().stream().map(LoanDTO::new).collect(toList());}
+
     @Transactional
     @RequestMapping(path = ("/loans"), method = RequestMethod.POST)
     public ResponseEntity<Object> newLoan(Authentication authentication, @RequestBody LoanApplicationDTO loanApplicationDTO){

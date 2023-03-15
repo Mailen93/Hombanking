@@ -51,7 +51,6 @@ public class ClientController{
             return new ResponseEntity<>("Missing Email", HttpStatus.BAD_REQUEST);}
         else if (password.isEmpty()){
             return new ResponseEntity<>("Missing Password", HttpStatus.BAD_REQUEST);}
-
         if (clientRepositories.findByEmail(email) !=  null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.BAD_REQUEST);}
 

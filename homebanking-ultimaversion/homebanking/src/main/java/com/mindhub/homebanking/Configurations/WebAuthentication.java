@@ -16,39 +16,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {             //OBJ Q USA SPRING SEC PARA SABER COMO BUSCARA LOS DETALLES DE USUARIO
-
     @Autowired
     private ClientRepositories clientRepositories;
-
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception { //CAMBIAR POR UNO NUEVO QUE IMPLEMENTE LA BUSQUEDA DE LOS DETALLES DE USUARIO A TRAVES DEL REPO CLIENT
 
         auth.userDetailsService(inputName -> {
-
             Client client = clientRepositories.findByEmail(inputName);
 
-
             if (client != null) {
+                if (client.getEmail().contains("admin")) {return new User(client.getEmail(), client.getPassword(),
+                        AuthorityUtils.createAuthorityList("ADMIN"));
 
-                if (client.getEmail().contains("admin")) {
+                } else {return new User(client.getEmail(), client.getPassword(),
+                        AuthorityUtils.createAuthorityList("CLIENT"));}
 
-                    return new User(client.getEmail(), client.getPassword(),
-
-                            AuthorityUtils.createAuthorityList("ADMIN"));
-                } else {
-                    return new User(client.getEmail(), client.getPassword(),
-
-                            AuthorityUtils.createAuthorityList("CLIENT"));
-                }
-
-            } else {
-
-                throw new UsernameNotFoundException("Unknown user: " + inputName);
-
-            }
-
+            } else {throw new UsernameNotFoundException("Unknown user: " + inputName);}
         });
-
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
