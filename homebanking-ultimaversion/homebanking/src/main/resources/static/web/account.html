@@ -24,78 +24,36 @@
       <header>
         <div class="Navbar">
           <div class="client">
-            <img class="logo" src="../Assets/img/MindBank.png" alt="logo" />
+            <img class="logo" src="../Assets/img/removeb.png" alt="logo" />
+            <h2>Hi {{client.firstName}}! these are your transactions</h2>
           </div>
 
           <div class="spans_container">
-            <span style="font-size: 1.5em; color: whitesmoke">
-              <i class="fa-solid fa-credit-card"></i>
-            </span>
-            <span style="font-size: 1.5em; color: whitesmoke">
-              <i class="fa-solid fa-bell"></i>
-            </span>
-            <a href="/web/accounts.html" style="font-size: 1.5em; color: whitesmoke">
-              <i class="fa-solid fa-user"></i>
-            </a>
+            <a href="accounts.html"><i class="fa-solid fa-user"></i>
+              <h5>Your Accounts</h5></a>
+            <a href="cards.html"
+              ><i class="fa-solid fa-credit-card"></i>
+              <h5>Your Cards</h5></a>
+            <a href="#" @click="logOut"
+              ><i class="fa-solid fa-right-from-bracket"></i>
+              <h5>Log Out</h5></a>
           </div>
 
+          <!-- */HAMBURGUESA*/ -->
+
+          <div id="hamburger" class="hamb" v-on:click="h">
+            <div class="htop"></div>
+            <div class="hmid"></div>
+            <div class="hbot"></div>
+          </div>
         </div>
       </header>
 
       <main class="accountDetail">
-        <div class="barra_lateral">
-          <div>
-            <h4 class="pt-4">Operations</h4>
-            <div class="opciones">
-              <i class="fa-solid fa-money-bill-transfer"></i>
-              <a href="#">Transfers</a>
-            </div>
-            <div class="opciones">
-              <i class="fa-solid fa-arrows-rotate"></i>
-              <a href="#">Recharges</a>
-            </div>
-            <h4 class="pt-4">Products</h4>
-            <div class="opciones">
-              <i class="fa-solid fa-receipt"></i>
-              <a href="#">Services</a>
-            </div>
-            <div class="opciones">
-              <i class="fa-solid fa-sack-dollar"></i>
-              <a href="#">Investments</a>
-            </div>
-            <div class="opciones">
-              <i class="fa-solid fa-money-check-dollar"></i>
-              <a href="#">Lendings</a>
-            </div>
-            <div class="opciones">
-              <i class="fa-solid fa-shield-halved"></i>
-              <a href="#">Insurances</a>
-            </div>
-            <h4 class="pt-4">Security</h4>
-            <div class="opciones">
-              <i class="fa-solid fa-fingerprint"></i>
-              <a href="#">Token MindBank</a>
-            </div>
-            <div class="opciones">
-              <i class="fa-solid fa-lock"></i>
-              <a href="#">Keys</a>
-            </div>
-            <h4 class="pt-4">Others</h4>
-            <div class="opciones">
-              <i class="fa-solid fa-coins"></i>
-              <a href="#">Expenses</a>
-            </div>
-            <div class="opciones">
-              <i class="fa-solid fa-sack-dollar"></i>
-              <a href="#">Benefits</a>
-            </div>
-          </div>
-        </div>
-
         <section id="detail">
-          <div class="table_container p-4 tarjetas table_responsive">
+          <div class="table_container p-4 tarjetas table_responsive fullTableContainer">
             <a class="detailExit" href="/web/accounts.html">X</a>
-            <h2 class="table_title">Transactions</h2>
+            <h3 class="table_title">Transactions</h3>
 
             <table class="table">
               <thead>
@@ -107,7 +65,6 @@
                   <th class="cell">Date</th>
                 </tr>
               </thead>
-
               <tbody>
                 <tr class="table_container" v-for="trans of transaction">
                   <td class="cell cellMob">{{trans.id}}</td>
@@ -127,23 +84,47 @@
               </tbody>
             </table>
           </div>
+          <div class="opacity"></div>
+          <div class="decorative_loans"></div>
+          <img src="../Assets/img/pngtransf.png" class="deco">
         </section>
+        <div class="decorative_loansTrans"></div>
       </main>
 
       <footer>
         <div class="redes">
-          <span style="font-size: 2em; color: whitesmoke">
+          <a
+            href="https://twitter.com/?lang=es"
+            style="font-size: 2rem; color: whitesmoke"
+            target="_blank"
+          >
             <i class="fa-brands fa-twitter"></i>
-          </span>
-          <span style="font-size: 2em; color: whitesmoke">
+          </a>
+          <a
+            href="https://www.instagram.com"
+            style="font-size: 2rem; color: whitesmoke"
+            target="_blank"
+          >
             <i class="fa-brands fa-instagram"></i>
-          </span>
-          <span style="font-size: 2em; color: whitesmoke">
+          </a>
+          <a
+            href="https://www.youtube.com/"
+            style="font-size: 2rem; color: whitesmoke"
+            target="_blank"
+          >
             <i class="fa-brands fa-youtube"></i>
-          </span>
+          </a>
+          <a
+            href="https://github.com/Mailen93"
+            style="font-size: 2rem; color: whitesmoke"
+            target="_blank"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
         </div>
         <div class="derechos">
           <p>© 2023 MindBank Bank - All Rights Reserved.</p>
+          <p>Developer: Mailen Alvarez</p>
         </div>
       </footer>
     </div>
@@ -152,7 +133,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../Assets/javascript/account.js"></script>
     <script

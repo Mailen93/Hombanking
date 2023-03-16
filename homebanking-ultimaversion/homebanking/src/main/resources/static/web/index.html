@@ -1,68 +1,135 @@
-<!DOCTYPE html
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Assets/login.css">
-  <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Assets/login.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header></header>
     <main id="app" class="main_container">
-        <div class="container" id="container">
-          <input type="checkbox" id="check-panel-active" />
-          <div class="form-container edit-container">
-            <form @submit.prevent>
-              <h1> Register </h1>
-              <input v-model ="firstName" class="input-text-form" type="text" placeholder="Name" />
-              <input v-model="lastName" class="input-text-form" type="text"  placeholder="Last Name" />
-              <input v-model="email" class="input-text-form" type="email"  placeholder="Email" />
-              <input v-model="password" class="input-text-form" type="password" placeholder="Password" />
-              <button v-on:click="register" class="primary" type="submit"> Sign In </button>
-            </form>
-          </div>
-          <div class="form-container connect-container">
-            <form @submit.prevent>
-              <h1> Log In </h1>
-              <input v-model="email" class="input-text-form" type="email" placeholder="Email" />
-              <input v-model="password" class="input-text-form" type="password" placeholder="Password" />
-              <button @click= "login" class="primary" type="submit"> Accept </button>
-            </form>
-          </div>
-          <div class="overlay-container">
-            <div class="overlay">
-              <div class="overlay-panel overlay-left">
-                <h1>Welcome to MindBank!</h1>
-                <h2>Your Trusted Homebanking</h2>
-                <p>We invite you to enjoy our services </p>
-                <label class="blank" for="check-panel-active"> LOG IN </label>
-              </div>
-              <div class="overlay-panel overlay-right">
-                <h1> New User </h1>
-                <h2> Welcome! </h2>
-                <p> We'll be very happy to have you in our family! </p>
-                <label class="blank" for="check-panel-active"> JOIN US </label>
-              </div>
+      <div class="container" id="container">
+        <input type="checkbox" id="check-panel-active" />
+        <div class="form-container edit-container">
+          <form @submit.prevent>
+            <h1>Register</h1>
+            <input
+              v-model="firstName"
+              class="input-text-form"
+              type="text"
+              placeholder="Name"
+            />
+            <input
+              v-model="lastName"
+              class="input-text-form"
+              type="text"
+              placeholder="Last Name"
+            />
+            <input
+              v-model="email"
+              class="input-text-form"
+              type="email"
+              placeholder="Email"
+            />
+            <input
+              v-model="password"
+              class="input-text-form"
+              type="password"
+              placeholder="Password"
+            />
+            <button v-on:click="register" class="primary" type="submit">
+              Sign In
+            </button>
+          </form>
+        </div>
+        <div class="form-container connect-container">
+          <form @submit.prevent>
+            <h1>Log In</h1>
+            <input
+              v-model="email"
+              class="input-text-form"
+              type="email"
+              placeholder="Email"
+            />
+            <input
+              v-model="password"
+              class="input-text-form"
+              type="password"
+              placeholder="Password"
+            />
+            <button @click="login" class="primary" type="submit">Accept</button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1>Welcome to MindBank!</h1>
+              <h2>Your Trusted Homebanking</h2>
+              <p>We invite you to enjoy our services</p>
+              <label class="blank" for="check-panel-active"> LOG IN </label>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1>New User</h1>
+              <h2>Welcome!</h2>
+              <p>We'll be very happy to have you in our family!</p>
+              <label class="blank" for="check-panel-active"> JOIN US </label>
             </div>
           </div>
         </div>
+      </div>
+      <div class="info_container">
+        <div class="subInfo_container">
+          <h2>Ready to make your dreams happen</h2>
+          <h3>
+            From the comfort of your own home with our Homebanking service
+          </h3>
+          <div class="article">
+            <p>
+              Do you dread going to the bank and waiting in long lines? With our
+              Homebanking service, you can manage your finances from the comfort
+              of your own home. Check your balance, transfer money, pay bills,
+              and more - all with just a few clicks. Our Homebanking services
+              are available 24 hours a day, 7 days a week, which means you can
+              manage your finances on your own time, without having to worry
+              about bank hours or holidays. Plus, our advanced security features
+              ensure that your information is always protected. Sign up for our
+              Homebanking service today and start banking smarter!
+            </p>
+            <p>
+              With our Homebanking, you can access your account information from
+              anywhere in the world, as long as you have an internet connection.
+              This can be especially helpful if you travel frequently or live
+              far away from your bank branch. Our Homebanking eliminates the
+              need for you to visit a bank branch or ATM to perform basic
+              transactions. This can save you time and hassle, especially during
+              busy periods when lines are long. Our Homebanking services are
+              less expensive than traditional banking methods, as they often
+              come with lower fees or no fees at all. This can help you save
+              money over time.
+            </p>
+          </div>
+        </div>
+      </div>
     </main>
-<script
-src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-crossorigin="anonymous"
-></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="../Assets/javascript/index.js"></script>
-<script
-src="https://kit.fontawesome.com/a9a67006ad.js"
-crossorigin="anonymous"
-></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init();
-</script>
-</body>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../Assets/javascript/index.js"></script>
+    <script
+      src="https://kit.fontawesome.com/a9a67006ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>

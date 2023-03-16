@@ -3,6 +3,7 @@ package com.mindhub.homebanking.Controlers;
 import com.mindhub.homebanking.Utils.Utilities;
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepositories;
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static com.mindhub.homebanking.Utils.Utilities.GenerateNumber;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
+
 @RestController                     //CREAR NUEVO RECURSO PARA REGISTRAR UN CLIENTE
 @RequestMapping("/api")
 public class ClientController{
@@ -51,7 +55,6 @@ public class ClientController{
             return new ResponseEntity<>("Missing Email", HttpStatus.BAD_REQUEST);}
         else if (password.isEmpty()){
             return new ResponseEntity<>("Missing Password", HttpStatus.BAD_REQUEST);}
-
         if (clientRepositories.findByEmail(email) !=  null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.BAD_REQUEST);}
 
@@ -63,9 +66,11 @@ public class ClientController{
         return new ResponseEntity<>("Welcome!!!",HttpStatus.CREATED);}
 
     @RequestMapping("/clients/current")
-    public ClientDTO getCurrentClient(Authentication authentication){   //OBJETO DONDE ESTAN LOS DATOS DEL CLENTE AUTENICADO
-        String email = authentication.getName();
-        return new ClientDTO(clientRepositories.findByEmail(email));}
+    public ClientDTO getCurrentClient(Authentication authentication){
+        Client ClientAuth= clientRepositories.findByEmail(authentication.getName());
+        Set<Card> cardsTrue = ClientAuth.getCards().stream().filter(card -> card.getDeleteCard() == true).collect(toSet());
+        ClientAuth.setCards(cardsTrue);
+        return new ClientDTO(ClientAuth);}
 }
 
 //IR A ACCOUNT CONTROLLER

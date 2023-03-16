@@ -15,16 +15,11 @@ public class ClientLoanDTO {
         this.id_loan = clientLoan.getLoan().getId();
         this.name = clientLoan.getLoan().getName();
         this.amount = clientLoan.getAmount();
-        this.payments = clientLoan.getPayments();
-    }
-
+        this.payments = clientLoan.getPayments();}
 
     public long getId() {return id;}
     public long getId_loan() {return id_loan;}
-
     public String getName() {return name;}
     public double getAmount() {return amount;}
     public Integer getPayments() {return payments;}
-
-
 }

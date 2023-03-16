@@ -16,6 +16,10 @@ body h2 {
   margin: 0;
 }
 
+[v-cloak] {
+	display: none;
+}
+
 #banner {
   height: 100vh;
   position: relative;
@@ -70,6 +74,14 @@ body h2 {
   margin: 0;
 }
 
+.botonNormal{
+  color: whitesmoke;
+  text-decoration:overline;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
 .questions {
   background-color: rgba(0, 0, 0, 0.401);
   backdrop-filter: blur(6px);
@@ -100,6 +112,23 @@ li {
 
 .questions li {
   margin-top: 1rem;
+}
+.back_home{
+  display: flex;
+ background-color: #0f172a;
+ color: whitesmoke;
+ padding: .5rem;
+ width: 100%;
+ letter-spacing: 4px;
+ box-shadow: 4px 3px 3px 0px black;
+ text-decoration: none;
+ align-items: center;
+ justify-content: center;
+}
+
+.back_home i,a{
+  color: whitesmoke;
+  transition: all .8s ease;
 }
 
 .down_arrow {
@@ -175,12 +204,18 @@ footer {
   display: flex;
   min-height: 10vh;
   width: 100vw;
-  background-color: #00094e;
+  background-color: #0b0f14;
   align-items: center;
 }
 
 footer p {
   margin-bottom: 0;
+}
+
+.deleteCard{
+  margin-top: 1 rem;
+
+
 }
 
 #cards {
@@ -527,7 +562,6 @@ footer p {
   color: white;
   text-align: center;
   width: 100%;
-
   padding: 2rem;
 }
 
@@ -563,8 +597,9 @@ footer p {
   width: 100%;
   height: 70vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  
+  /* justify-content: center;
+  align-items: center; */
 }
 .sticky {
   position: sticky;
@@ -614,8 +649,7 @@ footer p {
 }
 
 .logo {
-  width: 4rem;
-  height: 2rem;
+  width: 6rem;
 }
 
 .spans_container {
@@ -632,6 +666,11 @@ footer p {
   display: flex;
   gap: 1rem;
   transition: all 0.4s ease;
+  align-items: center;
+}
+
+.spans_container a h5 {
+  margin:0
 }
 
 .spans_container a:hover {
@@ -654,39 +693,37 @@ footer p {
 }
 
 .tarjetas {
-  backdrop-filter: blur(10px);
-  background-color: #012c7ac9;
-  border-radius: 2rem;
+  backdrop-filter: blur(6px);
+  background-color: #0f172ac9;
   width: 500px;
   height: 250px;
   transition: ease-in-out 0.3s;
   color: whitesmoke;
-  box-shadow: 15px 4px 20px 0px black;
+  box-shadow: 7px 3px 20px 0px black;
   display: flex;
   flex-direction: column;
 }
 
-.tarjetas {
+/* .tarjetas {
   padding: 2rem;
-}
+} */
 
-.tarjetas p {
+/* .tarjetas p {
   font-size: x-large;
   padding: 0.5rem;
   margin-bottom: 0;
   background-color: #01ffff5e;
   font-weight: bolder;
-}
+} */
 
 .tarjetas:hover {
-  background-color: #00094edb;
-  box-shadow: 15px 4px 20px 0px rgba(245, 245, 245, 0.682);
+  background-color: #0f172aeb;
 }
 
-.tarjetas:hover p {
+/* .tarjetas:hover p {
   background-color: #01ffffb4;
   color: #00094e;
-}
+} */
 .boton {
   position: absolute;
   bottom: 1rem;
@@ -710,6 +747,11 @@ footer p {
   color: #00094e;
   background-color: #008be4;
 }
+
+.back_home:hover i, a{
+  color: #008be4;
+}
+
 
 .accounts_section {
   display: flex;
@@ -761,7 +803,7 @@ footer p {
   display: flex;
   color: whitesmoke;
   width: 20%;
-  justify-content: space-around;
+  justify-content:space-around;
   align-items: center;
   padding-left: 2rem;
 }
@@ -769,19 +811,30 @@ footer p {
 .derechos {
   display: flex;
   width: 100%;
-  justify-content: right;
+  justify-content:center;
   padding-right: 2rem;
-  align-items: center;
+  align-items:end;
   color: whitesmoke;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.fullTableContainer{
+  width: 100%;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  height: 100%;
+  z-index: 100;
 }
 
 .table_container {
   color: whitesmoke;
-  margin-top: 3rem;
-  width: 800px;
+  width: 37%;
 }
 
 .accountDetail {
+  background-image: url(../Assets/img/parejatarjetas.jpg);
+  background-size: cover;
   display: flex;
   position: relative;
   min-height: 80vh;
@@ -876,6 +929,46 @@ footer p {
   flex-direction: column;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 ///// ACA ESTAN LOS MEDIA QUERY //// */
 
@@ -967,13 +1060,13 @@ footer p {
     width: 100%;
     min-height: 1.5rem;
     background-color: #0b0f14;
-    color: white;
+    color: whitesmoke;
     text-transform: uppercase;
     letter-spacing: 4px;
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     overflow-y: hidden;
     position: block;
     z-index: 30;
@@ -1084,9 +1177,9 @@ footer p {
     font-size: 32px;
     top: 60vh;
   }
-
+nav
   .addAccount {
-    background-color: white;
+    background-color: whitesmoke;
     font-size: 12px;
     text-transform: uppercase;
     padding: 8px;
@@ -1259,6 +1352,18 @@ footer p {
     left: -70vh;
     background-color: #0f172a;
   }
+
+  .decorative_loans {
+    min-width: 200%;
+    height: 70%;
+    background-color: white;
+    transform: rotateZ(22deg);
+    position: absolute;
+    top: 60vh;
+    left: -70vh;
+    background-color: #0f172a;
+  }
+
 
   .principal_container {
     width: 90%;
@@ -1554,13 +1659,14 @@ footer p {
   }
   .info_cards {
     width: 50%;
-    height: 50%;
+    height: 60%;
     z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 40vh;
+    display: flex;
   }
 
   .info_cards h2 {
@@ -1623,9 +1729,8 @@ footer p {
   /////////////////// ACCOUNTS ////////////////// */
 
   #accounts {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-
     position: relative;
     overflow: hidden;
     background-image: url("img/transaction.jpg");
@@ -1633,29 +1738,66 @@ footer p {
     background-size: cover;
   }
 
+.down_arrow_accounts{
+  position: absolute;
+  left: 100vh;
+  bottom: 5vh;
+  font-size: 40px;
+  color: whitesmoke;
+  z-index: 100;
+}
+
+.why_us_container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: -10vh;
+}
+
+.why_one{
+  background-color: #00094e54;
+  backdrop-filter: blur(2px);
+  width: 40%;
+  height: 50%;
+}
+
+
+  .nextToQuestions{
+    display: flex;
+    background-color: red;
+  }
+
   .accounts_nav {
     width: 100%;
     min-height: 1.5rem;
     background-color: #0b0f14;
-    color: white;
+    color: whitesmoke;
     text-transform: uppercase;
     letter-spacing: 4px;
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     overflow-y: hidden;
     position: block;
     z-index: 30;
   }
+ 
 
   .addAccount {
-    background-color: white;
+    background-color: whitesmoke;
     padding: 1rem;
-    font-size: 25px;
+    font-size: 18px;
     text-transform: uppercase;
     padding-left: 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
   }
+
   .links_container_accounts {
     width: 20%;
     display: flex;
@@ -1838,6 +1980,16 @@ footer p {
     position: absolute;
     top: 95vh;
     left: -70vh;
+    background-color: #0f172a;
+  }
+  .decorative_loansTrans{
+    min-width: 200%;
+    height: 70%;
+    background-color: white;
+    transform: rotateZ(-22deg);
+    position: absolute;
+    top: 95vh;
+    right: -70vh;
     background-color: #0f172a;
   }
   .principal_container {

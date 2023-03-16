@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <div id="app">
+    <div id="app" v-cloak style="scroll-snap-type: y mandatory; overflow: auto">
       <header>
         <div class="Navbar">
           <div class="client">
@@ -29,13 +29,14 @@
           </div>
 
           <div class="spans_container">
-            <a href="cards.html"><i class="fa-solid fa-credit-card"></i><h5>Your Cards</h5></a>
-
-            <a href="#"><i class="fa-solid fa-bell"></i></a>
-
-            <a href="#"
-              ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
-            ></a>
+            <a href="cards.html"
+              ><i class="fa-solid fa-credit-card"></i>
+              <h5>Your Cards</h5></a
+            >
+            <a href="#" @click="logOut"
+              ><i class="fa-solid fa-right-from-bracket"></i>
+              <h5>Log Out</h5></a
+            >
           </div>
 
           <!-- */HAMBURGUESA*/ -->
@@ -76,8 +77,104 @@
         >
       </div>
 
+      <!-- <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr class="table_container">
+                  <th class="cell cellMob">Number</th>
+                  <th class="cell">Type</th>
+                  <th class="cell">Amount</th>
+                  <th class="cell">Description</th>
+                  <th class="cell">Date</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr
+                  class="table_container"
+                  v-for="trans of allDateTransactions"
+                  v-if="allDateTransactions"
+                >
+                  <td class="cell cellMob">{{trans.id}}</td>
+                  <td class="cell">{{trans.type}}</td>
+                  <td
+                    class="cell text-danger fw-bolder"
+                    v-if="trans.type =='DEBIT'"
+                  >
+                    ${{trans.amount}}
+                  </td>
+                  <td class="cell text-success fw-bolder" v-else>
+                    ${{trans.amount}}
+                  </td>
+                  <td class="cell">{{trans.description}}</td>
+                  <td class="cell">{{trans.date}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+      <!-- <div
+    id="navModalAcc"
+    :class="[isActive ? 'modalOpen' : 'modalClose']"
+  >
+    <button
+      type="button"
+      class="botonNormal"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Transactions
+    </button>
+    <div class="opciones" v-if="accounts.length < 3">
+      <i class="fa-solid fa-plus"></i>
+      <a @click="createAccount" href="#accounts">Add account</a>
+    </div>
+
+    <div class="opciones" v-on:click="h">
+      <i class="fa-solid fa-sack-dollar"></i>
+      <a href="#loans">Loans</a>
+    </div>
+    <div class="opciones">
+      <i class="fa-solid fa-money-check-dollar"></i>
+      <a href="cards.html">Cards</a>
+    </div>
+    <a href="#" class="logOut" @click="logOut"
+      ><i class="fa-solid fa-right-from-bracket"></i
+      ><span class="logOutMobile">Log out</span></a
+    >
+  </div> -->
       <main class="main_accounts">
-        <section id="banner">
+        <section id="banner" style="scroll-snap-align: center">
           <div class="welcome">
             <div class="welcomeMindBank">
               <h1>WELCOME TO MINDBANK</h1>
@@ -90,6 +187,14 @@
                   >Add account</a
                 >
               </div>
+              <button
+                type="button"
+                class="botonNormal"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Last Transactions
+              </button>
             </div>
             <div class="accounts_container2">
               <div class="account_detail" v-for="account of accounts">
@@ -119,7 +224,6 @@
                 </div>
               </div>
             </div>
-           
           </div>
           <img
             src="../Assets/img/pexels-croberin-photography-1422408.jpg"
@@ -132,114 +236,95 @@
           ></a>
         </section>
 
-        <section id="accounts">
-          <div class="flex_accounts_container">
-            <div class="accounts_nav">
-              <img class= "logo" src="../Assets/img/removeb.png" alt="">
-              <h2>Your accounts</h2>
-              <div class="hamb_accounts">
-                <div id="hamburger" class="hamb" v-on:click="h">
-                  <div class="htopAcc"></div>
-                  <div class="hmidAcc"></div>
-                  <div class="hbotAcc"></div>
-                </div>
-              </div>
-              <div class="links_container_accounts">
-                <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
-                <a href="#"
-                  ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
-                ></a>
-              </div>
+        <section id="accounts" style="scroll-snap-align: center">
+          <div class="Navbar">
+            <div class="client">
+              <img class="logo" src="../Assets/img/removeb.png" alt="logo" />
+              <h2>Welcome {{clients.firstName}} {{clients.lastName}}</h2>
             </div>
-            <!-- MODAL  -->
-            <div
-              id="navModalAcc"
-              :class="[isActive ? 'modalOpen' : 'modalClose']"
-            >
-              <button
-                type="button"
-                class="botonNormal"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+  
+            <div class="spans_container">
+              <a href="cards.html"
+                ><i class="fa-solid fa-credit-card"></i>
+                <h5>Your Cards</h5></a
               >
-                Transactions
-              </button>
-              <div class="opciones" v-if="accounts.length < 3">
-                <i class="fa-solid fa-plus"></i>
-                <a @click="createAccount" href="#accounts">Add account</a>
-              </div>
-
-              <div class="opciones" v-on:click="h">
-                <i class="fa-solid fa-sack-dollar"></i>
-                <a href="#loans">Loans</a>
-              </div>
-              <div class="opciones">
-                <i class="fa-solid fa-money-check-dollar"></i>
-                <a href="cards.html">Cards</a>
-              </div>
-              <a href="#" class="logOut" @click="logOut"
-                ><i class="fa-solid fa-right-from-bracket"></i
-                ><span class="logOutMobile">Log out</span></a
+              <a href="#" @click="logOut"
+                ><i class="fa-solid fa-right-from-bracket"></i>
+                <h5>Log Out</h5></a
               >
             </div>
-            <!-- DIV DECORATIVO -->
-            <div class="decorative"></div>
-             <div class="questions">
-              <h2>Why choose us?</h2>
-              <ul>
-                <li>
-                  Do you need a credit card to make that special gift possible?
-                </li>
-                <li>Do you want to get a brand new house?</li>
-                <li>
-                  With us your family is safe, we have the best insurance
-                  policies
-                </li>
-                <li>
-                  Do you need a credit card to make that special gift possible?
-                </li>
-              </ul>
-            </div> 
-            
-            <a class="down_arrow_to_loans" href="#loans"
-              ><i class="fa-solid fa-chevron-down"></i
-            ></a>
+  
+            <!-- */HAMBURGUESA*/ -->
+  
+            <div id="hamburger" class="hamb" v-on:click="h">
+              <div class="htop"></div>
+              <div class="hmid"></div>
+              <div class="hbot"></div>
+            </div>
+          </div>
+          <div class="why_us_container">
+            <div class="why_one">
+                ACA VA LA INFO Y ESTILADOS
+            </div>
+            <div class="why_one">
+              ACA VA LA OTRA INFO
+            </div>
           </div>
 
-          <div class="opacityAccounts"></div>
-          <img class="deco" src="../Assets/img/digital.png" alt="" />
+          <!-- /// SECTION DECORATION ABOVE // -->
+          <div class="opacity"></div>
+          <a class="down_arrow_accounts" href="#loans"
+            ><i class="fa-solid fa-chevron-down"></i
+          ></a>
+          <div class="decorative_loans"></div>
+          <img src="../Assets/img/digital.png" class="deco">
         </section>
-    
 
-        <section id="loans">
-          
-          <div class="accounts_nav">
-            <img class="logo" src="../Assets/img/removeb.png" alt="">
-            <h2>Your loans</h2>
-            <div class="hamb_accounts">
-              <div id="hamburger" class="hamb" v-on:click="h">
-                <div class="htopAcc"></div>
-                <div class="hmidAcc"></div>
-                <div class="hbotAcc"></div>
-              </div>
+        <section id="loans" style="scroll-snap-align: center">
+          <div class="Navbar">
+            <div class="client">
+              <img class="logo" src="../Assets/img/removeb.png" alt="logo" />
+              <h2>{{clients.firstName}}, these are your Loans</h2>
             </div>
-            <div class="links_container_accounts">
-              <a href="cards.html"><i class="fa-solid fa-credit-card"></i></a>
-              <a href="#"><i class="fa-solid fa-bell"></i></a>
+
+            <div class="spans_container">
+              <a href="cards.html"
+                ><i class="fa-solid fa-credit-card"></i>
+                <h5>Your Cards</h5></a
+              >
               <a href="#"
-                ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i
-              ></a>
+                ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i>
+                <h5>Log Out</h5></a
+              >
+            </div>
+
+            <!-- */HAMBURGUESA*/ -->
+
+            <div id="hamburger" class="hamb" v-on:click="h">
+              <div class="htop"></div>
+              <div class="hmid"></div>
+              <div class="hbot"></div>
             </div>
           </div>
           <div class="principal_container">
             <div class="loans_container">
               <h2 class="loan_title">Check out your loans details:</h2>
               <div class="loans_detail">
-                <div v-for="loan of loans" class="_loan">
+                <div
+                  v-for="loan of loans"
+                  class="_loan"
+                  v-if="loans.length > 0"
+                >
                   <h2>Loan {{loan.name}}</h2>
                   <h3>Total of payments: {{loan.payments}}</h3>
                   <h2>Final amount: ${{loan.amount}}</h2>
-                  <h3>This is the loan {{loan.id}} of {{loans.length}}</h2>
+                  <h2>This is the loan {{loan.id}} of {{loans.length}}</h2>
+                </div>
+                <div v-else="" class="_loan">
+                  <h2>You don't have any loan yet</h2>
+                  <a href="loan-aplication.html" target="_blank">
+                    Apply for a Loan
+                  </a>
                 </div>
               </div>
               <div class="loans_information">
@@ -259,6 +344,9 @@
                     possible?
                   </li>
                 </ul>
+                <a href="#banner" class="back_home"
+                  ><i class="fa-solid fa-arrow-up"></i>BACK HOME</a
+                >
               </div>
             </div>
           </div>
@@ -339,28 +427,36 @@
       <div class="redes">
         <a
           href="https://twitter.com/?lang=es"
-          style="font-size: 2em; color: whitesmoke"
+          style="font-size: 2rem; color: whitesmoke"
           target="_blank"
         >
           <i class="fa-brands fa-twitter"></i>
         </a>
         <a
           href="https://www.instagram.com"
-          style="font-size: 2em; color: whitesmoke"
+          style="font-size: 2rem; color: whitesmoke"
           target="_blank"
         >
           <i class="fa-brands fa-instagram"></i>
         </a>
         <a
           href="https://www.youtube.com/"
-          style="font-size: 2em; color: whitesmoke"
+          style="font-size: 2rem; color: whitesmoke"
           target="_blank"
         >
           <i class="fa-brands fa-youtube"></i>
         </a>
+        <a
+          href="https://github.com/Mailen93"
+          style="font-size: 2rem; color: whitesmoke"
+          target="_blank"
+        >
+          <i class="fa-brands fa-github"></i>
+        </a>
       </div>
       <div class="derechos">
         <p>© 2023 MindBank Bank - All Rights Reserved.</p>
+        <p>Developer: Mailen Alvarez</p>
       </div>
     </footer>
 
@@ -378,6 +474,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       AOS.init();
     </script>

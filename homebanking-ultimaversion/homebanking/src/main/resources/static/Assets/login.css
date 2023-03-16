@@ -1,6 +1,6 @@
 html {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,26 +8,70 @@ html {
 
 body {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   font-family: "Open Sans", sans-serif;
-  background-image: url(./img/wwang_040522_102.jpg);
-  background-size: cover ;
-  backdrop-filter: blur(7px);
-  /* background-color: #00ddf763; */
+  background-image: url(./img/pexels-roberto-nickson-2478248.jpg);
+  background-size: cover;
+  margin: 0;
 }
 
 .main_container{
-  display: grid;
-  place-content: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
+
+.info_container{
+  width: 50% ;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.385);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+
+.subInfo_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 60%;
+  background-color: rgba(245, 245, 245, 0.133);
+  backdrop-filter: blur(2px);
+  padding: 1rem;
+  color: whitesmoke ;
+}
+
+.subInfo_container h2 {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.article{
+  display: flex;
+  width: 85%;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+}
+
 .container * {
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  user-select: none;  
 }
 
 .container {
@@ -40,6 +84,7 @@ body {
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  margin: 0 auto;
 }
 
 .container input[id="check-panel-active"] {
@@ -203,8 +248,6 @@ body {
   overflow: hidden;
   position: absolute;
   transition: transform 0.6s ease-in-out;
- 
- 
 }
 
 .container input#check-panel-active:checked ~ .overlay-container {
@@ -217,16 +260,14 @@ body {
   height: 100%;
   color: #ffffff;
   position: relative;
-  background-image: url("./img/wwang_040522_102.jpg");
+  background-image: url("./img/imgform.jpg");
   background-size: cover;
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
-
 }
 
 .container input#check-panel-active:checked ~ .overlay-container .overlay {
   transform: translateX(50%);
-  
 }
 
 .overlay-container .overlay .overlay-panel {
@@ -243,13 +284,12 @@ body {
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
   box-shadow: 4px 4px 18px 4px black;
-
 }
 
 .overlay-container .overlay .overlay-panel h1 {
   margin: 0;
-  text-shadow: 3px 3px 3px black;
-
+  text-shadow: 4px 4px 4px black;
+  letter-spacing: 2px;
 }
 
 .overlay-container .overlay .overlay-panel p{
@@ -264,7 +304,7 @@ body {
 
 .overlay-left {
   transform: translateX(-20%);
-  background-image: url(./img/wwang_040522_102.jpg);
+  background-image: url("./img/imgform.jpg");
   background-size: cover;
 }
 
@@ -317,13 +357,11 @@ body {
 button,
 .overlay-container .overlay .overlay-panel label {
   cursor: pointer;
-  font-size: 14px;
-  border: 3px solid;
-  font-weight: bold;
-  background-color:#00074d;
+  font-size: 11px;
+  border: 2px solid;
+  background-color: black;
   text-align: center;
   padding: 12px 45px;
-  border-radius: 20px;
   letter-spacing: 1px;
   white-space: nowrap;
   display: inline-block;
@@ -343,20 +381,19 @@ button:focus {
 }
 
 .overlay-container .overlay .overlay-panel label:hover {
-  background-color: #00d9f5cc;
+  background-color:rgb(0 75 109);
   border-color: whitesmoke;
   color:whitesmoke;
 }
 
-
 .primary {
   color: whitesmoke;
-  background-color: #00d9f5cc;
-  border-color: #00074d;
+  background-color: black;
+  border-color: whitesmoke;
 }
 
 .primary:hover {
   color: whitesmoke;
-  background-color: #00074d;
+  background-color:rgb(0 75 109);
   border-color:whitesmoke;
 }

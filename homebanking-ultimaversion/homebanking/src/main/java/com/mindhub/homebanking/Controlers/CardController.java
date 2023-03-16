@@ -12,10 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.security.auth.message.ClientAuth;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -32,22 +31,41 @@ public class CardController {
 
     @RequestMapping("/clients/current/cards")
     public List<CardDTO> getCurrentCards(Authentication authentication) {
-        return clientRepositories.findByEmail(authentication.getName()).getCards().stream().map(card -> new CardDTO(card)).collect(toList());}
+        Client clientAuth = clientRepositories.findByEmail(authentication.getName());
+        List<Card> checkCard = clientAuth.getCards().stream().filter(card -> card.getDeleteCard() == true).collect(toList());
+        return checkCard.stream().map(card -> new CardDTO(card)).collect(toList());
+    }
 
     @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
     public ResponseEntity<Object> newCard(Authentication authentication,
-        @RequestParam CardType type,
-        @RequestParam CardColor color) {
+                                          @RequestParam CardType type,
+                                          @RequestParam CardColor color) {
         Client client = clientRepositories.findByEmail(authentication.getName());
 
-        if (client.getCards().size() >= 6){
-            return new ResponseEntity<> ("You have so many cards",HttpStatus.FORBIDDEN);}
-        if (client.getCards().stream().anyMatch(card -> type == card.getType() && color == card.getColor())){
-            return new ResponseEntity<>("You already have this card category", HttpStatus.FORBIDDEN);}
-        Card addNewCard = new Card(randomNumberCard(cardRepository),returnCvvNumber(), type, color, LocalDate.now(),LocalDate.now().plusYears(5), client );
+        if (client.getCards().size() >= 6) {
+            return new ResponseEntity<>("You have so many cards", HttpStatus.FORBIDDEN);
+        }
+        if (client.getCards().stream().anyMatch(card -> type == card.getType() && color == card.getColor() && card.getDeleteCard() == true)) {
+            return new ResponseEntity<>("You already have this card category", HttpStatus.FORBIDDEN);
+        }
+        Card addNewCard = new Card(randomNumberCard(cardRepository), returnCvvNumber(), type, color, LocalDate.now(), LocalDate.now().plusYears(5), client, true);
         client.addCard(addNewCard);
         cardRepository.save(addNewCard);
         return new ResponseEntity<>("You have created a new card", HttpStatus.CREATED);}
+
+    @PatchMapping("/clients/current/cards")
+    public ResponseEntity<Object> deleteCard(Authentication authentication, @RequestParam String number) {
+        Client clientAuth = clientRepositories.findByEmail(authentication.getName());
+        Card deleteCard = cardRepository.findByNumber(number);
+        if (number.isEmpty()) {
+            return new ResponseEntity<>("Missing Number", HttpStatus.BAD_REQUEST);
+        }
+        if (clientAuth.getCards().stream().noneMatch(card -> card.getNumber().equals(number))) {
+            return new ResponseEntity<>("Wrong Number", HttpStatus.BAD_REQUEST);
+        }
+        deleteCard.setDeleteCard(false);
+        cardRepository.save(deleteCard);
+        return new ResponseEntity<>("Your card has been deleted", HttpStatus.ACCEPTED);}
 
 }
 

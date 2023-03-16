@@ -26,6 +26,15 @@ createApp({
             })
             .catch(error => {
                 this.error = error.response.data.message;
+                    Swal.fire({
+                        title: 'Missing data',
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      })
             });
         },
         register() {

@@ -17,8 +17,6 @@ public class LoanDTO {
         this.name = loan.getName();
         this.maxAmount = loan.getMaxAmount();
         this.payments = loan.getPayments();}
-
-
     public long getId() {return id;}
     public String getName() {return name;}
     public int getMaxAmount() {return maxAmount;}
