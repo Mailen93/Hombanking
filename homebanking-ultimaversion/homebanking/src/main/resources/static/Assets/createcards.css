@@ -17,71 +17,69 @@ body {
   height: 100vh;
   font-family: "Roboto", sans-serif;
   color: white;
-  background-image: url("../Assets/img/wwang_040522_102.jpg");
+  background-image: url("../Assets/img/parejacreatecard.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center ;
 }
 
+.opacity {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#1118270c, #11182720, #1118274a, #111827aa);
+  z-index: -100;
+}
 .container_info {
-  background-color: #00000099;
-  padding: 3rem;
+  background-color: rgba(255, 255, 255, 0.155);
+  padding: 2rem;
   backdrop-filter: blur(10px);
-  border-radius: 1rem;
 }
 
-.info {
+/* .info {
   width: 100%;
   max-width: 583px;
   margin: 0 auto;
   text-align: center;
   color: #170538;
-}
+} */
 .info__title {
   width: 100%;
-  max-width: 600px;
   margin: 0 auto;
-  font-weight: bold;
-  font-size: 2rem;
   color: whitesmoke;
   padding-bottom: 30px;
   padding-top: 30px;
+  text-transform: uppercase;
 }
-.info__subtitle {
-  font-weight: normal;
-  font-size: 21px;
-  margin: 30px 0;
-  color: #170538;
-}
+
 .info__button {
   width: 100%;
   max-width: 580px;
   outline: none;
   border: none;
-  background: #00074d;
+  background: #0f172a;
   color: whitesmoke;
-  padding: 15px 0;
-  font-size: 2rem;
+  padding: 10px 0;
+  font-size: 1rem;
   cursor: pointer;
   display: block;
   margin: 0 auto;
   margin-top: 15px;
   text-align: center;
   text-decoration: none;
-  border-radius: 1rem;
-  transition: all .4s;
+  transition: all .5s;
 }
 
 .info__button:hover{
-  background-color: #00d9f5cc;
-  color: whitesmoke;
+  background-color: rgb(0 75 109);
+  color: #0f172a;
 }
 
 .details {
   padding-top: 40px;
   font-size: 14px;
 }
-.details__img {
+/* .details__img {
   width: 80px;
   height: 80px;
   border-radius: 100%;
@@ -91,15 +89,15 @@ body {
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 20px;
-}
-.details__person {
+} */
+/* .details__person {
   padding: 20px;
   font-size: 20px;
 }
 .details__job {
   font-size: 13px;
-}
-.details__description {
+} */
+/* .details__description {
   width: 100%;
   max-width: 447px;
   line-height: 1.3;
@@ -107,22 +105,26 @@ body {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
-}
+} */
 
 .back{
   text-align: center;
+}
+.back a:hover{
+  color: #0f172a;
 }
 
 .back a {
   text-decoration: none;
   color: whitesmoke;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  transition: all .5s;
 }
 
 select {
-  background: white;
+  background: whitesmoke;
   outline: none;
-  color: grey;
+  color: #00094e;
   border: none;
   width: 100%;
   max-width: 580px;
@@ -135,6 +137,7 @@ select {
   outline: 0;
 }
 
+
 form {
   display: flex;
   flex-direction: column;
@@ -146,6 +149,6 @@ form h2 {
   margin: 0;
   color: whitesmoke;
   font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
-
-

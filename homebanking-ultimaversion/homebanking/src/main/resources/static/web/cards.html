@@ -43,7 +43,7 @@
               <div class="modal-content" style="background-color:#0f172acf; box-shadow: 10px 10px 30px -4px rgba(0,0,0,0.75);">
                 <div class="modal-header" style="background-color: rgba(0, 0, 0, 0.753); letter-spacing: 6px;" >
                   <h5 class="modal-title" style="color: whitesmoke;" id="exampleModalLabel">{{modalTitle()}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close" style="background-color: whitesmoke;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="color: whitesmoke; font-size: large;">
                  <p>{{modalBody()}}</p>
@@ -200,10 +200,22 @@ VISA SILVER
   <button type="button" @click="setModalType(3)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black">
     VISA TITANIUM
     </button>
+
+    <div class="deleteCard">
+      <select v-model="number">
+        <option value="">
+
+        </option>
+        <option v-for="card of cards" :value="card.number">
+          {{card.number}}
+        </option>
+
+      </select>
+      <button @click="deleteCard">Delete Card</button>
+    </div>
           </div>
         </section>
       </main>
-
     </div>
 
     <footer>

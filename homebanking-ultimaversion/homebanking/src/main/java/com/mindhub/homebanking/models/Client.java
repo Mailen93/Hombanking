@@ -65,5 +65,7 @@ public class Client {
     public Set<Card> getCards(){return cards;}
     public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
+    public void setAccounts(Set<Account> accounts) {this.accounts = accounts;}
+    public void setCards(Set<Card> cards) {this.cards = cards;}
 }
 

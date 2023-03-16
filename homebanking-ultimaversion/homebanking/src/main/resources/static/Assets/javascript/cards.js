@@ -10,7 +10,8 @@ createApp({
       cards: [],
       isActive: false,
       setModal: 0,
-      fechaAlReves:""
+      fechaAlReves:"",
+      number:""
     };
   },
   created() {
@@ -41,8 +42,17 @@ createApp({
       let opciones = {year: "numeric", month: "2-digit", day: "2-digit"};
       let fechaFormateada = vencida.toLocaleString("es-ES",opciones);
       this.fechaAlReves = fechaFormateada.split("/").reverse().join("-");
-      console.log(this.fechaAlReves)
     },
+    deleteCard(){
+      console.log("hola")
+      axios.patch('/api/clients/current/cards', `number=${this.number}`, {
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+          }
+      })
+      .then(response => {window.location.href = '/web/cards.html'
+  })
+  },
     logOut(){      
       Swal.fire({
         title: 'Do you want to log out?',

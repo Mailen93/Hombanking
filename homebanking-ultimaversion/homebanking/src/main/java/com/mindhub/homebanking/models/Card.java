@@ -55,4 +55,5 @@ public class Card {
     public void setCardHolder(Client cardHolder) {this.cardHolder = cardHolder;}
     public Boolean getDeleteCard() {return deleteCard;}
     public void setDeleteCard(Boolean deleteCard) {this.deleteCard = deleteCard;}
+
 }

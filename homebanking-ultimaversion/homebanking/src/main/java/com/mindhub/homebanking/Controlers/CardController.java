@@ -45,7 +45,7 @@ public class CardController {
         if (client.getCards().size() >= 6) {
             return new ResponseEntity<>("You have so many cards", HttpStatus.FORBIDDEN);
         }
-        if (client.getCards().stream().anyMatch(card -> type == card.getType() && color == card.getColor())) {
+        if (client.getCards().stream().anyMatch(card -> type == card.getType() && color == card.getColor() && card.getDeleteCard() == true)) {
             return new ResponseEntity<>("You already have this card category", HttpStatus.FORBIDDEN);
         }
         Card addNewCard = new Card(randomNumberCard(cardRepository), returnCvvNumber(), type, color, LocalDate.now(), LocalDate.now().plusYears(5), client, true);
