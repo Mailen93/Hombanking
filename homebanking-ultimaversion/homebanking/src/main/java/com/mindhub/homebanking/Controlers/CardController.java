@@ -32,7 +32,7 @@ public class CardController {
     @RequestMapping("/clients/current/cards")
     public List<CardDTO> getCurrentCards(Authentication authentication) {
         Client clientAuth = clientRepositories.findByEmail(authentication.getName());
-        List<Card> checkCard = clientAuth.getCards().stream().filter(card -> card.getDeleteCard().equals(true)).collect(toList());
+        List<Card> checkCard = clientAuth.getCards().stream().filter(card -> card.getDeleteCard() == true).collect(toList());
         return checkCard.stream().map(card -> new CardDTO(card)).collect(toList());
     }
 

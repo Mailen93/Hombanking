@@ -18,16 +18,15 @@ import static com.mindhub.homebanking.Utils.Utilities.returnCvvNumber;
 
 @SpringBootApplication  //Le indica a spring que será mi punto de partida, la clase principal de una app sprinboot y trae anotaciones de coniguracion
 public class HomebankingApplication {
-//	@Autowired
-//	private PasswordEncoder passwordEncoder; //CREAR WEB AUTHORIZATION
-
+/*@Autowired
+private PasswordEncoder passwordEncoder; //CREAR WEB AUTHORIZATION*/
 	public static void main(String[] args) {SpringApplication.run(HomebankingApplication.class, args);}
-/*	@Bean  //Le digo a spring que instancie el metodo innit data para que sea usada ni bien se ejecute el main
+	/*@Bean  //Le digo a spring que instancie el metodo innit data para que sea usada ni bien se ejecute el main
 	public CommandLineRunner initData(ClientRepositories Clientrepositories, AccountRepository AccountR, TransactionRepository TransacR, LoanRepository LoanR, ClientLoanRepository CloanR, CardRepository CardR) {
 		return (args) -> {
-//comandlinerunner interfaz que me permite ejecutar una tarea luego que la app se haya inicializado. init Data: metodo que implementa la interfaz y crea los objetos necesarios para inicializar la app (clientes, cuentas, trans, prestamos)
-//			Clientrepositories.save(new Client("Melba", "Morel", "melba@mindhub.com"));
-//			Clientrepositories.save(new Client("Mailen", "Alvarez", "m.labarrere2@gmail.com"));
+//comandlinerunner interfaz que me permite ejecutar una tarea luego que la app se haya inicializado. init Data: metodo que implementa la interfaz y crea los objetos necesarios para inicializar la app (clientes, cuentas, trans, prestamos)//
+		   *//* Clientrepositories.save(new Client("Melba", "Morel", "melba@mindhub.com","password"));
+			Clientrepositories.save(new Client("Mailen", "Alvarez", "m.labarrere2@gmail.com","password1"));*//*
 			Client client1 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("password"));
 			Client client2 = new Client ("Mailen" , "Alvarez" , "m.labarrere2@gmail.com", passwordEncoder.encode("password1"));
 			Client admin = new Client ("Admin", "Admin", "admin@gmail.com", passwordEncoder.encode("admin"));
@@ -39,10 +38,10 @@ public class HomebankingApplication {
 			Transaction transaction2 = new Transaction(TransactionType.DEBIT, 750.01, "Pintura para muebles" ,LocalDateTime.now());
 			Transaction transaction3 = new Transaction(TransactionType.CREDIT, 200000.01, "Pago mensual" ,LocalDateTime.now());
 			Transaction transaction4 = new Transaction(TransactionType.DEBIT, 1000.00, "Paseador de perros" ,LocalDateTime.now());
-//			Transaction transaction5 = new Transaction(TransactionType.DEBIT, 7600.01, "Traje de baño" ,LocalDateTime.now());
+			Transaction transaction5 = new Transaction(TransactionType.DEBIT, 7600.01, "Traje de baño" ,LocalDateTime.now());
 			Transaction transaction6 = new Transaction(TransactionType.CREDIT, 3000.01, "Transferencia MP" ,LocalDateTime.of(2022,10,1,22,01));
 			Transaction transaction7 = new Transaction(TransactionType.DEBIT, 6500.20, "Mesita de Luz" ,LocalDateTime.now());
-//			Transaction transaction8 = new Transaction(TransactionType.CREDIT, 4250.30, "Devolución dinero" ,LocalDateTime.now());
+			Transaction transaction8 = new Transaction(TransactionType.CREDIT, 4250.30, "Devolución dinero" ,LocalDateTime.now());
 
 
 			Loan hipotecario = new Loan("Hipotecario", 500000, List.of(12,24,36,48,60));
@@ -63,9 +62,9 @@ public class HomebankingApplication {
 
 			account1.addTransaction(transaction1);
 			account1.addTransaction(transaction7);
-//			account1.addTransaction(transaction8);
+		    account1.addTransaction(transaction8);
 			account2.addTransaction(transaction2);
-//			account2.addTransaction(transaction5);
+			account2.addTransaction(transaction5);
 			account2.addTransaction(transaction6);
 			account3.addTransaction(transaction3);
 			account4.addTransaction(transaction4);
@@ -94,10 +93,10 @@ public class HomebankingApplication {
 			TransacR.save(transaction2);
 			TransacR.save(transaction3);
 			TransacR.save(transaction4);
-//			TransacR.save(transaction5);
+			TransacR.save(transaction5);
 			TransacR.save(transaction6);
 			TransacR.save(transaction7);
-//			TransacR.save(transaction8);
+			TransacR.save(transaction8);
 			LoanR.save(hipotecario);
 			LoanR.save(automotriz);
 			LoanR.save(personal);

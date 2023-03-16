@@ -9,11 +9,13 @@ createApp({
       loans: [],
       cards: [],
       isActive: false,
-      setModal: 0
+      setModal: 0,
+      fechaAlReves:""
     };
   },
   created() {
     this.loadData();
+    this.tarjetaVencida();
   },
   methods: {
     loadData() {
@@ -33,6 +35,13 @@ createApp({
       let date = fecha.split("T")[0];
       let newDate = date.split("-").reverse().join("/");
       return newDate;
+    },
+    tarjetaVencida(){
+      let vencida = new Date();
+      let opciones = {year: "numeric", month: "2-digit", day: "2-digit"};
+      let fechaFormateada = vencida.toLocaleString("es-ES",opciones);
+      this.fechaAlReves = fechaFormateada.split("/").reverse().join("-");
+      console.log(this.fechaAlReves)
     },
     logOut(){      
       Swal.fire({
@@ -76,9 +85,5 @@ createApp({
       if(this.setModal === 2)return "A Gold card offers even more benefits than a silver card. In addition to higher credit limits and lower interest rates, gold credit cards come with additional perks like extended warranties, travel insurance, and concierge services. Cardholders may also enjoy higher rewards earning rates and more exclusive rewards programs. Gold cards may also offer enhanced security features like EMV chip technology and fraud detection. Overall, a gold card can provide significant value for frequent travelers, big spenders, and those looking for extra perks and protection."
       if(this.setModal === 3)return "A Titanium card is a premium option that offers a range of benefits beyond what silver or gold cards provide. Titanium credit cards often come with the highest credit limits and lowest interest rates, making them ideal for big spenders who need significant purchasing power. Additionally, titanium credit cards may offer even more exclusive rewards programs, such as access to luxury travel lounges or personalized concierge services. Cardholders may also enjoy premium perks like complimentary travel insurance, priority boarding, and airport lounge access. With top-of-the-line security features and premium customer service, a titanium credit card can provide unparalleled benefits and value for high-net-worth individuals and frequent travelers."
     },
-    modalColor(){
-      if(this.setModal === 1) return $(".modal-header").css("background", "gold");
-    
-    }
   },
 }).mount("#app");

@@ -1699,14 +1699,46 @@ nav
   /////////////////// ACCOUNTS ////////////////// */
 
   #accounts {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-
     position: relative;
     overflow: hidden;
     background-image: url("img/transaction.jpg");
     background-position: center;
     background-size: cover;
+  }
+
+.down_arrow_accounts{
+  position: absolute;
+  left: 100vh;
+  bottom: 5vh;
+  font-size: 40px;
+  color: whitesmoke;
+  z-index: 100;
+}
+
+.why_us_container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: -10vh;
+}
+
+.why_one{
+  background-color: #00094e54;
+  backdrop-filter: blur(2px);
+  width: 40%;
+  height: 50%;
+}
+
+
+  .nextToQuestions{
+    display: flex;
+    background-color: red;
   }
 
   .accounts_nav {

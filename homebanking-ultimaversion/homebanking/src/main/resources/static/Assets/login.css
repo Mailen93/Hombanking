@@ -24,7 +24,6 @@ body {
   align-items: center;
   justify-content: space-between;
   position: relative;
-  
 }
 
 .info_container{
@@ -37,7 +36,6 @@ body {
   align-items: center;
   padding: 12px;
 }
-
 
 .subInfo_container{
   display: flex;
@@ -250,8 +248,6 @@ body {
   overflow: hidden;
   position: absolute;
   transition: transform 0.6s ease-in-out;
- 
- 
 }
 
 .container input#check-panel-active:checked ~ .overlay-container {
@@ -268,12 +264,10 @@ body {
   background-size: cover;
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
-
 }
 
 .container input#check-panel-active:checked ~ .overlay-container .overlay {
   transform: translateX(50%);
-  
 }
 
 .overlay-container .overlay .overlay-panel {
@@ -290,13 +284,12 @@ body {
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
   box-shadow: 4px 4px 18px 4px black;
-
 }
 
 .overlay-container .overlay .overlay-panel h1 {
   margin: 0;
-  text-shadow: 3px 3px 3px black;
-
+  text-shadow: 4px 4px 4px black;
+  letter-spacing: 2px;
 }
 
 .overlay-container .overlay .overlay-panel p{
@@ -388,11 +381,10 @@ button:focus {
 }
 
 .overlay-container .overlay .overlay-panel label:hover {
-  background-color:#00074d;
+  background-color:rgb(0 75 109);
   border-color: whitesmoke;
   color:whitesmoke;
 }
-
 
 .primary {
   color: whitesmoke;
@@ -402,6 +394,6 @@ button:focus {
 
 .primary:hover {
   color: whitesmoke;
-  background-color: #00074d;
+  background-color:rgb(0 75 109);
   border-color:whitesmoke;
 }
