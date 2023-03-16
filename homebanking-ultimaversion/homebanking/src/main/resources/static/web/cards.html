@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <div id="app">
+    <div id="app" v-cloak>
       <header>
         <div class="Navbar">
           <div class="client">
@@ -64,7 +64,7 @@
                 class="credit_container"   
               >
               <div v-for="card of cards"
-              v-if="cards.length > 0" >
+              v-if="cards.length > 0"> <div v-if="card.thruDate <= fechaAlReves">EXPIRED</div>
                 <div class="card" v-if="card.cardColor == 'GOLD'">
                   <div class="card__front card__partGold">
                     <img

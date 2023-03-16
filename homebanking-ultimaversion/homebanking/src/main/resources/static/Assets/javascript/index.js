@@ -75,6 +75,24 @@ createApp({
                   })
             })
     },
- 
+    createCard(){
+        axios.post('/api/clients/current/cards', `type=${this.cardType}&color=${this.cardColor}`,{
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(response => {
+            window.location.href = "/web/cards.html";
+        })
+        .catch(error => {
+            this.error = error.response.data;
+            Swal.fire({
+                icon: 'error',
+                title: `${this.error}`,
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              }) 
+      });
+    }
 }
 }).mount('#app')
