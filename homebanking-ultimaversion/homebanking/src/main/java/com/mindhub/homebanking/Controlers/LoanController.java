@@ -43,6 +43,8 @@ public class LoanController {
     @RequestMapping(path = ("/loans"), method = RequestMethod.POST)
     public ResponseEntity<Object> newLoan(Authentication authentication, @RequestBody LoanApplicationDTO loanApplicationDTO){
         Client client = clientRepositories.findByEmail(authentication.getName());
+        Loan loanVar = loanRepository.getReferenceById(loanApplicationDTO.getLoans_id());
+        Account accVar = accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated());
         if (loanApplicationDTO.getAmount() == null){
             return new ResponseEntity<>("Empty amount", HttpStatus.BAD_REQUEST);}
         if (loanApplicationDTO.getLoans_id() == null){
@@ -68,15 +70,17 @@ public class LoanController {
         if (client.getLoan().contains(loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null))){
             return new ResponseEntity<>("no podes tener el mismo prestamo 2 veces", HttpStatus.BAD_REQUEST);}
 
-        ClientLoan clientLoan = new ClientLoan(loanApplicationDTO.getAmount()*1.2, loanApplicationDTO.getPayments());
+        ClientLoan clientLoan = new ClientLoan(loanApplicationDTO.getAmount()*loanVar.getIva(), loanApplicationDTO.getPayments());
         client.addClientLoan(clientLoan);
-        loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null).addClientLoan(clientLoan);
+        loanVar.addClientLoan(clientLoan);
         clientLoanRepository.save(clientLoan);
+        clientRepositories.save(client);
+        loanRepository.save(loanVar);
 
-        Transaction transaction = new Transaction(TransactionType.CREDIT,loanApplicationDTO.getAmount(),loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null) + "loan approved", LocalDateTime.now());
-        accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).addTransaction(transaction);
-        accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).setBalance(accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).getBalance()+loanApplicationDTO.getAmount());
-        accountRepository.save(accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()));
+        Transaction transaction = new Transaction(TransactionType.CREDIT,loanApplicationDTO.getAmount(),loanVar + "loan approved", LocalDateTime.now(),accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).getBalance());
+        accVar.addTransaction(transaction);
+       accVar.setBalance(accVar.getBalance()+loanApplicationDTO.getAmount());
+        accountRepository.save(accVar);
         transactionRepository.save(transaction);
 
         return new ResponseEntity<>("Loan succesfull",HttpStatus.CREATED);}

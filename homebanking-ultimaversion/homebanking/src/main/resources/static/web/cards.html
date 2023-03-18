@@ -187,23 +187,27 @@
           </div>
  
           <div class="info_cards">
-            <h2>Benefits of our cards</h2>
-            <!-- Button trigger modal -->
-<button type="button" @click="setModalType(1)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: rgb(168, 168, 168)">
-VISA SILVER
-</button>
-
-<button type="button" @click="setModalType(2)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:  rgb(197, 170, 22)">
-  VISA GOLD
+            <div botones>
+              <h2>Benefits of our cards</h2>
+              <!-- Button trigger modal -->
+  <button type="button" @click="setModalType(1)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: rgb(168, 168, 168)">
+  VISA SILVER
   </button>
-
-  <button type="button" @click="setModalType(3)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black">
-    VISA TITANIUM
+  
+  <button type="button" @click="setModalType(2)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:  rgb(197, 170, 22)">
+    VISA GOLD
     </button>
+  
+    <button type="button" @click="setModalType(3)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black">
+      VISA TITANIUM
+      </button>
+            </div>
 
     <div class="deleteCard">
+      <p>Do you want to delete a card?</p>
       <select v-model="number">
         <option value="">
+          Select a card number
 
         </option>
         <option v-for="card of cards" :value="card.number">
@@ -211,7 +215,7 @@ VISA SILVER
         </option>
 
       </select>
-      <button @click="deleteCard">Delete Card</button>
+      <button type="button" @click="deleteCard">Delete Card</button>
     </div>
           </div>
         </section>

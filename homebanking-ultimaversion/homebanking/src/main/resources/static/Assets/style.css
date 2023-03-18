@@ -212,11 +212,6 @@ footer p {
   margin-bottom: 0;
 }
 
-.deleteCard{
-  margin-top: 1 rem;
-
-
-}
 
 #cards {
   display: flex;
@@ -1663,11 +1658,23 @@ nav
     z-index: 3;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 40vh;
+    align-items:center;
+    justify-content: space-evenly;
+    margin-bottom: 30vh;
     display: flex;
   }
+
+  .deleteCard{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.deleteCard p{
+  color: whitesmoke;
+}
 
   .info_cards h2 {
     font-size: 20px;

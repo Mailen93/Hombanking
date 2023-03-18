@@ -3,6 +3,7 @@ package com.mindhub.homebanking.Controlers;
 import com.mindhub.homebanking.Utils.Utilities;
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.AccountType;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
@@ -59,7 +60,7 @@ public class ClientController{
             return new ResponseEntity<>("Email already in use", HttpStatus.BAD_REQUEST);}
 
        Client newClient = new Client(first, lastName, email, passwordEncoder.encode(password));
-        Account account = new Account(Utilities.Number(accountRepository), LocalDateTime.now(), 0.0);
+        Account account = new Account(Utilities.Number(accountRepository), LocalDateTime.now(), 0.0, true, AccountType.CURRENT);
         newClient.addAccount(account);
         clientRepositories.save(newClient);
         accountRepository.save(account);

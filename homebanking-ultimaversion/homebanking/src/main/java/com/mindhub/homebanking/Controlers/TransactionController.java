@@ -56,11 +56,12 @@ public class TransactionController {
        if (accountRepository.findByNumber(nDeCuentaOr).getBalance() < amount){
            return new ResponseEntity<>("Not enough money in the account", HttpStatus.BAD_REQUEST);}
 
-        Transaction newTransactionDest = new Transaction(TransactionType.CREDIT, amount, description, LocalDateTime.now());
-        Transaction newTransactionOr = new Transaction(TransactionType.DEBIT, amount, description, LocalDateTime.now());
-
         Account accountOrigen = accountRepository.findByNumber(nDeCuentaOr);
         Account accountDestino = accountRepository.findByNumber(nDeCuentaDest);
+
+        Transaction newTransactionDest = new Transaction(TransactionType.CREDIT, amount, description, LocalDateTime.now(), accountOrigen.getBalance() - amount);
+        Transaction newTransactionOr = new Transaction(TransactionType.DEBIT, amount, description, LocalDateTime.now(), accountDestino.getBalance() + amount);
+
         accountOrigen.addTransaction(newTransactionOr);
         accountDestino.addTransaction(newTransactionDest);
         transactionRepository.save(newTransactionOr);
