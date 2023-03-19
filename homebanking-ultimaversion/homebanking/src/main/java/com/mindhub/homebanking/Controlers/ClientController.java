@@ -68,10 +68,13 @@ public class ClientController{
 
     @RequestMapping("/clients/current")
     public ClientDTO getCurrentClient(Authentication authentication){
-        Client ClientAuth= clientRepositories.findByEmail(authentication.getName());
-        Set<Card> cardsTrue = ClientAuth.getCards().stream().filter(card -> card.getDeleteCard() == true).collect(toSet());
-        ClientAuth.setCards(cardsTrue);
-        return new ClientDTO(ClientAuth);}
+        Client clientAuth= clientRepositories.findByEmail(authentication.getName());
+        Set<Card> cardsTrue = clientAuth.getCards().stream().filter(card -> card.getDeleteCard() == true).collect(toSet());
+        clientAuth.setCards(cardsTrue);
+        Set<Account> accountsTrue = clientAuth.getAccounts().stream().filter(account -> account.getDeleteAccount() == true).collect(toSet());
+        clientAuth.setAccounts(accountsTrue);
+        return new ClientDTO(clientAuth);
+    }
 }
 
 //IR A ACCOUNT CONTROLLER

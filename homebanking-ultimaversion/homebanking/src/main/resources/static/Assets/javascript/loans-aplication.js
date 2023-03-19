@@ -24,7 +24,7 @@ createApp({
         axios.get("http://localhost:8080/api/clients/current")
         .then((response) => {
             this.data = response;
-            console.log(this.data),
+         
             this.client = response.data;
             this.accounts = response.data.accounts;
             this.userLoans = response.data.loans;
@@ -34,7 +34,8 @@ createApp({
     loan() {
         axios.get("http://localhost:8080/api/loans")
         .then((response) => {
-            this.loans = response.data
+            this.loans = response.data,
+            console.log(response)
         })
     }, 
     filterLoans:function(){

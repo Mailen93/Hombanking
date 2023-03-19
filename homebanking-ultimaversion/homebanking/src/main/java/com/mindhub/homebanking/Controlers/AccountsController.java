@@ -61,19 +61,20 @@ import static java.util.stream.Collectors.toList;
             Client clientAuth = clientRepositories.findByEmail(authentication.getName());
           Account deleteAccount = accountRepo.findByNumber(name);
             if (name.isEmpty()) {
-                return new ResponseEntity<>("Missing Number", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Missing Number", HttpStatus.FORBIDDEN);
             }
             if (clientAuth.getAccounts().stream().filter(account -> account.getNumber().equals(name)) == null) {
                 return new ResponseEntity<>("Wrong Number", HttpStatus.BAD_REQUEST);
             }
             if (deleteAccount.getBalance() > 0){
-                return new ResponseEntity<>("You can't delete an account with cash", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("You can't delete an account with cash", HttpStatus.FORBIDDEN);
             }
             if (!clientAuth.getClientLoans().isEmpty() && clientAuth.getAccounts().size() == 1){
-                return new ResponseEntity<>("You can't delete an account with a loan", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("You can't delete an account with a loan", HttpStatus.FORBIDDEN);
             }
             deleteAccount.setDeleteAccount(false);
             accountRepo.save(deleteAccount);
+            clientRepositories.save(clientAuth);
             return new ResponseEntity<>("Your account has been deleted", HttpStatus.ACCEPTED);}
         }
 

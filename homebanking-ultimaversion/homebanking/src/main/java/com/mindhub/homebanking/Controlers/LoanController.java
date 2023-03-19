@@ -11,10 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -84,6 +81,26 @@ public class LoanController {
         transactionRepository.save(transaction);
 
         return new ResponseEntity<>("Loan succesfull",HttpStatus.CREATED);}
+
+
+    @PostMapping("/loans/admin")
+    public ResponseEntity<Object> loanAdmin(@RequestParam String name,
+                                            @RequestParam Integer maxAmount,
+                                            @RequestParam List<Integer> payments,
+                                            @RequestParam Double iva){
+        if (name.isEmpty()){
+            return new ResponseEntity<>("Name is empty", HttpStatus.BAD_REQUEST);}
+        else if (maxAmount.toString().isEmpty()){
+            return new ResponseEntity<>("Empty max amount", HttpStatus.BAD_REQUEST);}
+        else if (payments.isEmpty()){
+            return new ResponseEntity<>("Empty payment", HttpStatus.BAD_REQUEST);}
+        else if (iva.isNaN()){
+            return new ResponseEntity<>("Empty iva", HttpStatus.BAD_REQUEST);}
+
+        Loan loan = new Loan(name,maxAmount,payments,iva);
+        loanRepository.save(loan);
+        return new ResponseEntity<>("Loan succesfully created", HttpStatus.CREATED);}
+
 }
 
  /*   Debe recibir un objeto de solicitud de crédito con los datos del préstamo

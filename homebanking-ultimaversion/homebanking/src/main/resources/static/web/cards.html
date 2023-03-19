@@ -64,7 +64,7 @@
                 class="credit_container"   
               >
               <div v-for="card of cards"
-              v-if="cards.length > 0"> <div v-if="card.thruDate <= fechaAlReves">EXPIRED</div>
+              v-if="cards.length > 0"> <div v-if="card.thruDate <= fechaAlReves" class="expired">EXPIRED</div>
                 <div class="card" v-if="card.cardColor == 'GOLD'">
                   <div class="card__front card__partGold">
                     <img
@@ -204,18 +204,17 @@
             </div>
 
     <div class="deleteCard">
-      <p>Do you want to delete a card?</p>
-      <select v-model="number">
+      <p style="color: whitesmoke; letter-spacing: 2px; text-transform: uppercase;">Do you want to delete a card?</p>
+      <select style="margin-bottom: 1rem;" v-model="number">
         <option value="">
           Select a card number
-
         </option>
         <option v-for="card of cards" :value="card.number">
           {{card.number}}
         </option>
 
       </select>
-      <button type="button" @click="deleteCard">Delete Card</button>
+      <div class="deleteButton"><a href="#" @click="deleteCard">Delete Card</a></div>
     </div>
           </div>
         </section>
