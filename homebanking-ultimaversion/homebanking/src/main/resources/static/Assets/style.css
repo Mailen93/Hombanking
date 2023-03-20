@@ -1130,7 +1130,7 @@ footer p {
     right: 0rem;
     object-fit: cover;
     position: absolute;
-    z-index: 30;
+    z-index: 100;
   }
 
   .flex_accounts_container {
@@ -1814,13 +1814,13 @@ nav
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: -10vh;
+  margin-top: -18vh;
 }
 
 .why_one{
   width: 40%;
   color: whitesmoke;
-  background-color: #00094e81;
+  background-color: #00094e3d;
   padding: 1.2rem;
   backdrop-filter: blur(2px);
   text-align: justify;
@@ -1938,7 +1938,7 @@ nav
     right: 4rem;
     object-fit: cover;
     position: absolute;
-    z-index: 40;
+    z-index: 100;
     display: flex;
   }
   .flex_accounts_container {
