@@ -20,6 +20,7 @@ public class Loan {
     private Long id;
     private String name;
     private Integer maxAmount;
+    private Double iva;
 
     @ElementCollection //MAPEA
     @Column (name = "payments")
@@ -29,9 +30,10 @@ public class Loan {
     private Set<ClientLoan> clientLoans = new HashSet<>();
 
     public Loan(){}
-    public Loan(String name, Integer maxAmount, List<Integer> payments){
+    public Loan(String name, Integer maxAmount, List<Integer> payments, Double iva){
         this.name = name;
         this.maxAmount = maxAmount;
+        this.iva = iva;
         this.payments = payments;}
         public void addClientLoan(ClientLoan clientLoan1){
             clientLoan1.setLoan(this);
@@ -62,4 +64,6 @@ public class Loan {
     public void setPayments(List<Integer> payments) {
         this.payments = payments;
     }
+    public Double getIva() {return iva;}
+    public void setIva(Double iva) {this.iva = iva;}
 }

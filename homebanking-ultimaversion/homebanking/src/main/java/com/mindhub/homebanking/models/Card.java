@@ -36,7 +36,7 @@ public class Card {
         this.fromDate = fromDate;
         this.thruDate = truDate;
         this.cardHolder = cardHolder;
-    this.deleteCard = deleteCard;}
+        this.deleteCard = deleteCard;}
 
     public Long getId() {return Id;}
     public String getNumber() {return number;}

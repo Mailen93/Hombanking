@@ -52,7 +52,7 @@ body h2 {
   background-color: rgba(0, 0, 0, 0.401);
   backdrop-filter: blur(6px);
   color: whitesmoke;
-  height: 40%;
+  height: 55%;
   padding: 1rem;
   text-align: center;
   width: 40%;
@@ -212,11 +212,6 @@ footer p {
   margin-bottom: 0;
 }
 
-.deleteCard{
-  margin-top: 1 rem;
-
-
-}
 
 #cards {
   display: flex;
@@ -302,7 +297,6 @@ footer p {
   font-size: 3rem;
   text-shadow: 1px 0 5px black;
 }
-
 .generalContainer {
   width: 100%;
   display: flex;
@@ -312,6 +306,22 @@ footer p {
   justify-content: center;
 }
 
+.expired{
+  background-color:rgb(207, 8, 8);
+  width: 6rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.3rem;
+  color: whitesmoke;
+  height: 2rem;
+  font-size: 1rem;
+  align-items: center;
+  position: absolute;
+  z-index: 1000;
+ font-weight: bold;
+ padding: 2px;
+ 
+}
 .card {
   background-color: transparent !important;
   border: none !important;
@@ -1185,6 +1195,15 @@ nav
     padding: 8px;
   }
 
+  .deleteAccount{
+    background-color: whitesmoke;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 8px;
+
+
+  }
+
 
   .logOutMobile {
     display: flex;
@@ -1663,11 +1682,51 @@ nav
     z-index: 3;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 40vh;
+    align-items:center;
+    justify-content: space-evenly;
+    margin-bottom: 30vh;
     display: flex;
   }
+  .deleteButton{
+    background-color: whitesmoke;
+    height: 2rem;
+    width: 6.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border: 1px solid #0b0f14;
+    transition: all .8s ease;
+
+  }
+  .deleteButton a{
+    text-decoration: none;
+    color: #0b0f14;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: .9rem;
+    transition: all .8s ease;
+  }
+  .deleteButton:hover {
+    background-color: #0b0f14;
+  }
+
+  .deleteButton:hover a{
+    color: whitesmoke;
+  }
+
+  .deleteCard{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    flex-direction: column;
+}
+
+.deleteCard p{
+  color: whitesmoke;
+}
 
   .info_cards h2 {
     font-size: 20px;
@@ -1759,9 +1818,12 @@ nav
 }
 
 .why_one{
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
   background-color: #00094e54;
   backdrop-filter: blur(2px);
-  width: 40%;
+  width: 45%;
   height: 50%;
 }
 

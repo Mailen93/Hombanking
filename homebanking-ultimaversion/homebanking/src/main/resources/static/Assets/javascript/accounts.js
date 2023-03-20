@@ -9,6 +9,8 @@ createApp({
       loans: [],
       allDateTransactions: [],
       isActive: false,
+      accountType: "",
+      number: ""
     };
   },
   created() {
@@ -40,8 +42,25 @@ createApp({
         }
       }
     },
+    alertCreateAccount(){
+      Swal.fire({
+          title: 'Choose your account type',
+          showDenyButton: true,
+          showCloseButton: true,
+          confirmButtonText: 'Current Account',
+          denyButtonText: 'Saving Account',
+        }).then((result) => {
+          if (result.isConfirmed) {
+              this.accountType = "CURRENT"
+              this.createAccount()
+          } else if (result.isDenied) {
+              this.accountType = "SAVING"
+              this.createAccount() 
+          }
+        })
+},
     createAccount(){
-      axios.post("http://localhost:8080/api/clients/current/accounts") 
+      axios.post("http://localhost:8080/api/clients/current/accounts",`accountType=${this.accountType}`)
           .then(response => { 
             this.loadData()
           })
@@ -49,6 +68,15 @@ createApp({
               this.error = error.response.data.message;
           });
   },
+  deleteAccount(){
+    axios.patch("http://localhost:8080/api/clients/current/accounts", `name=${this.number}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => {window.location.href = '/web/accounts.html'
+})
+},
     logOut(){      
       Swal.fire({
         title: 'Do you want to log out?',

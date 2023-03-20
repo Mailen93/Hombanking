@@ -44,7 +44,6 @@ createApp({
       this.fechaAlReves = fechaFormateada.split("/").reverse().join("-");
     },
     deleteCard(){
-      console.log("hola")
       axios.patch('/api/clients/current/cards', `number=${this.number}`, {
           headers: {
               'Content-Type': 'application/x-www-form-urlencoded'

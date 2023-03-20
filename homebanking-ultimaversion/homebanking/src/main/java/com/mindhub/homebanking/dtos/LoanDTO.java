@@ -10,15 +10,18 @@ public class LoanDTO {
     private String name;
     private int maxAmount;
     private List<Integer> payments;
+    private Double iva;
 
     public LoanDTO(){}
     public LoanDTO(Loan loan){
         this.id = loan.getId();
         this.name = loan.getName();
         this.maxAmount = loan.getMaxAmount();
+        this.iva = loan.getIva();
         this.payments = loan.getPayments();}
     public long getId() {return id;}
     public String getName() {return name;}
     public int getMaxAmount() {return maxAmount;}
+    public Double getIva() {return iva;}
     public List<Integer> getPayments() {return payments;}
 }
