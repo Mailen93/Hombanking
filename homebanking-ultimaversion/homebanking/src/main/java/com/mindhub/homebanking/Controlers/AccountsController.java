@@ -48,7 +48,7 @@ import static java.util.stream.Collectors.toList;
         public ResponseEntity<Object> newAccount(Authentication authentication, @RequestParam String accountType) {
             Client client = clientRepositories.findByEmail(authentication.getName());
             AccountType accountTypeReal = AccountType.valueOf(accountType);
-            if (client.getAccounts().size() >= 3) {
+            if (client.getAccounts().stream().filter(account -> account.getDeleteAccount() == true).count() >= 3) {
                 return new ResponseEntity<>("You can't have more accounts", HttpStatus.FORBIDDEN);
             }
             Account newAccount = new Account(Utilities.Number(accountRepo), LocalDateTime.now(), 0.0, true, accountTypeReal);

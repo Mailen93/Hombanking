@@ -9,7 +9,8 @@ createApp({
       loans: [],
       allDateTransactions: [],
       isActive: false,
-      accountType: ""
+      accountType: "",
+      number: ""
     };
   },
   created() {
@@ -67,6 +68,15 @@ createApp({
               this.error = error.response.data.message;
           });
   },
+  deleteAccount(){
+    axios.patch("http://localhost:8080/api/clients/current/accounts", `name=${this.number}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => {window.location.href = '/web/accounts.html'
+})
+},
     logOut(){      
       Swal.fire({
         title: 'Do you want to log out?',

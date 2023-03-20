@@ -52,7 +52,7 @@ body h2 {
   background-color: rgba(0, 0, 0, 0.401);
   backdrop-filter: blur(6px);
   color: whitesmoke;
-  height: 40%;
+  height: 55%;
   padding: 1rem;
   text-align: center;
   width: 40%;
@@ -1195,6 +1195,15 @@ nav
     padding: 8px;
   }
 
+  .deleteAccount{
+    background-color: whitesmoke;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 8px;
+
+
+  }
+
 
   .logOutMobile {
     display: flex;
@@ -1809,9 +1818,12 @@ nav
 }
 
 .why_one{
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
   background-color: #00094e54;
   backdrop-filter: blur(2px);
-  width: 40%;
+  width: 45%;
   height: 50%;
 }
 

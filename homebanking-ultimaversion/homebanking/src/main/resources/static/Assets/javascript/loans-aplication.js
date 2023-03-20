@@ -39,10 +39,12 @@ createApp({
         })
     }, 
     filterLoans:function(){
-      return this.loans.filter(loan=>loan.id==this.id)[0]?.payments;
+     this.loans.find(loan=> loan.id == this.loans_id)
+      return this.loans.find(loan=> loan.id == this.loans_id).payments
+  
   },
     newTransaction() {
-      axios.post('/api/loans', {amount:this.amount, payments:this.payments, id:this.loans_id, account_destinated:this.account_destinated})
+      axios.post('/api/loans', {"amount":this.amount, "payments":this.payments, "loans_id":this.loans_id, "account_destinated":this.account_destinated})
       
       .then(response => {
          Swal.fire({

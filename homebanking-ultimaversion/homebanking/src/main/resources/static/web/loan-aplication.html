@@ -149,6 +149,47 @@
             <div class="loanInfo">
                   <p>LOANS INFO</p>
                 </div>
+                <form class="transactionForm">
+                  <h3 class="form-header">Account that will provide the funds</h3>
+                  <div class="fields">
+                      <label>ID for the Loan you want to apply to:</label>
+                      <select class="form-select" v-model="loans_id">
+                        <option :value="loan.id" v-for="loan of loans">{{loan.id}} {{loan.name}}</option>
+                      </select>
+                      <label>Number of payments</label>
+                      <select class="form-select" v-if="loans_id" v-model="payments">
+                        <option></option>
+                        <option :value="number" v-for="number of filterLoans()">{{number}}</option>
+                      </select>
+                      <label>Loan amount</label>
+                      <input type="text" v-model="amount">
+                      <fieldset v-if="loans">
+                        <h3>Summary</h3>
+                        <h5>Loan amount: {{amount}}</h5>
+                        <!-- <h5>Interest: %{{loans[loans_id].interest100}}</h5>
+                        <h5>Total amount to be paid back: {{amount(loans[loans_id].interest+ 1)}}</h5> -->
+                      </fieldset>
+                      <label>Account number to deposit</label>
+                      <input type="text" v-model="account_destinated"></input>
+                      <button @Click="applyLoan" class="send">Send</button>
+                  </div>
+              </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--               
                   <div class="creationCardForm" @submit.prevent="loadData">
                     <div class="title_form">
                       <h2>Make your loan:</h2>
@@ -173,7 +214,7 @@
                                 </select>
                               </div>
                             </li> 
-                            <li>
+                            <li> -->
                               <!-- <select v-model="payments" name="payments">
                                 <template> -->
 
@@ -181,7 +222,7 @@
                                 <!-- <option value="">Choose your account</option>
                                 <option value="CuentasPropias">OWN ACCOUNT</option>
                                 <option value="Terceros">THIRD PARTIES</option> -->
-                              </select>
+                              <!-- </select>
                             </li>
                             <div v-if="transferOption == 'CuentasPropias'" class="accountOptions">
                               <select v-model="numberEmission">
@@ -239,7 +280,7 @@
                         </div>
                       </form>
                     </div>
-                  </div>
+                  </div> -->
           
         </section>
       </main>
