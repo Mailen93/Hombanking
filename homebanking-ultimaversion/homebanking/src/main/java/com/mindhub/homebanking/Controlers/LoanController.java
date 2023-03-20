@@ -90,12 +90,15 @@ public class LoanController {
                                             @RequestParam Double iva){
         if (name.isEmpty()){
             return new ResponseEntity<>("Name is empty", HttpStatus.BAD_REQUEST);}
-        else if (maxAmount.toString().isEmpty()){
+        if (maxAmount.toString().isEmpty()){
             return new ResponseEntity<>("Empty max amount", HttpStatus.BAD_REQUEST);}
-        else if (payments.isEmpty()){
+        if (payments.isEmpty()){
             return new ResponseEntity<>("Empty payment", HttpStatus.BAD_REQUEST);}
-        else if (iva.isNaN()){
+        if (iva.isNaN()){
             return new ResponseEntity<>("Empty iva", HttpStatus.BAD_REQUEST);}
+        if (loanRepository.findAll().stream().anyMatch(loan -> loan.getName().equals(name))) {
+            return new ResponseEntity<>("ya existe un prestamo con ese nombre", HttpStatus.BAD_REQUEST);
+        }
 
         Loan loan = new Loan(name,maxAmount,payments,iva);
         loanRepository.save(loan);

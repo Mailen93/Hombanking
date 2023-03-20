@@ -13,11 +13,13 @@ createApp({
         account_destinated:"",
         payments:"",
          loans_id:"",
+         iva: 0
     };
   },
   created () {
     this.loadData()
     this.loan()
+    // console.log(this.getIva())
   },
   methods: {
     loadData() {
@@ -35,12 +37,14 @@ createApp({
         axios.get("http://localhost:8080/api/loans")
         .then((response) => {
             this.loans = response.data
+            console.log(this.loans)
+            this.iva= this.loans.find(a => a.id == this.loans_id).iva
+            console.log(this.iva)
         })
     }, 
     filterLoans:function(){
      this.loans.find(loan=> loan.id == this.loans_id)
       return this.loans.find(loan=> loan.id == this.loans_id).payments
-  
   },
     applyLoan() {
       axios.post('/api/loans', {amount:this.amount, payments:this.payments, loans_id:this.loans_id, account_destinated:this.account_destinated})

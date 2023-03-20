@@ -1,104 +1,3 @@
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./multimedia/css/account.css">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  >
-  <link rel="shortcut icon" href="./multimedia/MINDBANK-removebg-preview.png" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <title>MINDBANK/Ayuda</title>
-</head>
-<body>
-<div  id="app" class="fondito " >
-  <header>
-    <nav class="navbar navbar-expand-lg bg">
-      <div @submit.prevent class="container-fluid flex-wrap">
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml">
-            <li class="nav-item">
-              <a  class="nav-link active boton" href="./accounts.html" >Inicio <span></span></a>
-            </li>
-            <li class="nav-item">
-              <a @click="tarjetas" class="nav-link boton" href="./cards.html">Tarjetas <span></span></a>
-            </li>
-           
-            <li class="nav-item">
-              <a  class="nav-link boton" v-on:click="Alertaparasalir" >Cerrar sesion <span></span></a>
-            </li>
-            
-          </ul>
-        </div>
-      </div>
-    </nav>
-   <img class="icono" src="./multimedia/MINDBANK-unscreen.gif" alt="logo">
-  </header>
-<main>
- 
-  <div class="formulario">
-    <fieldset>
-        <legend class="text-center">Crear prestamo:</legend>
-        <div class="mb-2 space2">
-          Elige el tipo de prestamo:
-            <select v-model="loan_id" class="form-select p-1" aria-label="Default select example">
-                <option value="3">Automotriz</option>
-                <option value="1">Hipotecario</option>
-                <option value="2">Personal</option>
-            </select>
-        </div>
-        
-        Cuotas :
-        <div class="mb-2 space2" v-for="loan of loans">
-            <select v-model="payments" v-if="loan.id==loans_id" class="form-select p-1" aria-label="Default select example">
-                <option v-for="payment of payments"> {{payment}} </option>
-            </select>
-        </div>
-
-        <div class="mb-2 space2">
-            <label>Amount:
-            <input v-model="amount" id="numero" type="number" min="1">
-            </label>
-        </div>
-
-        <p v-show='amount!=""&&payments!=""'>{{payments}} x ${{((amount*1.2) / payments).toFixed(2)}}</p>
-
-        <div class="mb-2 space2">
-            <label>Destination Account:
-            <input v-model="account_destinated" type="text">
-            </label>
-        </div>
-    
-        <div class="d-flex justify-content-center space2">
-            <button type="submit" class="btn btn-white" @click="transacAlert">Create Loan</button>
-        </div>
-    </fieldset>
-</div>
-</main>
-</div>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../Assets/javascript/loans-aplication.js"></script>  
-</body>
-</html>  -->
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -144,14 +43,16 @@
         </nav>
       </header>
 
-
+<main>
       <div class="container_info">
-        <h1 class="info__title">
-          Create your new card
-        </h1>
+        <h2 style="letter-spacing: 2px; margin-left: 1rem;" class="info__title">
+         APPLY FOR A LOAN
+         {{iva}}
+        </h2>
         <form @submit.prevent>
-          <h2>Account that will provide the funds</h2>
+          <h2>Type of Loan</h2>
           <select class="form-select" v-model="loans_id">
+
             <option :value="loan.id" v-for="loan of loans">{{loan.id}} {{loan.name}}</option>
           </select>
           <h2>Number of payments</h2>
@@ -159,163 +60,27 @@
             <option :value="number" v-for="number of filterLoans()">{{number}}</option>
           </select>
           <h2>Loan amount</h2>
-          <input type="text" v-model="amount">
+          <input style="width: 50%; height: 2rem;" type="text" v-model="amount">
                       <fieldset v-if="loans">
                         <h3>Summary</h3>
-                        <h5>Loan amount: {{amount}}</h5>
-                        <!-- <h5>Interest: %{{loans[loans_id].interest100}}</h5>
-                        <h5>Total amount to be paid back: {{amount(loans[loans_id].interest+ 1)}}</h5> -->
+                        <h5>Loan amount: {{amount* iva}}</h5>
+                        <div v-for="loan of loans">
+                          <p v-if="loans_id == loan.id" v-show='amount != 0'>Pagaras {{payments}} cuotas de {{(amount * loan.iva / payments).toLocaleString('de-DE', { style: 'currency', currency:'USD' })}}
+                          </p>
+                        </div>
+                        <!-- <h5>Total amount to be paid back: {{amount(loans[loans_id].interest+ 1)}}</h5>  -->
                       </fieldset>
                       <label>Account number to deposit</label>
-                      <input type="text" v-model="account_destinated"></input>
+                      <select v-model="account_destinated">
+                        <option :value="account.number" v-for="account of accounts">{{account.number}}</option>
+                      </select>
           <a href="#" @click="applyLoan"class="info__button">Send</a>
           <p class="back"><a href="/web/accounts.html">Back home</a></p>
         </form>
       </div>
     </div>
+    </main>
     <div class="opacity"></div>
-
-      <!-- <main>
-        <section id="loanAply">
-            <div class="loanInfo">
-                  <p>LOANS INFO</p>
-                </div>
-                <form class="transactionForm">
-                  <h3 class="form-header">Account that will provide the funds</h3>
-                  <div class="fields">
-                      <label>ID for the Loan you want to apply to:</label>
-                      <select class="form-select" v-model="loans_id">
-                        <option :value="loan.id" v-for="loan of loans">{{loan.id}} {{loan.name}}</option>
-                      </select>
-                      <label>Number of payments</label>
-                      <select class="form-select" v-if="loans_id" v-model="payments">
-                        <option></option>
-                        <option :value="number" v-for="number of filterLoans()">{{number}}</option>
-                      </select>
-                      <label>Loan amount</label>
-                      <input type="text" v-model="amount">
-                      <fieldset v-if="loans">
-                        <h3>Summary</h3>
-                        <h5>Loan amount: {{amount}}</h5> -->
-                        <!-- <h5>Interest: %{{loans[loans_id].interest100}}</h5>
-                        <h5>Total amount to be paid back: {{amount(loans[loans_id].interest+ 1)}}</h5> -->
-                      </fieldset>
-                      <!-- <label>Account number to deposit</label>
-                      <input type="text" v-model="account_destinated"></input>
-                      <button @Click="applyLoan" class="send">Send</button>
-                  </div>
-              </form> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--               
-                  <div class="creationCardForm" @submit.prevent="loadData">
-                    <div class="title_form">
-                      <h2>Make your loan:</h2>
-                      {{loans}}
-                    </div>
-                    <div class="formulario">
-                      <form class="my-form">
-                        <div class="container">
-                          <ul class="ulCreationCard">
-                            <li>
-                              <select v-model="loans_id" name="loans_id">
-                                <option value="">Choose your loan</option>
-                                <option value="CuentasPropias">Personal</option>
-                                <option value="Terceros">Hipotecario</option>
-                                <option value="Terceros">Automotriz</option>
-                              </select>
-                            </li>
-                            <li>
-                              <div class="cuotas" v-for= "loan of loans">
-                                <select v-model="payments" v-if= "loan.id == loans_id">
-                                  <option v-for= "payment of loan.payments">{{payment}}</option>
-                                </select>
-                              </div>
-                            </li> 
-                            <li> -->
-                              <!-- <select v-model="payments" name="payments">
-                                <template> -->
-
-                            
-                                <!-- <option value="">Choose your account</option>
-                                <option value="CuentasPropias">OWN ACCOUNT</option>
-                                <option value="Terceros">THIRD PARTIES</option> -->
-                              <!-- </select>
-                            </li>
-                            <div v-if="transferOption == 'CuentasPropias'" class="accountOptions">
-                              <select v-model="numberEmission">
-                                <option value="">From "account"</option>
-                                <option v-for="account of accounts" :value="account.number">
-                                  {{account.number}}
-                                </option>
-                              </select>
-                              <select v-model="numberReceptor">
-                                <option value="">To "account"</option>
-                                <option v-for="account of accounts" :value="account.number">
-                                  {{account.number}}
-                                </option>
-                              </select>
-                            </div>
-                            <div v-if="transferOption == 'Terceros'">
-                              <select v-model="numberEmission">
-                                <option value="">From "account"</option>
-                                <option v-for="account of accounts" :value="account.number">
-                                  {{account.number}}
-                                </option>
-                              </select>
-                              <div class="grid grid-2">
-                                <input
-                                  v-model="numberReceptor"
-                                  placeholder="Destination account"
-                                />
-                              </div>
-                            </div>
-                            <li class="transferInput">
-                              <input v-model="amount" placeholder="Transfer Amount" type="number" />
-                            </li>
-                            <li>
-                              <textarea
-                                v-model="description"
-                                placeholder="Description"
-                              ></textarea>
-                            </li>
-              
-                            <li>
-                              <div class="submit_reset">              
-                                <button
-                                  @click="transferencias"
-                                  class="btn-grid"
-                                  type="submit"
-                                >  
-                                  <span class="front">SUBMIT</span>
-                                </button>
-                                <button class="btn-grid" type="reset">
-                                  <span class="front">RESET</span>
-                                </button>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </form>
-                    </div>
-                  </div> -->
-          
-        </section>
-      </main>
-
       <footer>
 
       </footer>
