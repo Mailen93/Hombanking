@@ -34,8 +34,7 @@ createApp({
     loan() {
         axios.get("http://localhost:8080/api/loans")
         .then((response) => {
-            this.loans = response.data,
-            console.log(response)
+            this.loans = response.data
         })
     }, 
     filterLoans:function(){
@@ -43,9 +42,8 @@ createApp({
       return this.loans.find(loan=> loan.id == this.loans_id).payments
   
   },
-    newTransaction() {
-      axios.post('/api/loans', {"amount":this.amount, "payments":this.payments, "loans_id":this.loans_id, "account_destinated":this.account_destinated})
-      
+    applyLoan() {
+      axios.post('/api/loans', {amount:this.amount, payments:this.payments, loans_id:this.loans_id, account_destinated:this.account_destinated})
       .then(response => {
          Swal.fire({
               title: 'Do you want to save the changes?',

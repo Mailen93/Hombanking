@@ -1,4 +1,167 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    background-image: url("../Assets/img/parejacreatecard.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center ;
+  }
+  
+  .opacity {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#1118270c, #11182720, #1118274a, #111827aa);
+    z-index: -100;
+  }
+  .container_info {
+    background-color: rgba(255, 255, 255, 0.155);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* .info {
+    width: 100%;
+    max-width: 583px;
+    margin: 0 auto;
+    text-align: center;
+    color: #170538;
+  } */
+  .info__title {
+    width: 100%;
+    margin: 0 auto;
+    color: whitesmoke;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    text-transform: uppercase;
+  }
+  
+  .info__button {
+    width: 100%;
+    max-width: 580px;
+    outline: none;
+    border: none;
+    background: #0f172a;
+    color: whitesmoke;
+    padding: 10px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .5s;
+  }
+  
+  .info__button:hover{
+    background-color: rgb(0 75 109);
+    color: #0f172a;
+  }
+  
+  .details {
+    padding-top: 40px;
+    font-size: 14px;
+  }
+  /* .details__img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background: url("https://orig00.deviantart.net/d5fa/f/2012/088/3/0/30e49c0ab37799728a5dfc28d92bbcb7-d4ubbj8.jpg")
+      no-repeat center;
+    background-size: cover;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  } */
+  /* .details__person {
+    padding: 20px;
+    font-size: 20px;
+  }
+  .details__job {
+    font-size: 13px;
+  } */
+  /* .details__description {
+    width: 100%;
+    max-width: 447px;
+    line-height: 1.3;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  } */
+  
+  .back{
+    text-align: center;
+  }
+  .back a:hover{
+    color: #0f172a;
+  }
+  
+  .back a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1rem;
+    transition: all .5s;
+  }
+  
+  select {
+    background: whitesmoke;
+    outline: none;
+    color: #00094e;
+    border: none;
+    width: 100%;
+    max-width: 580px;
+    display: block;
+    margin: 0 auto;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 18px;
+    border: none;
+    outline: 0;
+  }
+  
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    padding-left: .8rem;
+    gap: .5rem;
+  }
+  
+  form h2 {
+    margin: 0;
+    color: whitesmoke;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
 
+
+
+
+
+
+
+
+/* 
   
   .creationCardForm{
     width: 50%;
@@ -108,7 +271,7 @@ body {
     background-color: yellow;
     /* justify-content: center;
     align-items: center; */
-}
+} */
 
 .navbar {
     width: 100%;
