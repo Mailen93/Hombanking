@@ -1818,13 +1818,36 @@ nav
 }
 
 .why_one{
+  width: 40%;
+  color: whitesmoke;
+  background-color: #00094e81;
+  padding: 1.2rem;
+  backdrop-filter: blur(2px);
+  text-align: justify;
   display: flex;
   flex-direction: column;
-  z-index: 100;
-  background-color: #00094e54;
-  backdrop-filter: blur(2px);
-  width: 45%;
-  height: 50%;
+  gap: 1rem;
+}
+
+.why_one ul, li{
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  list-style-type: circle;
+  padding-left: 1rem;
+}
+
+.why_one ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.why_one h3 {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+  font-size: 20px;
 }
 
 
