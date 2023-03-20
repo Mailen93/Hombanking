@@ -186,14 +186,7 @@
                   style="text-decoration: none; color: #1e293b"
                   >Add account</a>
               </div>
-              <button
-                type="button"
-                class="botonNormal"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                Last Transactions
-              </button>
+  
               <p style="color: whitesmoke; letter-spacing: 2px; text-transform: uppercase;">Do you want to delete an account?</p>
               <select style="margin-bottom: 1rem;" v-model="number">
                 <option value="">
@@ -204,6 +197,14 @@
                 </option>
               </select>
               <div class="deleteAccount"><a href="#" @click="deleteAccount">Delete Account</a></div>
+              <button
+              type="button"
+              class="botonNormal"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Last Transactions
+            </button>
             </div>
             <div class="accounts_container2">
               <div class="account_detail" v-for="account of accounts">

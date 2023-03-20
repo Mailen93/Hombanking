@@ -144,7 +144,38 @@
         </nav>
       </header>
 
-      <main>
+
+      <div class="container_info">
+        <h1 class="info__title">
+          Create your new card
+        </h1>
+        <form @submit.prevent>
+          <h2>Account that will provide the funds</h2>
+          <select class="form-select" v-model="loans_id">
+            <option :value="loan.id" v-for="loan of loans">{{loan.id}} {{loan.name}}</option>
+          </select>
+          <h2>Number of payments</h2>
+          <select class="form-select" v-if="loans_id" v-model="payments">
+            <option :value="number" v-for="number of filterLoans()">{{number}}</option>
+          </select>
+          <h2>Loan amount</h2>
+          <input type="text" v-model="amount">
+                      <fieldset v-if="loans">
+                        <h3>Summary</h3>
+                        <h5>Loan amount: {{amount}}</h5>
+                        <!-- <h5>Interest: %{{loans[loans_id].interest100}}</h5>
+                        <h5>Total amount to be paid back: {{amount(loans[loans_id].interest+ 1)}}</h5> -->
+                      </fieldset>
+                      <label>Account number to deposit</label>
+                      <input type="text" v-model="account_destinated"></input>
+          <a href="#" @click="applyLoan"class="info__button">Send</a>
+          <p class="back"><a href="/web/accounts.html">Back home</a></p>
+        </form>
+      </div>
+    </div>
+    <div class="opacity"></div>
+
+      <!-- <main>
         <section id="loanAply">
             <div class="loanInfo">
                   <p>LOANS INFO</p>
@@ -165,15 +196,15 @@
                       <input type="text" v-model="amount">
                       <fieldset v-if="loans">
                         <h3>Summary</h3>
-                        <h5>Loan amount: {{amount}}</h5>
+                        <h5>Loan amount: {{amount}}</h5> -->
                         <!-- <h5>Interest: %{{loans[loans_id].interest100}}</h5>
                         <h5>Total amount to be paid back: {{amount(loans[loans_id].interest+ 1)}}</h5> -->
                       </fieldset>
-                      <label>Account number to deposit</label>
+                      <!-- <label>Account number to deposit</label>
                       <input type="text" v-model="account_destinated"></input>
                       <button @Click="applyLoan" class="send">Send</button>
                   </div>
-              </form>
+              </form> -->
 
 
 
