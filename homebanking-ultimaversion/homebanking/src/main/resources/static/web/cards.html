@@ -63,8 +63,8 @@
               <div
                 class="credit_container"   
               >
-              <div v-for="card of cards"
-              v-if="cards.length > 0"> <div v-if="card.thruDate <= fechaAlReves" class="expired">EXPIRED</div>
+              <div v-for="card of cards" v-if="cards.length > 0">
+               <div v-if="card.thruDate <= fechaAlReves" class="expired">EXPIRED</div>
                 <div class="card" v-if="card.cardColor == 'GOLD'">
                   <div class="card__front card__partGold">
                     <img

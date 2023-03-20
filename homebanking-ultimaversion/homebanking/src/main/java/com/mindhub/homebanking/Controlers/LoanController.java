@@ -70,15 +70,15 @@ public class LoanController {
         ClientLoan clientLoan = new ClientLoan(loanApplicationDTO.getAmount()*loanVar.getIva(), loanApplicationDTO.getPayments());
         client.addClientLoan(clientLoan);
         loanVar.addClientLoan(clientLoan);
-        clientLoanRepository.save(clientLoan);
-        clientRepositories.save(client);
-        loanRepository.save(loanVar);
 
         Transaction transaction = new Transaction(TransactionType.CREDIT,loanApplicationDTO.getAmount(),loanVar + "loan approved", LocalDateTime.now(),accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).getBalance());
         accVar.addTransaction(transaction);
        accVar.setBalance(accVar.getBalance()+loanApplicationDTO.getAmount());
         accountRepository.save(accVar);
         transactionRepository.save(transaction);
+        clientLoanRepository.save(clientLoan);
+        clientRepositories.save(client);
+        loanRepository.save(loanVar);
 
         return new ResponseEntity<>("Loan succesfull",HttpStatus.CREATED);}
 

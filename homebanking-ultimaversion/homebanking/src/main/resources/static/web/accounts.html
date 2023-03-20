@@ -184,8 +184,7 @@
                 <a
                   @click="alertCreateAccount"
                   style="text-decoration: none; color: #1e293b"
-                  >Add account</a
-                >
+                  >Add account</a>
               </div>
               <button
                 type="button"
@@ -195,6 +194,16 @@
               >
                 Last Transactions
               </button>
+              <p style="color: whitesmoke; letter-spacing: 2px; text-transform: uppercase;">Do you want to delete an account?</p>
+              <select style="margin-bottom: 1rem;" v-model="number">
+                <option value="">
+                  Select an account number
+                </option>
+                <option v-for="account of accounts" :value="account.number">
+                  {{account.number}}
+                </option>
+              </select>
+              <div class="deleteAccount"><a href="#" @click="deleteAccount">Delete Account</a></div>
             </div>
             <div class="accounts_container2">
               <div class="account_detail" v-for="account of accounts">
@@ -245,7 +254,7 @@
           <div class="Navbar">
             <div class="client">
               <img class="logo" src="../Assets/img/removeb.png" alt="logo" />
-              <h2>Welcome {{clients.firstName}} {{clients.lastName}}</h2>
+              <h2>Benefits of Savings Account and Checking Account</h2>
             </div>
   
             <div class="spans_container">
@@ -266,15 +275,50 @@
               <div class="hmid"></div>
               <div class="hbot"></div>
             </div>
-          </div>
-          <div class="why_us_container">
-            
+          </div> 
+          <div style="color:black; font-size: medium; " class="why_us_container">
             <div class="why_one">
-                ACA VA LA INFO Y ESTILADOS
+                <h3 style="color: whitesmoke;
+                margin-left: 10rem;
+                  font-size: 2rem;
+                  text-transform: uppercase;
+                  letter-spacing: 4px;">Savings Account:</h3>
+              <ul>
+               <li>Interest: A savings account earns interest on the deposited amount, helping to grow the account balance over time.</li> 
+                <li>Savings accounts are FDIC insured up to a certain amount, providing security to the account holder.</li>
+                <li>Easy Access: Savings accounts typically provide easy access to funds through ATMs, online banking, and mobile banking.</li>
+                <li>No Minimum Balance Requirements: Many savings accounts have no minimum balance requirements, making it easy for anyone to open and maintain an account.
+                </li>
+              </ul>
             </div>
+
             <div class="why_one">
-              ACA VA LA OTRA INFO
+              <h3 style="color: whitesmoke; 
+                  margin-left: 10rem;
+                  font-size: 2rem;
+                  text-transform: uppercase;
+                  letter-spacing: 4px;"> Checking Account:</h3>
+              <ul>
+                <li> Convenience: Checking accounts offer easy access to funds through debit cards, checks, and online banking.</li>
+                <li>Bill Pay: Most checking accounts come with bill pay services, allowing customers to pay bills electronically.</li>
+                <li>Overdraft Protection: Many banks offer overdraft protection, preventing customers from overdrawing their accounts and incurring costly fees.</li>
+                <li>Mobile Banking: Checking accounts typically come with mobile banking, allowing customers to check balances, transfer funds, and deposit checks from their smartphones.</li>
+                <li>Rewards: Some checking accounts offer rewards, such as cash back, for using certain services or meeting certain requirements.</li>
+              </ul>
+              <!-- <p style="color: whitesmoke; letter-spacing: 2px; text-transform: uppercase;">Do you want to delete an account?</p>
+              <select style="margin-bottom: 1rem;" v-model="number">
+                <option value="">
+                  Select an account number
+                </option>
+                <option v-for="account of accounts" :value="account.number">
+                  {{account.number}}
+                </option>
+              </select>
+              <div class="deleteButton"><a href="#" @click="deleteAccount">Delete Account</a></div> -->
+    
             </div>
+           
+        
           </div>
 
           <!-- /// SECTION DECORATION ABOVE // -->
