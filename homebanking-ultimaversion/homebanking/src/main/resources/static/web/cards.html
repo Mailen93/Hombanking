@@ -64,7 +64,7 @@
                 class="credit_container"   
               >
               <div v-for="card of cards"
-              v-if="cards.length > 0"> <div v-if="card.thruDate <= fechaAlReves">EXPIRED</div>
+              v-if="cards.length > 0"> <div v-if="card.thruDate <= fechaAlReves" class="expired">EXPIRED</div>
                 <div class="card" v-if="card.cardColor == 'GOLD'">
                   <div class="card__front card__partGold">
                     <img
@@ -187,31 +187,34 @@
           </div>
  
           <div class="info_cards">
-            <h2>Benefits of our cards</h2>
-            <!-- Button trigger modal -->
-<button type="button" @click="setModalType(1)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: rgb(168, 168, 168)">
-VISA SILVER
-</button>
-
-<button type="button" @click="setModalType(2)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:  rgb(197, 170, 22)">
-  VISA GOLD
+            <div botones>
+              <h2>Benefits of our cards</h2>
+              <!-- Button trigger modal -->
+  <button type="button" @click="setModalType(1)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: rgb(168, 168, 168)">
+  VISA SILVER
   </button>
-
-  <button type="button" @click="setModalType(3)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black">
-    VISA TITANIUM
+  
+  <button type="button" @click="setModalType(2)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:  rgb(197, 170, 22)">
+    VISA GOLD
     </button>
+  
+    <button type="button" @click="setModalType(3)" class="visa_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black">
+      VISA TITANIUM
+      </button>
+            </div>
 
     <div class="deleteCard">
-      <select v-model="number">
+      <p style="color: whitesmoke; letter-spacing: 2px; text-transform: uppercase;">Do you want to delete a card?</p>
+      <select style="margin-bottom: 1rem;" v-model="number">
         <option value="">
-
+          Select a card number
         </option>
         <option v-for="card of cards" :value="card.number">
           {{card.number}}
         </option>
 
       </select>
-      <button @click="deleteCard">Delete Card</button>
+      <div class="deleteButton"><a href="#" @click="deleteCard">Delete Card</a></div>
     </div>
           </div>
         </section>

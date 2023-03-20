@@ -3,6 +3,7 @@ package com.mindhub.homebanking.Controlers;
 import com.mindhub.homebanking.Utils.Utilities;
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.AccountType;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
@@ -59,7 +60,7 @@ public class ClientController{
             return new ResponseEntity<>("Email already in use", HttpStatus.BAD_REQUEST);}
 
        Client newClient = new Client(first, lastName, email, passwordEncoder.encode(password));
-        Account account = new Account(Utilities.Number(accountRepository), LocalDateTime.now(), 0.0);
+        Account account = new Account(Utilities.Number(accountRepository), LocalDateTime.now(), 0.0, true, AccountType.CURRENT);
         newClient.addAccount(account);
         clientRepositories.save(newClient);
         accountRepository.save(account);
@@ -67,10 +68,13 @@ public class ClientController{
 
     @RequestMapping("/clients/current")
     public ClientDTO getCurrentClient(Authentication authentication){
-        Client ClientAuth= clientRepositories.findByEmail(authentication.getName());
-        Set<Card> cardsTrue = ClientAuth.getCards().stream().filter(card -> card.getDeleteCard() == true).collect(toSet());
-        ClientAuth.setCards(cardsTrue);
-        return new ClientDTO(ClientAuth);}
+        Client clientAuth= clientRepositories.findByEmail(authentication.getName());
+        Set<Card> cardsTrue = clientAuth.getCards().stream().filter(card -> card.getDeleteCard() == true).collect(toSet());
+        clientAuth.setCards(cardsTrue);
+        Set<Account> accountsTrue = clientAuth.getAccounts().stream().filter(account -> account.getDeleteAccount() == true).collect(toSet());
+        clientAuth.setAccounts(accountsTrue);
+        return new ClientDTO(clientAuth);
+    }
 }
 
 //IR A ACCOUNT CONTROLLER

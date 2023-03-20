@@ -9,6 +9,7 @@ createApp({
       loans: [],
       allDateTransactions: [],
       isActive: false,
+      accountType: ""
     };
   },
   created() {
@@ -40,8 +41,25 @@ createApp({
         }
       }
     },
+    alertCreateAccount(){
+      Swal.fire({
+          title: 'Choose your account type',
+          showDenyButton: true,
+          showCloseButton: true,
+          confirmButtonText: 'Current Account',
+          denyButtonText: 'Saving Account',
+        }).then((result) => {
+          if (result.isConfirmed) {
+              this.accountType = "CURRENT"
+              this.createAccount()
+          } else if (result.isDenied) {
+              this.accountType = "SAVING"
+              this.createAccount() 
+          }
+        })
+},
     createAccount(){
-      axios.post("http://localhost:8080/api/clients/current/accounts") 
+      axios.post("http://localhost:8080/api/clients/current/accounts",`accountType=${this.accountType}`)
           .then(response => { 
             this.loadData()
           })

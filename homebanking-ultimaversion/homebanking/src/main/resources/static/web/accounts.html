@@ -182,7 +182,7 @@
               <div class="addAccount" v-if="accounts.length < 3">
                 <i class="fa-solid fa-plus" style="color: #1e293b"></i>
                 <a
-                  @click="createAccount"
+                  @click="alertCreateAccount"
                   style="text-decoration: none; color: #1e293b"
                   >Add account</a
                 >
@@ -203,17 +203,22 @@
                     Date: <span>{{account.creationDate.slice(0,7)}}</span>
                   </h3>
                   <h2
-                    style="
-                      background-color: #00094e;
-                      padding: 10px;
-                      text-align: center;
-                      text-transform: uppercase;
-                      letter-spacing: 2px;
-                      font-size: 18px;
-                    "
-                  >
-                    Account N°: <span>{{account.number}}</span>
-                  </h2>
+                  style="
+                    background-color: #00094e;
+                    padding: 10px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-size: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    
+                  "
+                >
+                <span> Account N°: {{account.number}}</span>
+                <span>Account Type: {{account.accountType}} Account</span>
+                </h2>
                 </div>
                 <div class="dinero_disponible">
                   <h2>Dinero disponible:</h2>
@@ -263,6 +268,7 @@
             </div>
           </div>
           <div class="why_us_container">
+            
             <div class="why_one">
                 ACA VA LA INFO Y ESTILADOS
             </div>
