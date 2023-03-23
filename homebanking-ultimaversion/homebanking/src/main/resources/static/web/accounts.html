@@ -89,6 +89,7 @@
                 ></i>
                 <a
                   @click="alertCreateAccount"
+<<<<<<< HEAD
                   style="
                     text-decoration: none;
                     color: #1e293b;
@@ -96,6 +97,9 @@
                     font-weight: bold;
                     text-transform: uppercase;
                   "
+=======
+                  style="text-decoration: none; color: #1e293b"
+>>>>>>> 04f9535bfcd6b35ff78c97f88615c1964cdd0866
                   >Add account</a
                 >
               </div>
@@ -115,6 +119,7 @@
                   {{account.number}}
                 </option>
               </select>
+<<<<<<< HEAD
               <div
                 class="deleteAccount"
                 style="
@@ -140,6 +145,10 @@
                   @click="deleteAccount"
                   >Delete Account</a
                 >
+=======
+              <div class="deleteAccount">
+                <a href="#" @click="deleteAccount">Delete Account</a>
+>>>>>>> 04f9535bfcd6b35ff78c97f88615c1964cdd0866
               </div>
               <button
                 type="button"
@@ -231,10 +240,14 @@
             <div class="why_one">
               <h3>Savings Account:</h3>
               <ul>
+<<<<<<< HEAD
                 <li>
                   Interest: A savings account earns interest on the deposited
                   amount, helping to grow the account balance over time.
                 </li>
+=======
+          
+>>>>>>> 04f9535bfcd6b35ff78c97f88615c1964cdd0866
                 <li>
                   Savings accounts are FDIC insured up to a certain amount,
                   providing security to the account holder.
@@ -242,12 +255,27 @@
                 <li>
                   Easy Access: Savings accounts typically provide easy access to
                   funds through ATMs, online banking, and mobile banking.
+<<<<<<< HEAD
+=======
+                </li>
+                <li>
+                  No Minimum Balance Requirements: Many savings accounts have no
+                  minimum balance requirements, making it easy for anyone to
+                  open and maintain an account.
+>>>>>>> 04f9535bfcd6b35ff78c97f88615c1964cdd0866
                 </li>
               </ul>
             </div>
 
             <div class="why_one">
+<<<<<<< HEAD
               <h3>Checking Account:</h3>
+=======
+              <h3
+              >
+                Checking Account:
+              </h3>
+>>>>>>> 04f9535bfcd6b35ff78c97f88615c1964cdd0866
               <ul>
                 <li>
                   Convenience: Checking accounts offer easy access to funds
@@ -263,6 +291,19 @@
                   incurring costly fees.
                 </li>
               </ul>
+<<<<<<< HEAD
+=======
+              <!-- <p style="color: whitesmoke; letter-spacing: 2px; text-transform: uppercase;">Do you want to delete an account?</p>
+              <select style="margin-bottom: 1rem;" v-model="number">
+                <option value="">
+                  Select an account number
+                </option>
+                <option v-for="account of accounts" :value="account.number">
+                  {{account.number}}
+                </option>
+              </select>
+              <div class="deleteButton"><a href="#" @click="deleteAccount">Delete Account</a></div> -->
+>>>>>>> 04f9535bfcd6b35ff78c97f88615c1964cdd0866
             </div>
           </div>
 
