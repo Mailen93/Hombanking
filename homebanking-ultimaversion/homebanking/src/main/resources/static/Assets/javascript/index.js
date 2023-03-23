@@ -26,8 +26,9 @@ createApp({
             })
             .catch(error => {
                 this.error = error.response.data.message;
+                console.log(error)
                     Swal.fire({
-                        title: 'Missing data',
+                        title: 'Check your data and try again',
                         showClass: {
                           popup: 'animate__animated animate__fadeInDown'
                         },

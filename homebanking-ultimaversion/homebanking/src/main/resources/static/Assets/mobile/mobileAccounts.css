@@ -1,0 +1,76 @@
+@media (min-width: 320px) and (max-width: 768px) {
+
+/* BANNER SECTION */
+
+  #banner{
+    height: 100vh;
+  }
+
+  #modal{
+    width: 90%;
+    height: 200px;
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+  }
+
+  .welcome{
+    width: 100%;
+    height: 100%;
+  }
+
+  .welcomeMindBank{
+    height: 40%;
+  }
+  .accounts_container2{
+    height: 32%;
+    width: 90%;
+  }
+
+  /* ACCOUNTS SECTION */
+
+  .client{
+    padding-left: 1rem;
+  }
+  .client h2{
+    display: none;
+  }
+
+  .why_us_container{
+    display: flex;
+    z-index: 100;
+    width: 100%;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+   
+  }
+
+  .why_one{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    background-color:rgba(0, 0, 0, 0.507);
+    padding: 12px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(2px);
+  }
+
+  .why_one ul{
+    padding: 0;
+  }
+
+  .deco{
+    z-index: 0;
+  }
+
+  .down_arrow_accounts{
+    top: 40vh;
+    z-index: 100;
+  }
+
+}

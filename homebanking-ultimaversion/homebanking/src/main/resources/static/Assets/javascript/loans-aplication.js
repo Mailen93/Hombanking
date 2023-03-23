@@ -46,30 +46,37 @@ createApp({
      this.loans.find(loan=> loan.id == this.loans_id)
       return this.loans.find(loan=> loan.id == this.loans_id).payments
   },
+  alertLoan: function(){
+    Swal.fire({
+      title: 'Please confirm the loan',
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+      denyButtonText: `Cancel`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Loan success')
+       this.applyLoan()
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+  },
     applyLoan() {
       axios.post('/api/loans', {amount:this.amount, payments:this.payments, loans_id:this.loans_id, account_destinated:this.account_destinated})
       .then(response => {
-         Swal.fire({
-              title: 'Do you want to save the changes?',
-              showDenyButton: true,
-              showCancelButton: true,
-              confirmButtonText: 'Save',
-              denyButtonText: `Don't save`,
-            }).then((result) => {
-              /* Read more about isConfirmed, isDenied below */
-              if (result.isConfirmed) {
-                window.location.href = '/web/accounts.html';
-              } else if (result.isDenied) {
-                Swal.fire('Changes are not saved', '', 'info')
-              }
-            })
+        setTimeout(()=>{
+          window.location.href = '/web/accounts.html';
+        },2000)
+         
           })
       .catch(error => {
-          console.log(error)
+        Swal.fire(error.response.data)
+        console.log(error)
           this.error = error.response.data;
       });
 
   }, 
+  
 
   logOut(){
       console.log("hola")

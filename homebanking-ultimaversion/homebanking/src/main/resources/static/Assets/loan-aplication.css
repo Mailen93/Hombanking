@@ -8,12 +8,19 @@
     height: 100vh;
     font-family: "Roboto", sans-serif;
     color: white;
-    background-image: url("../Assets/img/parejacreatecard.jpg");
+    background-image: url("../Assets/img/prestamos.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center ;
   }
+
+  input{
+    width: 50%; height: 2rem;
+  }
   
+  [v-cloak] {
+    display: none;
+}
   .opacity {
     position: absolute;
     width: 100%;

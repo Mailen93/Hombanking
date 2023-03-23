@@ -80,8 +80,8 @@
                     ${{trans.amount}}
                   </td>
                   <td class="cell">{{trans.description}}</td>
-                  <td class="cell">{{trans.date}}</td>
-                  <td class="cell">{{trans.balance}}</td>
+                  <td class="cell">{{trans.date.split("T")[0]}}</td>
+                  <td class="cell">{{Math.floor(trans.balance)}}</td>
                 </tr>
               </tbody>
             </table>

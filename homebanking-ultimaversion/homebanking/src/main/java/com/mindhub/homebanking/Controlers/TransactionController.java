@@ -1,23 +1,18 @@
 package com.mindhub.homebanking.Controlers;
 
-import com.mindhub.homebanking.dtos.TransactionDTO;
+import com.mindhub.homebanking.Services.AccountService;
+import com.mindhub.homebanking.Services.ClientService;
+import com.mindhub.homebanking.Services.TransactionService;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.models.Transaction;
 import com.mindhub.homebanking.models.TransactionType;
-import com.mindhub.homebanking.repositories.AccountRepository;
-import com.mindhub.homebanking.repositories.ClientRepositories;
-import com.mindhub.homebanking.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -25,20 +20,22 @@ import java.time.LocalDateTime;
 @RequestMapping("/api")
 public class TransactionController {
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountService accountService;
     @Autowired
-    private ClientRepositories clientRepositories;
+    private ClientService clientService;
     @Autowired
-    private TransactionRepository transactionRepository;
+    private TransactionService transactionService;
 
     @Transactional
-    @RequestMapping(path = ("/transactions"), method = RequestMethod.POST)
+    @PostMapping("/transactions")
     public ResponseEntity<Object> getTransactions( @RequestParam Double amount,
                                                    @RequestParam String description,
                                                    @RequestParam String nDeCuentaOr,
                                                    @RequestParam String nDeCuentaDest,
                                                    Authentication authentication){
-       Client client = clientRepositories.findByEmail(authentication.getName());
+       Client client = clientService.findByEmail(authentication.getName());
+        if (amount <= 0){
+            return new ResponseEntity<>("TRANSFERNEGATIVA", HttpStatus.BAD_REQUEST);}
        if (amount.isNaN()){
             return new ResponseEntity<>("Empty amount", HttpStatus.BAD_REQUEST);}
        if (description.isEmpty()) {
@@ -51,26 +48,26 @@ public class TransactionController {
            return new ResponseEntity<>("You can't transfer to the same account",HttpStatus.CONFLICT);}
        if (client.getAccounts().stream().noneMatch(account -> account.getNumber().equals(nDeCuentaOr))){
            return new ResponseEntity<>("This account doesn't exist", HttpStatus.BAD_REQUEST);}
-       if (!accountRepository.existsByNumber(nDeCuentaDest)){
+       if (!accountService.existsByNumber(nDeCuentaDest)){
            return new ResponseEntity<>("The account is correct", HttpStatus.BAD_REQUEST);}
-       if (accountRepository.findByNumber(nDeCuentaOr).getBalance() < amount){
+       if (accountService.findByNumber(nDeCuentaOr).getBalance() < amount){
            return new ResponseEntity<>("Not enough money in the account", HttpStatus.BAD_REQUEST);}
 
-        Account accountOrigen = accountRepository.findByNumber(nDeCuentaOr);
-        Account accountDestino = accountRepository.findByNumber(nDeCuentaDest);
+        Account accountOrigen = accountService.findByNumber(nDeCuentaOr);
+        Account accountDestino = accountService.findByNumber(nDeCuentaDest);
 
         Transaction newTransactionDest = new Transaction(TransactionType.CREDIT, amount, description, LocalDateTime.now(), accountOrigen.getBalance() - amount);
         Transaction newTransactionOr = new Transaction(TransactionType.DEBIT, amount, description, LocalDateTime.now(), accountDestino.getBalance() + amount);
 
         accountOrigen.addTransaction(newTransactionOr);
         accountDestino.addTransaction(newTransactionDest);
-        transactionRepository.save(newTransactionOr);
-        transactionRepository.save(newTransactionDest);
+        transactionService.save(newTransactionOr);
+        transactionService.save(newTransactionDest);
 
         accountOrigen.setBalance(accountOrigen.getBalance()-amount);
         accountDestino.setBalance(accountDestino.getBalance()+amount);
-        accountRepository.save(accountOrigen);
-        accountRepository.save(accountDestino);
+        accountService.save(accountOrigen);
+        accountService.save(accountDestino);
 
         return new ResponseEntity<>("Transfer succesfull",HttpStatus.CREATED);}
 

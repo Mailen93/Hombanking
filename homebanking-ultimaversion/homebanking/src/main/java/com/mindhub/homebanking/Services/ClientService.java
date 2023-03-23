@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public interface ClientService {
     List<Client> findAll();
-
     Optional<Client> findById(Long id);
     Client findByEmail(String email);
     Client save(Client client);

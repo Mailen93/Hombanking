@@ -1,0 +1,27 @@
+@media (min-width: 320px) and (max-width: 767px) {
+    .transfer_info{
+        display: none;
+    }
+
+    .transfer_form_section{
+        width: 100%;
+    }
+
+    .form_container{
+        width: 90%;
+    }
+    .my-form{
+        width: 100%;
+    }
+    .my-form select{
+        width: 90%;
+    }
+
+    .my-form input{
+        width: 90%;
+    }
+
+    .my-form textarea{
+        width: 90%;
+    }
+}

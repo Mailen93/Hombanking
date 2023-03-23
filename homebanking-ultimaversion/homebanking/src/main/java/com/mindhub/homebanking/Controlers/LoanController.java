@@ -1,11 +1,9 @@
 package com.mindhub.homebanking.Controlers;
 
-import ch.qos.logback.core.joran.conditional.IfAction;
-import com.mindhub.homebanking.dtos.ClientDTO;
+import com.mindhub.homebanking.Services.*;
 import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.dtos.LoanDTO;
 import com.mindhub.homebanking.models.*;
-import com.mindhub.homebanking.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,26 +20,27 @@ import static java.util.stream.Collectors.toList;
 @RequestMapping("/api")
 public class LoanController {
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountService accountService;
     @Autowired
-    private ClientRepositories clientRepositories;
+    private ClientService clientService;
     @Autowired
-    private LoanRepository loanRepository;
+    private LoanService loanService;
     @Autowired
-    private ClientLoanRepository clientLoanRepository;
+    private ClientLoanService clientLoanService;
     @Autowired
-    private TransactionRepository transactionRepository;
+    private TransactionService transactionService;
 
-    @RequestMapping("/loans")
+    @GetMapping("/loans")
     public List<LoanDTO> getLoans() {
-        return loanRepository.findAll().stream().map(LoanDTO::new).collect(toList());}
+        return loanService.findAll().stream().map(LoanDTO::new).collect(toList());}
 
     @Transactional
-    @RequestMapping(path = ("/loans"), method = RequestMethod.POST)
+    @PostMapping("/loans")
     public ResponseEntity<Object> newLoan(Authentication authentication, @RequestBody LoanApplicationDTO loanApplicationDTO){
-        Client client = clientRepositories.findByEmail(authentication.getName());
-        Loan loanVar = loanRepository.getReferenceById(loanApplicationDTO.getLoans_id());
-        Account accVar = accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated());
+        Client client = clientService.findByEmail(authentication.getName());
+        Account accVar = accountService.findByNumber(loanApplicationDTO.getAccount_destinated());
+        if (loanApplicationDTO.getAmount() == null && loanApplicationDTO.getLoans_id() == null && loanApplicationDTO.getPayments() == null && loanApplicationDTO.getAccount_destinated() == null){
+            return new ResponseEntity<>("Complete the data", HttpStatus.BAD_REQUEST);}
         if (loanApplicationDTO.getAmount() == null){
             return new ResponseEntity<>("Empty amount", HttpStatus.BAD_REQUEST);}
         if (loanApplicationDTO.getLoans_id() == null){
@@ -50,35 +49,36 @@ public class LoanController {
             return new ResponseEntity<>("Empty payments", HttpStatus.BAD_REQUEST);}
         if (loanApplicationDTO.getAccount_destinated() == null){
             return new ResponseEntity<>("Empty account", HttpStatus.BAD_REQUEST);}
+        Loan loanVar = loanService.findById(loanApplicationDTO.getLoans_id()).get();
         if (loanApplicationDTO.getAmount() <= 0){
-            return new ResponseEntity<>("NO SE PUEDE", HttpStatus.BAD_REQUEST);}
+            return new ResponseEntity<>("T", HttpStatus.BAD_REQUEST);}
         if (loanApplicationDTO.getPayments() <= 0){
-            return new ResponseEntity<>("TAMPOCO", HttpStatus.BAD_REQUEST);}
-        if (!loanRepository.existsById(loanApplicationDTO.getLoans_id())){
+            return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);}
+        if (!loanService.existsById(loanApplicationDTO.getLoans_id())){
             return new ResponseEntity<>("The loan doesn't exist", HttpStatus.BAD_REQUEST);}
-        if (loanApplicationDTO.getAmount() > loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null).getMaxAmount()){
-            return new ResponseEntity<>("el monto excede", HttpStatus.BAD_REQUEST);}
-        if (!loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null).getPayments().contains(loanApplicationDTO.getPayments())){
+        if (loanApplicationDTO.getAmount() > loanService.findById(loanApplicationDTO.getLoans_id()).orElse(null).getMaxAmount()){
+            return new ResponseEntity<>("Max amount exceded", HttpStatus.BAD_REQUEST);}
+        if (!loanService.findById(loanApplicationDTO.getLoans_id()).orElse(null).getPayments().contains(loanApplicationDTO.getPayments())){
             return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);}
-        if (!accountRepository.existsByNumber(loanApplicationDTO.getAccount_destinated())){
-            return new ResponseEntity<>("la cuenta de destino no existe", HttpStatus.BAD_REQUEST);}
-        if (!client.getAccounts().contains(accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()))){
+        if (!accountService.existsByNumber(loanApplicationDTO.getAccount_destinated())){
+            return new ResponseEntity<>("Empty account", HttpStatus.BAD_REQUEST);}
+        if (!client.getAccounts().contains(accountService.findByNumber(loanApplicationDTO.getAccount_destinated()))){
             return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);}
-        if (client.getLoan().contains(loanRepository.findById(loanApplicationDTO.getLoans_id()).orElse(null))){
-            return new ResponseEntity<>("no podes tener el mismo prestamo 2 veces", HttpStatus.BAD_REQUEST);}
+        if (client.getLoan().contains(loanService.findById(loanApplicationDTO.getLoans_id()).orElse(null))){
+            return new ResponseEntity<>("You can't have the same loan twice", HttpStatus.BAD_REQUEST);}
 
         ClientLoan clientLoan = new ClientLoan(loanApplicationDTO.getAmount()*loanVar.getIva(), loanApplicationDTO.getPayments(), client, loanVar);
         client.addClientLoan(clientLoan);
         loanVar.addClientLoan(clientLoan);
 
-        Transaction transaction = new Transaction(TransactionType.CREDIT,loanApplicationDTO.getAmount(),loanVar + "loan approved", LocalDateTime.now(),accountRepository.findByNumber(loanApplicationDTO.getAccount_destinated()).getBalance());
+        Transaction transaction = new Transaction(TransactionType.CREDIT,loanApplicationDTO.getAmount(), "loan approved", LocalDateTime.now(), accountService.findByNumber(loanApplicationDTO.getAccount_destinated()).getBalance());
         accVar.addTransaction(transaction);
-       accVar.setBalance(accVar.getBalance()+loanApplicationDTO.getAmount());
-        accountRepository.save(accVar);
-        transactionRepository.save(transaction);
-        clientLoanRepository.save(clientLoan);
-        clientRepositories.save(client);
-        loanRepository.save(loanVar);
+        accVar.setBalance(accVar.getBalance()+loanApplicationDTO.getAmount());
+        accountService.save(accVar);
+        transactionService.save(transaction);
+        clientLoanService.save(clientLoan);
+        clientService.save(client);
+        loanService.save(loanVar);
 
         return new ResponseEntity<>("Loan succesfull",HttpStatus.CREATED);}
 
@@ -96,12 +96,12 @@ public class LoanController {
             return new ResponseEntity<>("Empty payment", HttpStatus.BAD_REQUEST);}
         if (iva.isNaN()){
             return new ResponseEntity<>("Empty iva", HttpStatus.BAD_REQUEST);}
-        if (loanRepository.findAll().stream().anyMatch(loan -> loan.getName().equals(name))) {
+        if (loanService.findAll().stream().anyMatch(loan -> loan.getName().equals(name))) {
             return new ResponseEntity<>("ya existe un prestamo con ese nombre", HttpStatus.BAD_REQUEST);
         }
 
         Loan loan = new Loan(name,maxAmount,payments,iva);
-        loanRepository.save(loan);
+        loanService.save(loan);
         return new ResponseEntity<>("Loan succesfully created", HttpStatus.CREATED);}
 
 }

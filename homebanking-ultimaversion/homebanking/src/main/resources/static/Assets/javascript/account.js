@@ -20,7 +20,6 @@ createApp({
         .get(`http://localhost:8080/api/accounts/${url}`)
         .then((response) => {
           this.transaction = response.data.transaction;
-          console.log(this.transaction);
         })
         .catch((err) => console.log(err));
     },

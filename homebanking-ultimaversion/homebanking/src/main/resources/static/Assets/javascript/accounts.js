@@ -22,6 +22,7 @@ createApp({
         .get("http://localhost:8080/api/clients/current")
         .then((response) => {
           this.data = response;
+          console.log(response)
           this.accounts = response.data.accounts;
           this.clients = response.data;
           this.loans = response.data.loans;
@@ -44,11 +45,15 @@ createApp({
     },
     alertCreateAccount(){
       Swal.fire({
+        customClass: 'modal-sweet-alert',
           title: 'Choose your account type',
           showDenyButton: true,
           showCloseButton: true,
           confirmButtonText: 'Current Account',
           denyButtonText: 'Saving Account',
+          confirmButtonColor: '#004b6d',
+          denyButtonColor: '#00094e'
+
         }).then((result) => {
           if (result.isConfirmed) {
               this.accountType = "CURRENT"
@@ -76,6 +81,14 @@ createApp({
     })
     .then(response => {window.location.href = '/web/accounts.html'
 })
+.catch(error => {
+  this.error = error.response.data;
+  Swal.fire({
+    icon: 'error',
+    title: this.error,
+
+  })
+});
 },
     logOut(){      
       Swal.fire({

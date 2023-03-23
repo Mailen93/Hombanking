@@ -37,6 +37,12 @@ body h2 {
   position: absolute;
 }
 
+/* .modal-sweet-alert{
+  background-color: #0f172a !important;
+  color: whitesmoke !important;
+  
+} */
+
 .welcome {
   height: 100%;
   width: 100%;
@@ -332,7 +338,7 @@ footer p {
   perspective: 600px;
 }
 
-.card__partSilver {
+.card__partGold {
   box-shadow: 6px 3px 15px 2px black;
   top: 0;
   position: absolute;
@@ -341,11 +347,11 @@ footer p {
   display: inline-block;
   width: 320px;
   height: 190px;
-  background-color: linear-gradient(
+  background: linear-gradient(
     130deg,
-    rgba(77, 76, 74, 0.858),
-    rgba(104, 103, 102, 0.801),
-    rgb(49, 49, 48)
+    rgb(186 120 2),
+    rgb(245 208 111),
+    rgb(186 120 2)
   ) !important;
   background-repeat: no-repeat;
   background-position: center;
@@ -363,7 +369,7 @@ footer p {
   -moz-backface-visibility: hidden;
 }
 
-.card__partGold {
+.card__partSilver {
   box-shadow: 6px 3px 15px 2px black;
   top: 0;
   position: absolute;
@@ -374,9 +380,9 @@ footer p {
   height: 190px;
   background: linear-gradient(
     130deg,
-    rgb(186 120 2),
-    rgb(245 208 111),
-    rgb(186 120 2)
+    rgb(80, 79, 79),
+    rgb(130, 129, 128),
+    rgb(56, 56, 55)
   ) !important;
   background-repeat: no-repeat;
   background-position: center;
@@ -829,6 +835,10 @@ footer p {
   margin-right: 2rem;
 }
 
+.table{
+  overflow-y: scroll;
+}
+
 .fullTableContainer{
   width: 100%;
   margin-top: 2rem;
@@ -1186,23 +1196,6 @@ footer p {
     color: whitesmoke;
     font-size: 32px;
     top: 60vh;
-  }
-nav
-  .addAccount {
-    background-color: whitesmoke;
-    font-size: 12px;
-    text-transform: uppercase;
-    padding: 8px;
-  }
-
-  .deleteAccount{
-    background-color: whitesmoke;
-    font-size: 12px;
-    text-transform: uppercase;
-    padding: 8px;
-    text-decoration: none;
-
-
   }
 
 
@@ -1826,6 +1819,13 @@ nav
   backdrop-filter: blur(2px);
   width: 45%;
   height: 50%;
+  justify-content: space-evenly;
+  color: white;
+  padding: 1rem;
+}
+
+.why_one ul, li {
+  padding: 0;
 }
 
 

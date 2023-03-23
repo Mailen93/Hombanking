@@ -1,13 +1,12 @@
 package com.mindhub.homebanking.Controlers;
 
-import com.mindhub.homebanking.dtos.AccountsDTO;
+import com.mindhub.homebanking.Services.AccountService;
+import com.mindhub.homebanking.Services.CardService;
+import com.mindhub.homebanking.Services.ClientService;
+import com.mindhub.homebanking.Services.TransactionService;
 import com.mindhub.homebanking.dtos.CardDTO;
 import com.mindhub.homebanking.dtos.PaymentServiceDTO;
 import com.mindhub.homebanking.models.*;
-import com.mindhub.homebanking.repositories.AccountRepository;
-import com.mindhub.homebanking.repositories.CardRepository;
-import com.mindhub.homebanking.repositories.ClientRepositories;
-import com.mindhub.homebanking.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +14,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import javax.security.auth.message.ClientAuth;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,26 +28,26 @@ import static java.util.stream.Collectors.toList;
 @RequestMapping("/api")
 public class CardController {
     @Autowired
-    ClientRepositories clientRepositories;
+    ClientService clientService;
     @Autowired
-    CardRepository cardRepository;
+    CardService cardService;
     @Autowired
-    TransactionRepository transactionRepository;
+    TransactionService transactionService;
     @Autowired
-    AccountRepository accountRepository;
+    AccountService accountService;
 
-    @RequestMapping("/clients/current/cards")
+    @GetMapping("/clients/current/cards")
     public List<CardDTO> getCurrentCards(Authentication authentication) {
-        Client clientAuth = clientRepositories.findByEmail(authentication.getName());
+        Client clientAuth = clientService.findByEmail(authentication.getName());
         List<Card> checkCard = clientAuth.getCards().stream().filter(card -> card.getDeleteCard() == true).collect(toList());
         return checkCard.stream().map(card -> new CardDTO(card)).collect(toList());
     }
 
-    @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
+    @PostMapping("/clients/current/cards")
     public ResponseEntity<Object> newCard(Authentication authentication,
                                           @RequestParam CardType type,
                                           @RequestParam CardColor color) {
-        Client client = clientRepositories.findByEmail(authentication.getName());
+        Client client = clientService.findByEmail(authentication.getName());
 
         if (client.getCards().stream().filter(card -> card.getDeleteCard() == true).count() >= 6) {
             return new ResponseEntity<>("You have so many cards", HttpStatus.FORBIDDEN);
@@ -56,15 +55,15 @@ public class CardController {
         if (client.getCards().stream().anyMatch(card -> type == card.getType() && color == card.getColor() && card.getDeleteCard() == true)) {
             return new ResponseEntity<>("You already have this card category", HttpStatus.FORBIDDEN);
         }
-        Card addNewCard = new Card(randomNumberCard(cardRepository), returnCvvNumber(), type, color, LocalDate.now(), LocalDate.now().plusYears(5), client, true);
+        Card addNewCard = new Card(randomNumberCard(cardService), returnCvvNumber(), type, color, LocalDate.now(), LocalDate.now().plusYears(5), client, true);
         client.addCard(addNewCard);
-        cardRepository.save(addNewCard);
+        cardService.save(addNewCard);
         return new ResponseEntity<>("You have created a new card", HttpStatus.CREATED);}
 
     @PatchMapping("/clients/current/cards")
     public ResponseEntity<Object> deleteCard(Authentication authentication, @RequestParam String number) {
-        Client clientAuth = clientRepositories.findByEmail(authentication.getName());
-        Card deleteCard = cardRepository.findByNumber(number);
+        Client clientAuth = clientService.findByEmail(authentication.getName());
+        Card deleteCard = cardService.findByNumber(number);
         if (number.isEmpty()) {
             return new ResponseEntity<>("Missing Number", HttpStatus.BAD_REQUEST);
         }
@@ -72,15 +71,16 @@ public class CardController {
             return new ResponseEntity<>("Wrong Number", HttpStatus.BAD_REQUEST);
         }
         deleteCard.setDeleteCard(false);
-        cardRepository.save(deleteCard);
+        cardService.save(deleteCard);
         return new ResponseEntity<>("Your card has been deleted", HttpStatus.ACCEPTED);}
 
-    @Transactional
-    @CrossOrigin
-    @PostMapping("/pay")//nuevo servlet
+    @Transactional //si algo sale mal dentro del servlet todo lo que se realizo hasta el momento no es tenido en consideracion, nada se guarda
+    @CrossOrigin // permite recibir/ enviar la peticion desde cualquier otra parte
+    @PostMapping("/pay")
     public ResponseEntity <Object> payCards(
             @RequestBody(required = false) PaymentServiceDTO paymentServiceDTO){
-        Card card = cardRepository.findByNumber(paymentServiceDTO.getNumber());
+        Card card = cardService.findByNumber(paymentServiceDTO.getNumber());
+
         if (paymentServiceDTO.getNumber().isEmpty()){
             return new ResponseEntity<>("The card number is missing",HttpStatus.BAD_REQUEST);}
         if (paymentServiceDTO.getAmount() == null && paymentServiceDTO.getAmount()>0){
@@ -97,7 +97,7 @@ public class CardController {
             return new ResponseEntity<>("The card is not debit",HttpStatus.BAD_REQUEST);
         if (card.getThruDate().isBefore(LocalDate.now()))
             return new ResponseEntity<>("The card has expired",HttpStatus.BAD_REQUEST);
-        Account account = card.getCardHolder().getAccounts().stream().iterator().next();
+        Account account = card.getCardHolder().getAccounts().stream().max(Comparator.comparing(Account::getBalance)).get();
         if (account == null)
             return new ResponseEntity<>("There is no associated account",HttpStatus.BAD_REQUEST);
         if (!account.getDeleteAccount())
@@ -108,10 +108,10 @@ public class CardController {
             return new ResponseEntity<>("the data entered is incorrect",HttpStatus.BAD_REQUEST);
 
         Transaction transaction = new Transaction(TransactionType.DEBIT,-paymentServiceDTO.getAmount(), paymentServiceDTO.getDescription(), LocalDateTime.now(),account.getBalance() - paymentServiceDTO.getAmount());
-        account.setBalance(account.getBalance() - paymentServiceDTO.getAmount());
         account.addTransaction(transaction);
-        transactionRepository.save(transaction);
-        accountRepository.save(account);
+        account.setBalance(account.getBalance() - paymentServiceDTO.getAmount());
+        transactionService.save(transaction);
+        accountService.save(account);
         return new ResponseEntity<>("Payment made",HttpStatus.ACCEPTED);
     }
 }

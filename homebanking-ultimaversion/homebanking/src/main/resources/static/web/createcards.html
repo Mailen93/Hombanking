@@ -1,65 +1,109 @@
-<body>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../Assets/createcards.css" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="path/to/font-awesome/css/font-awesome.min.css"
-    />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <title>New Card</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <head>
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+        rel="stylesheet"
+      />
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="../Assets/createcards.css" />
+      <link
+        rel="stylesheet"
+        href="path/to/font-awesome/css/font-awesome.min.css"
+      />
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
+      />
+      <link
+        rel="stylesheet"
+        href="path/to/font-awesome/css/font-awesome.min.css"
+      />
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+      <title>New Card</title>
+    </head>
+    <main class="main_create_cards">
+      <div id="app">
+        <div class="container_info">
+          <div class="subcontainer_info">
+            <h3 style="letter-spacing: 2px; margin: 1rem" class="info__title">
+              Create your new card
+            </h3>
+            <form @submit.prevent class="createCard">
+              <h5 style="font-size: 0.9rem; margin: 0; padding-left: 0.5rem">
+                Select your card type
+              </h5>
+              <select v-model="cardType" id="slim-select" class="info__select">
+                <option value="DEBIT">DEBIT</option>
+                <option value="CREDIT">CREDIT</option>
+              </select>
+              <h5 style="font-size: 0.9rem; margin: 0; padding-left: 0.5rem">
+                Select your card color
+              </h5>
+              <select v-model="cardColor" id="slim-select" class="info__select">
+                <option value="GOLD">GOLD</option>
+                <option value="SILVER">SILVER</option>
+                <option value="TITANIUM">TITANIUM</option>
+              </select>
+              <div class="encierra_botones">
+                <div class="botones">
+                  <a
+                    style="margin-bottom: 0.5rem"
+                    href="#"
+                    @click="createCard"
+                    class="info__button"
+                    >Create card</a
+                  >
+                  <a href="/web/accounts.html">Back home</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="text_div">
+          <div class="text">
+            <h2>Get that gift you always wanted</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
+              enim nostrum est, explicabo, iure possimus amet, beatae dicta
+              recusandae laudantium doloribus! Quis officiis earum dolor
+              doloribus iste, atque magni aut. Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit. Mollitia enim nostrum est,
+              explicabo, iure possimus amet, beatae dicta recusandae laudantium
+              doloribus! Quis officiis earum dolor doloribus iste, atque magni
+              aut.
+            </p>
+          </div>
+        </div>
+        <div class="opacity"></div>
+      </div>
+    </main>
 
-  <div id="app">
-    <div class="container_info">
-      <h1 class="info__title">
-        Create your new card
-      </h1>
-      <form @submit.prevent>
-        <h2>Select your card type</h2>
-        <select v-model="cardType" id="slim-select" class="info__select">
-          <option value="DEBIT">DEBIT</option>
-          <option value="CREDIT">CREDIT</option>
-        </select>
-        <h2>Select your card color</h2>
-        <select v-model="cardColor" id="slim-select" class="info__select">
-          <option value="GOLD">GOLD</option>
-          <option value="SILVER">SILVER</option>
-          <option value="TITANIUM">TITANIUM</option>
-        </select>
-        <a href="#" @click="createCard"class="info__button">Create card</a>
-        <p class="back"><a href="/web/accounts.html">Back home</a></p>
-      </form>
-    </div>
-  </div>
-  <div class="opacity"></div>
-<script
-src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-crossorigin="anonymous"
-></script>
-<script src="https://kit.fontawesome.com/a9a67006ad.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="../Assets/javascript/index.js"></script>
-<script
-src="https://kit.fontawesome.com/a9a67006ad.js"
-crossorigin="anonymous"
-></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init();
-</script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/a9a67006ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../Assets/javascript/index.js"></script>
+    <script
+      src="https://kit.fontawesome.com/a9a67006ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>

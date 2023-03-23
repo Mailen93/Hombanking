@@ -1,0 +1,13 @@
+@media (min-width: 320px) and (max-width: 768px){
+    select{
+        width: 100%;
+    }
+
+    input{
+        width: 98%; height: 2rem;
+    }
+    
+    #app {
+        width: 100%;
+    }
+}

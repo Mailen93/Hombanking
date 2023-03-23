@@ -22,7 +22,6 @@ createApp({
             .then(response =>{
                 this.data = response
                 this.accounts = response.data.accounts
-                console.log(this.accounts)
             })
         },
         transferencias(){
@@ -41,17 +40,15 @@ createApp({
                 })
                 .then(()=>{
                     swindow.location.href = '/web/transfers.html';
-                }),console.log(response)
+                })
             })
             .catch(error => {
                 this.cardErrorCreation = error.response
-                console.log(this.cardErrorCreation);
                 Swal.fire({
-                    title: `${this.cardErrorCreation.data}`+" "+ `(error: ${this.cardErrorCreation.status})`,
-                    text: error.response.data,
+                    title: `${this.cardErrorCreation.data}`,
+                    text: 'Please check the data and try again!',
                     icon: "error",
                     dangerMode: true,
-            
                 })
             })
         },

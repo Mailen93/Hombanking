@@ -1,95 +1,160 @@
 body {
+  background-image: url("../Assets/img/transferr.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.transfer_main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.transfer_form_section {
+  width: 50%;
+  background-color: #00094e5e;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  height: 100vh;
-  background: url("../Assets/img/wwang_040522_102.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-main {
-  width: 100%;
+  backdrop-filter: blur(2px);
 }
 
-.creationCardForm{
-    background-color: rgba(0, 0, 0, 0.553);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: space-around;
-    gap: 1rem;
-    color: white;
-    width: 90%;
-    margin: 0 auto;
-    max-width: 700px;
-    padding: 5rem;
-    border-radius: 10px;
-    backdrop-filter: blur(8px);
-}
-
-.container {
-  width: 100%;
-  align-items: center;
-
-  padding: 0;
-}
-
-.ulCreationCard {
+.transfer_info{
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.544);
+}
+
+.transfer_info h3{
+  letter-spacing: 2px;
+  color: whitesmoke;
+  text-transform: uppercase;
+
+}
+.benefits{
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgba(0, 0, 0, 0.64);
+padding: 1rem;
+width: 90%;
+}
+.informacion{
+  width: 90%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  color: whitesmoke;
+  font-size: 1.2rem;
+}
+
+.form_container{
+  width: 80%;
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.092);
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
+  gap: 2rem;
+  color: whitesmoke;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
-.ulCreationCard textarea, select, li {
-    width: 100%;
-    margin:0;
-    
+.my-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
-.my-form {
-    border-radius: 10px;
-  background-color: #00ffff7d;
-  backdrop-filter: blur(20px);
-  padding: 1rem;
-  margin: 0 auto;
-  width: 90%;
-  max-width: 500px;
+.my-form option{
+  text-align: left;
 }
 
-.transferInput input{
-    width: 100%;
+.my-form select{
+  width: 50%;
+  padding: 8px;
+  text-align: center;
 }
 
 .accountOptions{
+  display: flex;
+  gap: 1rem;
+  width: 50%;
+  align-items: center;
+}
 
-    width: 90%;
-    top: 4vh;
+.accountOptions option{
+  text-align: left;
+}
+
+.accountOptions input{
+  width: 100%;
+  padding: 8px;
+}
+
+.amount{
+  width: 50%;
+  padding: 8px;
+}
+
+.description{
+  width: 50%;
+  padding: 8px;
 }
 
 .submit_reset{
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  gap: 2rem;
 }
 
-.btn-grid{
-    background-color: blue;
-    color: wheat;
-    border: blue;
-    padding: 6px;
-    width: 25%;
-    border-radius: 10px;
-    transition: all .4s;
+.submit_reset button {
+  padding: .5rem 2rem;
+  letter-spacing: 2px;
 }
 
-.btn-grid:hover{
-    background-color: white;
-    color: blue;
+.back:hover{
+  background-color: #008de4c2;
+ 
 }
-/* ------- CREATE CARD ------- */
+
+.back{
+  text-align: center;
+  text-decoration: none;
+  background-color: #00094edb;
+  padding: .5rem 3rem;
+  color: whitesmoke;
+  transition: all .5s;
+}
+
+.back a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 1rem;
+  transition: all .5s;
+}
+
+.primary {
+  color: whitesmoke;
+  background-color: black;
+  border-color: whitesmoke;
+  transition: all .5s;
+}
+
+.primary:hover {
+  color: whitesmoke;
+  background-color:rgb(0 75 109);
+  border-color:whitesmoke;
+}
+
+

@@ -19,7 +19,33 @@ import javax.servlet.http.HttpSession;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+
                 .antMatchers("/web/index.html").permitAll()
+                .antMatchers("/web/accounts.html").hasAuthority("CLIENT")
+                .antMatchers("/web/account.html").hasAuthority("CLIENT")
+                .antMatchers("/web/cards.html").hasAuthority("CLIENT")
+                .antMatchers("/web/loan-application.html").hasAuthority("CLIENT")
+                .antMatchers("/web/create-cards.html").hasAuthority("CLIENT")
+                .antMatchers("/manager/manager.html").hasAuthority("ADMIN")
+                .antMatchers("/h2-console").hasAuthority("ADMIN")
+                .antMatchers("/rest/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/pay").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/loans").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.GET, "/api/filter-transactions").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/loans").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/new-loan").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.PATCH, "/api/account-delete").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.PATCH, "/api/card-delete").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.GET, "/api/clients/current/cards").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.GET, "/api/clients/current/accounts").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.GET, "/api/clients/current").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/transactions").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/clients/current/cards").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/logout").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/**").hasAuthority("ADMIN");
+            /*    .antMatchers("/web/index.html").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
                 .antMatchers(HttpMethod.GET, "/api/clients/current/accounts").hasAuthority("CLIENT")
@@ -30,7 +56,7 @@ import javax.servlet.http.HttpSession;
                 .antMatchers("/h2-console/").hasAuthority("ADMIN")
                 .antMatchers("/rest/").hasAuthority("ADMIN")
                 .antMatchers("/api/client/current").hasAuthority("CLIENT")
-                .antMatchers("/web/**").hasAuthority("CLIENT");
+                .antMatchers("/web/**").hasAuthority("CLIENT");*/
 
         http.formLogin()
                 .usernameParameter("email")

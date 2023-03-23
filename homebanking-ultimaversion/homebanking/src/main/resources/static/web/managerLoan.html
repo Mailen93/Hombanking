@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Assets/managerLoan.css" />
+    <title>Document</title>
+</head>
+
+<body id="app" class="bodyCreationCard">
+  <main>
+    <!-- CREATION CARD -->
+    <div class="creationCardForm" @submit.prevent="loadData">
+      <h1>Make your Loan:</h1>
+      <form class="my-form">
+        <div class="container">
+          <ul class="ulCreationCard">
+         
+            <li class="name">
+              <input v-model="name" placeholder="Loan Name" type="text" />
+            </li>
+            <li class="transferInput">
+                <input v-model="payments" placeholder="Number of Payments" type="text" />
+              </li>
+              <li class="transferInput">
+                <input v-model="maxAmount" placeholder="Loan Amount" type="text" />
+              </li>
+              <li class="transferInput">
+                <input v-model="iva" placeholder="Loan Fee" type="text" />
+              </li>
+
+
+            <li>
+              <div class="submit_reset">              
+                <button
+                  @click="addLoan"
+                  class="btn-grid"
+                  type="submit"
+                >  
+                  <span class="front">SUBMIT</span>
+                </button>
+                <button class="btn-grid" type="reset">
+                  <span class="front">RESET</span>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </main>
+  <div class="opacity"></div>
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/a9a67006ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="../Assets/javascript/manager.js"></script>
+</body>
+</html>

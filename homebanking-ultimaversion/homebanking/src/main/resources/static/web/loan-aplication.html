@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../Assets/loan-aplication.css" />
+    <link rel="stylesheet" href="../Assets/mobile/loan-aplication.css">
     <link
       rel="stylesheet"
       href="path/to/font-awesome/css/font-awesome.min.css"
@@ -13,7 +14,7 @@
     <title>Loan Aplication</title>
   </head>
   <body>
-    <div id="app">
+    <div id="app" v-cloak>
       <header>
         <nav class="navbar">
           <div class="logo_name">
@@ -21,7 +22,7 @@
             <h2>{{client.firstName}} {{client.lastName}} apply to your Loan</h2>
           </div>
           <div class="links">
-            <a href="/accounts.html"
+            <a href="accounts.html"
               ><i class="fa-solid fa-user"></i>
               <h5>Your Accounts</h5></a
             >
@@ -29,10 +30,7 @@
               ><i class="fa-solid fa-credit-card"></i>
               <h5>Your Cards</h5></a
             >
-            <a href="#"
-              ><i @click="logOut" class="fa-solid fa-right-from-bracket"></i>
-              <h5>Log Out</h5></a
-            >
+            
             <a href="#"></a>
           </div>
           <div class="hamburger" @click="hamb">
@@ -47,7 +45,6 @@
       <div class="container_info">
         <h2 style="letter-spacing: 2px; margin-left: 1rem;" class="info__title">
          APPLY FOR A LOAN
-         {{iva}}
         </h2>
         <form @submit.prevent>
           <h2>Type of Loan</h2>
@@ -60,21 +57,20 @@
             <option :value="number" v-for="number of filterLoans()">{{number}}</option>
           </select>
           <h2>Loan amount</h2>
-          <input style="width: 50%; height: 2rem;" type="text" v-model="amount">
+          <input type="text" v-model="amount">
                       <fieldset v-if="loans">
                         <h3>Summary</h3>
                         <h5>Loan amount: {{amount* iva}}</h5>
                         <div v-for="loan of loans">
-                          <p v-if="loans_id == loan.id" v-show='amount != 0'>Pagaras {{payments}} cuotas de {{(amount * loan.iva / payments).toLocaleString('de-DE', { style: 'currency', currency:'USD' })}}
+                          <p v-if="loans_id == loan.id" v-show='amount != 0'>You will pay {{payments}} cuotes of {{(amount * loan.iva / payments).toLocaleString('de-DE', { style: 'currency', currency:'USD' })}}
                           </p>
                         </div>
-                        <!-- <h5>Total amount to be paid back: {{amount(loans[loans_id].interest+ 1)}}</h5>  -->
                       </fieldset>
                       <label>Account number to deposit</label>
-                      <select v-model="account_destinated">
+                      <select style="margin: 0;" v-model="account_destinated">
                         <option :value="account.number" v-for="account of accounts">{{account.number}}</option>
                       </select>
-          <a href="#" @click="applyLoan"class="info__button">Send</a>
+          <a href="#" @click="alertLoan"class="info__button">Send</a>
           <p class="back"><a href="/web/accounts.html">Back home</a></p>
         </form>
       </div>
